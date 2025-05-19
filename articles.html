@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles | Rev. Fr. Geraldo Bleza Malota</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Rev. Fr. Geraldo Bleza Malota</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="poems.html">Poems</a>
+      <a href="downloads.html">Downloads</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+<input type="text" id="searchBox" placeholder="Search..." onkeyup="filterList()" />
+
+<ul id="contentList">
+  <li><a href="#">The Beauty of Silence</a></li>
+  <li><a href="#">Reflections on the Psalms</a></li>
+  <li><a href="#">Faith and the Unknown</a></li>
+</ul>
+
+<script>
+function filterList() {
+  const input = document.getElementById('searchBox').value.toLowerCase();
+  const items = document.querySelectorAll('#contentList li');
+  
+  items.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    item.style.display = text.includes(input) ? '' : 'none';
+  });
+}
+</script>
+
+  <main>
+    <h2>Articles</h2>
+    <ul>
+      <li><strong>The Power of Forgiveness</strong> – A spiritual reflection on mercy and grace.</li>
+      <li><strong>Walking in Faith</strong> – Meditations on trusting God in uncertain times.</li>
+      <li><strong>Living the Beatitudes</strong> – Exploring Jesus’ message for our daily lives.</li>
