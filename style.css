@@ -158,13 +158,13 @@ body {
   padding: 0;
 }
 
-/* Header and nav */
+/* Header and nav 
 header {
   background-color: #1814da;
   color: rgb(19, 145, 138);
   padding: 10px;
   text-align: center;
-}
+} */
 
 nav {
   display: flex;
