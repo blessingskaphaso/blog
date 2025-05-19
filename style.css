@@ -151,3 +151,85 @@ footer {
   text-decoration: underline;
   color: #0056b3;
 }
+/* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header and nav */
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  background-color: #555;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  background-color: #777;
+}
+
+/* Content */
+main {
+  padding: 20px;
+}
+
+/* Footer */
+footer {
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Social links */
+.social-links a {
+  margin: 0 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.social-links a:hover {
+  color: #0077b5;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 14px;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
