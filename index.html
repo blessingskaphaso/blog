@@ -2,63 +2,162 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | Rev. Fr. Geraldo Bleza Malota</title>
+  <meta name="description" content="Welcome to the official website of Rev. Fr. Geraldo Bleza Malota, Catholic priest from Dedza Diocese. Read inspiring articles, poems, and spiritual reflections." />
   <link rel="stylesheet" href="style.css" />
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header>
-    <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="articles.html">Articles</a>
-      <a href="poems.html">Poems</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-container">
+      <h1>Rev. Fr. Geraldo Bleza Malota</h1>
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="poems.html" class="nav-link">Poems</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main class="homepage">
-    <section class="welcome">
-      <img src="images/fr-bleza.jpg" alt="Rev. Fr. Geraldo Bleza Malota" class="profile-photo" />
-      <div>
-        <h2>Welcome</h2>
-        <p>
-        This platform is dedicated to sharing the thoughts, reflections, poems, and articles of Rev. Fr. Geraldo Bleza Malota — a Catholic priest from Dedza Diocese. Through these writings, I hope to inspire and uplift readers on their spiritual journey.
-        </p>
-        <p>Thank you for visiting. May these writings inspire and uplift your heart and mind.</p>
+    <section class="welcome-section" aria-labelledby="welcome-heading">
+      <div class="welcome-container">
+        <div class="profile-image-container">
+          <img src="images/fr-bleza.jpg" alt="Rev. Fr. Geraldo Bleza Malota" class="profile-photo" loading="lazy" />
+        </div>
+        <div class="welcome-content">
+          <h2 id="welcome-heading">Welcome</h2>
+          <p class="welcome-text">
+            This platform is dedicated to sharing the thoughts, reflections, poems, and articles of Rev. Fr. Geraldo Bleza Malota — a Catholic priest from Dedza Diocese. Through these writings, I hope to inspire and uplift readers on their spiritual journey.
+          </p>
+          <p class="welcome-text">
+            Thank you for visiting. May these writings inspire and uplift your heart and mind.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="latest-posts">
-      <h3>Latest Articles & Poems</h3>
-      <ul>
-        <li><a href="articles.html#article1">The Light of Faith</a></li>
-        <li><a href="poems.html#poem1">Hope in the Storm</a></li>
-        <li><a href="articles.html#article2">Reflections on Prayer</a></li>
-      </ul>
-      <p><a href="articles.html">See all articles</a> | <a href="poems.html">See all poems</a></p>
+    <section class="latest-posts-section" aria-labelledby="latest-heading">
+      <div class="latest-posts-container">
+        <h3 id="latest-heading">Latest Articles & Poems</h3>
+        <div class="posts-grid">
+          <article class="post-card">
+            <div class="post-icon">
+              <i class="fas fa-cross" aria-hidden="true"></i>
+            </div>
+            <h4><a href="articles.html#article1" class="post-link">The Light of Faith</a></h4>
+            <p class="post-type">Article</p>
+          </article>
+          <article class="post-card">
+            <div class="post-icon">
+              <i class="fas fa-feather-alt" aria-hidden="true"></i>
+            </div>
+            <h4><a href="poems.html#poem1" class="post-link">Hope in the Storm</a></h4>
+            <p class="post-type">Poem</p>
+          </article>
+          <article class="post-card">
+            <div class="post-icon">
+              <i class="fas fa-praying-hands" aria-hidden="true"></i>
+            </div>
+            <h4><a href="articles.html#article2" class="post-link">Reflections on Prayer</a></h4>
+            <p class="post-type">Article</p>
+          </article>
+        </div>
+        <div class="view-all-links">
+          <a href="articles.html" class="view-all-btn">
+            <i class="fas fa-book-open" aria-hidden="true"></i>
+            View All Articles
+          </a>
+          <a href="poems.html" class="view-all-btn">
+            <i class="fas fa-scroll" aria-hidden="true"></i>
+            View All Poems
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section" aria-labelledby="quote-heading">
+      <div class="quote-container">
+        <blockquote class="inspirational-quote">
+          <i class="fas fa-quote-left quote-icon" aria-hidden="true"></i>
+          <p>"Faith is taking the first step even when you don't see the whole staircase."</p>
+          <cite>— Rev. Fr. Geraldo Bleza Malota</cite>
+        </blockquote>
+      </div>
     </section>
   </main>
 
   <footer>
-  <p>&copy; 2025 Rev. Fr. Geraldo Bleza Malota</p>
-  <div class="social-links">
-    <a href="https://facebook.com/YourFacebookPage" target="_blank" aria-label="Facebook">
-      <i class="fab fa-facebook"></i>
-    </a>
-    <a href="https://wa.me/YourWhatsAppNumber" target="_blank" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://twitter.com/YourTwitterHandle" target="_blank" aria-label="Twitter">
-      <i class="fab fa-twitter"></i>
-    </a>
-  </div>
-</footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <p class="copyright">&copy; 2025 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
+        <p class="diocese-info">Catholic Priest | Dedza Diocese</p>
+      </div>
+      <div class="social-links">
+        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook">
+          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="mailto:your.email@example.com" aria-label="Send email">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
 
+  <script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      menuToggle.addEventListener('click', function() {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
+        
+        // Toggle hamburger to X animation
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+      
+      // Close mobile menu when clicking on a link
+      navLinks.addEventListener('click', function(e) {
+        if (e.target.classList.contains('nav-link')) {
+          navLinks.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          const icon = menuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+          navLinks.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          const icon = menuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
