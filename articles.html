@@ -4,7 +4,202 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Articles | Rev. Fr. Geraldo Bleza Malota</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover, nav a.active {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: #667eea;
+      font-weight: 300;
+    }
+
+    .search-container {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    #searchBox {
+      width: 100%;
+      max-width: 400px;
+      padding: 1rem;
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    #searchBox:focus {
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .articles-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .article-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border-left: 4px solid #667eea;
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .article-card h3 {
+      color: #667eea;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .article-card p {
+      color: #666;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .article-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    .read-more {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .read-more:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .no-results {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      margin: 3rem 0;
+      display: none;
+    }
+
+    .article-tags {
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background: #f0f2ff;
+      color: #667eea;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      margin-right: 0.5rem;
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      nav {
+        gap: 1rem;
+      }
+      
+      nav a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      main {
+        padding: 0 1rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -12,34 +207,156 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="articles.html">Articles</a>
+      <a href="articles.html" class="active">Articles</a>
       <a href="poems.html">Poems</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-<input type="text" id="searchBox" placeholder="Search..." onkeyup="filterList()" />
-
-<ul id="contentList">
-  <li><a href="#">The Beauty of Silence</a></li>
-  <li><a href="#">Reflections on the Psalms</a></li>
-  <li><a href="#">Faith and the Unknown</a></li>
-</ul>
-
-<script>
-function filterList() {
-  const input = document.getElementById('searchBox').value.toLowerCase();
-  const items = document.querySelectorAll('#contentList li');
-  
-  items.forEach(item => {
-    const text = item.textContent.toLowerCase();
-    item.style.display = text.includes(input) ? '' : 'none';
-  });
-}
-</script>
 
   <main>
-    <h2>Articles</h2>
-    <ul>
-      <li><strong>The Power of Forgiveness</strong> – A spiritual reflection on mercy and grace.</li>
-      <li><strong>Walking in Faith</strong> – Meditations on trusting God in uncertain times.</li>
-      <li><strong>Living the Beatitudes</strong> – Exploring Jesus’ message for our daily lives.</li>
+    <h2 class="page-title">Spiritual Articles</h2>
+    
+    <div class="search-container">
+      <input type="text" id="searchBox" placeholder="Search articles..." onkeyup="filterArticles()" aria-label="Search articles" />
+    </div>
+
+    <div class="articles-grid" id="articlesContainer">
+      <article class="article-card">
+        <h3>The Power of Forgiveness</h3>
+        <p>A deep spiritual reflection on the transformative nature of mercy and grace in our daily lives. Exploring how forgiveness heals both the giver and receiver.</p>
+        <div class="article-tags">
+          <span class="tag">Forgiveness</span>
+          <span class="tag">Grace</span>
+          <span class="tag">Healing</span>
+        </div>
+        <div class="article-meta">
+          <span>March 15, 2024</span>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <h3>Walking in Faith</h3>
+        <p>Meditations on trusting God during uncertain times. How faith becomes our compass when the path ahead seems unclear and challenging.</p>
+        <div class="article-tags">
+          <span class="tag">Faith</span>
+          <span class="tag">Trust</span>
+          <span class="tag">Guidance</span>
+        </div>
+        <div class="article-meta">
+          <span>February 28, 2024</span>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <h3>Living the Beatitudes</h3>
+        <p>An exploration of Jesus' profound message in the Beatitudes and how these ancient teachings can transform our modern daily lives.</p>
+        <div class="article-tags">
+          <span class="tag">Beatitudes</span>
+          <span class="tag">Gospel</span>
+          <span class="tag">Daily Life</span>
+        </div>
+        <div class="article-meta">
+          <span>February 10, 2024</span>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <h3>The Beauty of Silence</h3>
+        <p>Discovering God's presence in quiet moments. How silence can become a sacred space for prayer, reflection, and spiritual growth.</p>
+        <div class="article-tags">
+          <span class="tag">Prayer</span>
+          <span class="tag">Silence</span>
+          <span class="tag">Contemplation</span>
+        </div>
+        <div class="article-meta">
+          <span>January 22, 2024</span>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <h3>Reflections on the Psalms</h3>
+        <p>Finding comfort and wisdom in the ancient prayers of David. How the Psalms speak to our contemporary struggles and joys.</p>
+        <div class="article-tags">
+          <span class="tag">Psalms</span>
+          <span class="tag">Scripture</span>
+          <span class="tag">Comfort</span>
+        </div>
+        <div class="article-meta">
+          <span>January 8, 2024</span>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </article>
+
+      <article class="article-card">
+        <h3>Faith and the Unknown</h3>
+        <p>Embracing mystery as part of our spiritual journey. How uncertainty can deepen rather than diminish our relationship with the divine.</p>
+        <div class="article-tags">
+          <span class="tag">Mystery</span>
+          <span class="tag">Uncertainty</span>
+          <span class="tag">Spiritual Growth</span>
+        </div>
+        <div class="article-meta">
+          <span>December 15, 2023</span>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="no-results" id="noResults">
+      <p>No articles found matching your search.</p>
+    </div>
+  </main>
+
+  <script>
+    function filterArticles() {
+      const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+      const articles = document.querySelectorAll('.article-card');
+      const noResults = document.getElementById('noResults');
+      let visibleCount = 0;
+      
+      articles.forEach(article => {
+        const title = article.querySelector('h3').textContent.toLowerCase();
+        const content = article.querySelector('p').textContent.toLowerCase();
+        const tags = Array.from(article.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+        
+        const isVisible = title.includes(searchTerm) || 
+                         content.includes(searchTerm) || 
+                         tags.includes(searchTerm);
+        
+        if (isVisible) {
+          article.style.display = '';
+          visibleCount++;
+        } else {
+          article.style.display = 'none';
+        }
+      });
+      
+      noResults.style.display = visibleCount === 0 && searchTerm.length > 0 ? 'block' : 'none';
+    }
+
+    // Add smooth scrolling and focus management
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchBox = document.getElementById('searchBox');
+      
+      // Enhanced search with debouncing
+      let searchTimeout;
+      searchBox.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(filterArticles, 300);
+      });
+      
+      // Clear search on Escape key
+      searchBox.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          this.value = '';
+          filterArticles();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

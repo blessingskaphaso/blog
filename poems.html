@@ -4,7 +4,302 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Poems | Rev. Fr. Geraldo Bleza Malota</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover, nav a.active {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: #d63384;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .search-container {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    #searchBox {
+      width: 100%;
+      max-width: 400px;
+      padding: 1rem;
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    #searchBox:focus {
+      box-shadow: 0 6px 20px rgba(214, 51, 132, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .poems-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
+    .poem-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .poem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #d63384, #f8b500, #20c997);
+    }
+
+    .poem-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .poem-card h3 {
+      color: #d63384;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .poem-excerpt {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #d63384;
+      font-style: italic;
+      line-height: 1.8;
+      color: #555;
+      text-align: center;
+    }
+
+    .poem-description {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .poem-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    .poem-type {
+      background: linear-gradient(135deg, #d63384, #f8b500);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .read-poem {
+      background: linear-gradient(135deg, #d63384 0%, #f8b500 100%);
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .read-poem:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(214, 51, 132, 0.4);
+    }
+
+    .poem-tags {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .tag {
+      background: #fff3cd;
+      color: #856404;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      margin: 0.2rem;
+      display: inline-block;
+    }
+
+    .no-results {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      margin: 3rem 0;
+      display: none;
+      font-size: 1.2rem;
+    }
+
+    .featured-poem {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      border: 2px solid #d63384;
+    }
+
+    .featured-poem h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #d63384;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      nav {
+        gap: 1rem;
+      }
+      
+      nav a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      main {
+        padding: 0 1rem;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .poems-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .featured-poem {
+        grid-column: 1;
+      }
+    }
+
+    .quote-mark {
+      font-size: 3rem;
+      color: #d63384;
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .quote-mark.open {
+      float: left;
+      margin-right: 0.5rem;
+      margin-top: -0.5rem;
+    }
+
+    .quote-mark.close {
+      float: right;
+      margin-left: 0.5rem;
+      margin-bottom: -1rem;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,41 +308,230 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="articles.html">Articles</a>
-      <a href="poems.html">Poems</a>
+      <a href="poems.html" class="active">Poems</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-  <input type="text" id="searchBox" placeholder="Search..." onkeyup="filterList()" />
-
-<ul id="contentList">
-  <li><a href="#">The Beauty of Silence</a></li>
-  <li><a href="#">Reflections on the Psalms</a></li>
-  <li><a href="#">Faith and the Unknown</a></li>
-</ul>
-
-<script>
-function filterList() {
-  const input = document.getElementById('searchBox').value.toLowerCase();
-  const items = document.querySelectorAll('#contentList li');
-  
-  items.forEach(item => {
-    const text = item.textContent.toLowerCase();
-    item.style.display = text.includes(input) ? '' : 'none';
-  });
-}
-</script>
 
   <main>
-    <h2>Poems</h2>
-    <ul>
-      <li><strong>The Morning Blessing</strong> – A poem of gratitude and peace.</li>
-      <li><strong>Ode to the Eucharist</strong> – Reflections on the sacred mystery.</li>
-      <li><strong>Journey of Grace</strong> – A spiritual pilgrimage in verse.</li>
-    </ul>
+    <h2 class="page-title">Sacred Verses</h2>
+    
+    <div class="search-container">
+      <input type="text" id="searchBox" placeholder="Search poems..." onkeyup="filterPoems()" aria-label="Search poems" />
+    </div>
+
+    <div class="poems-grid" id="poemsContainer">
+      <article class="poem-card featured-poem">
+        <div class="featured-badge">Featured</div>
+        <h3>The Morning Blessing</h3>
+        <div class="poem-excerpt">
+          <span class="quote-mark open">"</span>
+          Dawn breaks with golden light divine,<br>
+          A blessing from the throne on high,<br>
+          Each ray a thread in God's design,<br>
+          That paints hope across the sky.
+          <span class="quote-mark close">"</span>
+        </div>
+        <p class="poem-description">A heartfelt poem of gratitude that captures the sacred beauty of each new day, reminding us of God's constant presence in the simple miracle of sunrise.</p>
+        <div class="poem-tags">
+          <span class="tag">Gratitude</span>
+          <span class="tag">Morning Prayer</span>
+          <span class="tag">Divine Light</span>
+        </div>
+        <div class="poem-meta">
+          <div>
+            <span class="poem-type">Lyrical</span>
+            <span style="margin-left: 1rem; color: #999;">March 20, 2024</span>
+          </div>
+          <a href="#" class="read-poem">Read Full Poem</a>
+        </div>
+      </article>
+
+      <article class="poem-card">
+        <h3>Ode to the Eucharist</h3>
+        <div class="poem-excerpt">
+          <span class="quote-mark open">"</span>
+          In bread transformed, in wine made new,<br>
+          The mystery of love unfolds...
+          <span class="quote-mark close">"</span>
+        </div>
+        <p class="poem-description">Profound reflections on the sacred mystery of the Eucharist, exploring the transformation that occurs both in the elements and in our hearts.</p>
+        <div class="poem-tags">
+          <span class="tag">Eucharist</span>
+          <span class="tag">Sacred Mystery</span>
+          <span class="tag">Transformation</span>
+        </div>
+        <div class="poem-meta">
+          <div>
+            <span class="poem-type">Ode</span>
+            <span style="margin-left: 1rem; color: #999;">March 5, 2024</span>
+          </div>
+          <a href="#" class="read-poem">Read Full Poem</a>
+        </div>
+      </article>
+
+      <article class="poem-card">
+        <h3>Journey of Grace</h3>
+        <div class="poem-excerpt">
+          <span class="quote-mark open">"</span>
+          Each step upon this sacred ground,<br>
+          Where pilgrims' prayers have worn the stone...
+          <span class="quote-mark close">"</span>
+        </div>
+        <p class="poem-description">A spiritual pilgrimage captured in verse, tracing the path of faith through life's challenges and celebrating the grace that guides us forward.</p>
+        <div class="poem-tags">
+          <span class="tag">Pilgrimage</span>
+          <span class="tag">Spiritual Journey</span>
+          <span class="tag">Grace</span>
+        </div>
+        <div class="poem-meta">
+          <div>
+            <span class="poem-type">Narrative</span>
+            <span style="margin-left: 1rem; color: #999;">February 18, 2024</span>
+          </div>
+          <a href="#" class="read-poem">Read Full Poem</a>
+        </div>
+      </article>
+
+      <article class="poem-card">
+        <h3>The Beauty of Silence</h3>
+        <div class="poem-excerpt">
+          <span class="quote-mark open">"</span>
+          In silence deep, the soul finds rest,<br>
+          Where God's own whisper can be heard...
+          <span class="quote-mark close">"</span>
+        </div>
+        <p class="poem-description">An exploration of the sacred nature of silence, where the divine voice speaks most clearly to the attentive heart in moments of quiet contemplation.</p>
+        <div class="poem-tags">
+          <span class="tag">Silence</span>
+          <span class="tag">Contemplation</span>
+          <span class="tag">Divine Voice</span>
+        </div>
+        <div class="poem-meta">
+          <div>
+            <span class="poem-type">Meditative</span>
+            <span style="margin-left: 1rem; color: #999;">February 2, 2024</span>
+          </div>
+          <a href="#" class="read-poem">Read Full Poem</a>
+        </div>
+      </article>
+
+      <article class="poem-card">
+        <h3>Reflections on the Psalms</h3>
+        <div class="poem-excerpt">
+          <span class="quote-mark open">"</span>
+          Ancient words that still ring true,<br>
+          David's heart in verses penned...
+          <span class="quote-mark close">"</span>
+        </div>
+        <p class="poem-description">Finding comfort and wisdom in the timeless prayers of David, connecting our contemporary struggles with the eternal human search for divine comfort.</p>
+        <div class="poem-tags">
+          <span class="tag">Psalms</span>
+          <span class="tag">Scripture</span>
+          <span class="tag">Timeless Wisdom</span>
+        </div>
+        <div class="poem-meta">
+          <div>
+            <span class="poem-type">Reflective</span>
+            <span style="margin-left: 1rem; color: #999;">January 15, 2024</span>
+          </div>
+          <a href="#" class="read-poem">Read Full Poem</a>
+        </div>
+      </article>
+
+      <article class="poem-card">
+        <h3>Faith and the Unknown</h3>
+        <div class="poem-excerpt">
+          <span class="quote-mark open">"</span>
+          Beyond the veil of what we see,<br>
+          Faith ventures forth on wings of trust...
+          <span class="quote-mark close">"</span>
+        </div>
+        <p class="poem-description">Embracing mystery as an integral part of our spiritual journey, exploring how uncertainty can deepen rather than diminish our relationship with the divine.</p>
+        <div class="poem-tags">
+          <span class="tag">Faith</span>
+          <span class="tag">Mystery</span>
+          <span class="tag">Trust</span>
+        </div>
+        <div class="poem-meta">
+          <div>
+            <span class="poem-type">Contemplative</span>
+            <span style="margin-left: 1rem; color: #999;">December 28, 2023</span>
+          </div>
+          <a href="#" class="read-poem">Read Full Poem</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="no-results" id="noResults">
+      <p>No poems found matching your search.</p>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Rev. Fr. Geraldo Bleza Malota</p>
+    <p>&copy; 2025 Rev. Fr. Geraldo Bleza Malota | Sacred Verses for the Soul</p>
   </footer>
+
+  <script>
+    function filterPoems() {
+      const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+      const poems = document.querySelectorAll('.poem-card');
+      const noResults = document.getElementById('noResults');
+      let visibleCount = 0;
+      
+      poems.forEach(poem => {
+        const title = poem.querySelector('h3').textContent.toLowerCase();
+        const description = poem.querySelector('.poem-description').textContent.toLowerCase();
+        const excerpt = poem.querySelector('.poem-excerpt').textContent.toLowerCase();
+        const tags = Array.from(poem.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+        
+        const isVisible = title.includes(searchTerm) || 
+                         description.includes(searchTerm) || 
+                         excerpt.includes(searchTerm) ||
+                         tags.includes(searchTerm);
+        
+        if (isVisible) {
+          poem.style.display = '';
+          visibleCount++;
+        } else {
+          poem.style.display = 'none';
+        }
+      });
+      
+      noResults.style.display = visibleCount === 0 && searchTerm.length > 0 ? 'block' : 'none';
+    }
+
+    // Enhanced functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchBox = document.getElementById('searchBox');
+      
+      // Debounced search
+      let searchTimeout;
+      searchBox.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(filterPoems, 300);
+      });
+      
+      // Clear search on Escape
+      searchBox.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          this.value = '';
+          filterPoems();
+        }
+      });
+
+      // Add subtle animation on load
+      const cards = document.querySelectorAll('.poem-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.6s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    });
+  </script>
 </body>
 </html>
