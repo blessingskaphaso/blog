@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="sidebar">
+      <h2>Admin Panel</h2>
+      <nav>
+        <ul>
+          <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="#">Add Article</a></li>
+          <li><a href="#">Add Poem</a></li>
+          <li><a href="#">Manage Posts</a></li>
+          <li><a href="#">Downloads</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header>
+        <h1>Welcome, Admin</h1>
+      </header>
+
+      <section class="dashboard-widgets">
+        <div class="widget">
+          <h3>Total Articles</h3>
+          <p>12</p>
+        </div>
+        <div class="widget">
+          <h3>Total Poems</h3>
+          <p>8</p>
+        </div>
+        <div class="widget">
+          <h3>Downloads</h3>
+          <p>23</p>
+        </div>
+      </section>
+
+      <section class="admin-actions">
+        <h2>Quick Actions</h2>
+        <button onclick="alert('Feature Coming Soon')">Upload New Article</button>
+        <button onclick="alert('Feature Coming Soon')">Upload New Poem</button>
+      </section>
+
+      <!-- ✅ Added Editable Content Sections Below -->
+      <section>
+        <h3>Add New Article</h3>
+        <form id="articleForm">
+          <input type="text" id="articleTitle" placeholder="Title" required><br>
+          <textarea id="articleContent" placeholder="Write your article here..." required></textarea><br>
+          <button type="submit">Publish Article</button>
+        </form>
+        <p id="articleMessage"></p>
+      </section>
+
+      <section>
+        <h3>Add New Poem</h3>
+        <form id="poemForm">
+          <input type="text" id="poemTitle" placeholder="Title" required><br>
+          <textarea id="poemContent" placeholder="Write your poem here..." required></textarea><br>
+          <button type="submit">Publish Poem</button>
+        </form>
+        <p id="poemMessage"></p>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
