@@ -4,7 +4,353 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="admin.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .admin-container {
+      display: flex;
+      min-height: 100vh;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 280px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+      padding: 2rem 0;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      color: #4a5568;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+    }
+
+    .sidebar nav li {
+      margin: 0.5rem 0;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      color: #4a5568;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .sidebar nav a:hover {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      border-left-color: #667eea;
+      transform: translateX(5px);
+    }
+
+    .sidebar nav a.active {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+      border-left-color: #667eea;
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 280px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(20px);
+    }
+
+    header h1 {
+      color: #2d3748;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    /* Dashboard Widgets */
+    .dashboard-widgets {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .widget {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .widget:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .widget h3 {
+      color: #4a5568;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .widget p {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Content Sections */
+    .content-section {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(20px);
+    }
+
+    .content-section h2, .content-section h3 {
+      color: #2d3748;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .content-section h2 {
+      font-size: 1.5rem;
+    }
+
+    .content-section h3 {
+      font-size: 1.25rem;
+    }
+
+    /* Form Styling */
+    .form-container {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-weight: 600;
+      color: #4a5568;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input[type="text"], textarea {
+      padding: 1rem;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    /* Button Styling */
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, #48bb78, #38b2ac);
+      color: white;
+      box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(72, 187, 120, 0.6);
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Messages */
+    .message {
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .message.success {
+      background: rgba(72, 187, 120, 0.1);
+      border: 1px solid rgba(72, 187, 120, 0.3);
+      color: #38a169;
+    }
+
+    .message.error {
+      background: rgba(245, 101, 101, 0.1);
+      border: 1px solid rgba(245, 101, 101, 0.3);
+      color: #e53e3e;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        z-index: 1000;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 1rem;
+      }
+
+      .dashboard-widgets {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Loading Animation */
+    .loading {
+      position: relative;
+    }
+
+    .loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 2px solid transparent;
+      border-top: 2px solid #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  </style>
 </head>
 <body>
   <div class="admin-container">
@@ -12,65 +358,279 @@
       <h2>Admin Panel</h2>
       <nav>
         <ul>
-          <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
-          <li><a href="#">Add Article</a></li>
-          <li><a href="#">Add Poem</a></li>
-          <li><a href="#">Manage Posts</a></li>
-          <li><a href="#">Downloads</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="#" class="active">📊 Dashboard</a></li>
+          <li><a href="#" onclick="showSection('add-article')">📝 Add Article</a></li>
+          <li><a href="#" onclick="showSection('add-poem')">🎭 Add Poem</a></li>
+          <li><a href="#" onclick="showSection('manage-posts')">📋 Manage Posts</a></li>
+          <li><a href="#" onclick="showSection('downloads')">📥 Downloads</a></li>
+          <li><a href="#" onclick="logout()">🚪 Logout</a></li>
         </ul>
       </nav>
     </aside>
 
     <main class="main-content">
-      <header>
-        <h1>Welcome, Admin</h1>
+      <header class="fade-in">
+        <h1>Welcome back, Admin! 👋</h1>
+        <p style="margin-top: 0.5rem; color: #718096;">Ready to create something amazing today?</p>
       </header>
 
-      <section class="dashboard-widgets">
+      <section id="dashboard" class="dashboard-widgets fade-in">
         <div class="widget">
-          <h3>Total Articles</h3>
-          <p>12</p>
+          <h3>📚 Total Articles</h3>
+          <p id="articleCount">12</p>
         </div>
         <div class="widget">
-          <h3>Total Poems</h3>
-          <p>8</p>
+          <h3>🎭 Total Poems</h3>
+          <p id="poemCount">8</p>
         </div>
         <div class="widget">
-          <h3>Downloads</h3>
+          <h3>📥 Downloads</h3>
           <p>23</p>
         </div>
+        <div class="widget">
+          <h3>👥 Active Users</h3>
+          <p>147</p>
+        </div>
       </section>
 
-      <section class="admin-actions">
-        <h2>Quick Actions</h2>
-        <button onclick="alert('Feature Coming Soon')">Upload New Article</button>
-        <button onclick="alert('Feature Coming Soon')">Upload New Poem</button>
+      <section class="content-section fade-in">
+        <h2>🚀 Quick Actions</h2>
+        <div class="quick-actions">
+          <button class="btn btn-primary" onclick="showSection('add-article')">
+            📝 Create New Article
+          </button>
+          <button class="btn btn-secondary" onclick="showSection('add-poem')">
+            🎭 Write New Poem
+          </button>
+        </div>
       </section>
 
-      <!-- ✅ Added Editable Content Sections Below -->
-      <section>
-        <h3>Add New Article</h3>
-        <form id="articleForm">
-          <input type="text" id="articleTitle" placeholder="Title" required><br>
-          <textarea id="articleContent" placeholder="Write your article here..." required></textarea><br>
-          <button type="submit">Publish Article</button>
+      <section id="add-article" class="content-section" style="display: none;">
+        <h3>📝 Add New Article</h3>
+        <form id="articleForm" class="form-container">
+          <div class="form-group">
+            <label for="articleTitle">Article Title</label>
+            <input type="text" id="articleTitle" placeholder="Enter an engaging title..." required>
+          </div>
+          <div class="form-group">
+            <label for="articleAuthor">Author</label>
+            <input type="text" id="articleAuthor" placeholder="Author name..." required>
+          </div>
+          <div class="form-group">
+            <label for="articleContent">Content</label>
+            <textarea id="articleContent" placeholder="Write your article here... Share your thoughts, insights, and ideas!" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">✨ Publish Article</button>
         </form>
-        <p id="articleMessage"></p>
+        <div id="articleMessage" class="message"></div>
       </section>
 
-      <section>
-        <h3>Add New Poem</h3>
-        <form id="poemForm">
-          <input type="text" id="poemTitle" placeholder="Title" required><br>
-          <textarea id="poemContent" placeholder="Write your poem here..." required></textarea><br>
-          <button type="submit">Publish Poem</button>
+      <section id="add-poem" class="content-section" style="display: none;">
+        <h3>🎭 Add New Poem</h3>
+        <form id="poemForm" class="form-container">
+          <div class="form-group">
+            <label for="poemTitle">Poem Title</label>
+            <input type="text" id="poemTitle" placeholder="Give your poem a beautiful title..." required>
+          </div>
+          <div class="form-group">
+            <label for="poemAuthor">Poet</label>
+            <input type="text" id="poemAuthor" placeholder="Poet name..." required>
+          </div>
+          <div class="form-group">
+            <label for="poemContent">Poem</label>
+            <textarea id="poemContent" placeholder="Pour your heart into verse... Let the words flow like music!" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-secondary">🌟 Publish Poem</button>
         </form>
-        <p id="poemMessage"></p>
+        <div id="poemMessage" class="message"></div>
+      </section>
+
+      <section id="manage-posts" class="content-section" style="display: none;">
+        <h3>📋 Manage Posts</h3>
+        <p>Post management features coming soon! You'll be able to edit, delete, and organize your content here.</p>
+      </section>
+
+      <section id="downloads" class="content-section" style="display: none;">
+        <h3>📥 Downloads</h3>
+        <p>Download analytics and export features will be available here.</p>
       </section>
     </main>
   </div>
 
-  <script src="admin.js"></script>
+  <script>
+    // State management
+    let articles = [];
+    let poems = [];
+
+    // Initialize dashboard
+    document.addEventListener('DOMContentLoaded', function() {
+      loadData();
+      updateCounts();
+    });
+
+    // Navigation
+    function showSection(sectionId) {
+      // Hide all content sections
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => {
+        section.style.display = 'none';
+      });
+      
+      // Hide dashboard
+      document.getElementById('dashboard').style.display = 'none';
+      
+      // Show selected section
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.style.display = 'block';
+        targetSection.classList.add('fade-in');
+      }
+      
+      // Update active nav
+      document.querySelectorAll('.sidebar nav a').forEach(link => {
+        link.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+
+    // Article form handling
+    document.getElementById('articleForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const title = document.getElementById('articleTitle').value.trim();
+      const author = document.getElementById('articleAuthor').value.trim();
+      const content = document.getElementById('articleContent').value.trim();
+      
+      if (!title || !author || !content) {
+        showMessage('articleMessage', 'Please fill in all fields!', 'error');
+        return;
+      }
+      
+      // Simulate loading
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Publishing...';
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        // Add article
+        const article = {
+          id: Date.now(),
+          title,
+          author,
+          content,
+          date: new Date().toLocaleDateString()
+        };
+        
+        articles.push(article);
+        saveData();
+        updateCounts();
+        
+        // Reset form
+        document.getElementById('articleForm').reset();
+        
+        // Show success message
+        showMessage('articleMessage', `🎉 Article "${title}" published successfully!`, 'success');
+        
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+      }, 1500);
+    });
+
+    // Poem form handling
+    document.getElementById('poemForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const title = document.getElementById('poemTitle').value.trim();
+      const author = document.getElementById('poemAuthor').value.trim();
+      const content = document.getElementById('poemContent').value.trim();
+      
+      if (!title || !author || !content) {
+        showMessage('poemMessage', 'Please fill in all fields!', 'error');
+        return;
+      }
+      
+      // Simulate loading
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Publishing...';
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        // Add poem
+        const poem = {
+          id: Date.now(),
+          title,
+          author,
+          content,
+          date: new Date().toLocaleDateString()
+        };
+        
+        poems.push(poem);
+        saveData();
+        updateCounts();
+        
+        // Reset form
+        document.getElementById('poemForm').reset();
+        
+        // Show success message
+        showMessage('poemMessage', `🌟 Poem "${title}" published successfully!`, 'success');
+        
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+      }, 1500);
+    });
+
+    // Utility functions
+    function showMessage(elementId, message, type = 'success') {
+      const messageEl = document.getElementById(elementId);
+      messageEl.textContent = message;
+      messageEl.className = `message ${type}`;
+      messageEl.classList.add('show');
+      
+      setTimeout(() => {
+        messageEl.classList.remove('show');
+      }, 4000);
+    }
+
+    function updateCounts() {
+      document.getElementById('articleCount').textContent = articles.length;
+      document.getElementById('poemCount').textContent = poems.length;
+    }
+
+    function saveData() {
+      // In a real application, this would save to a database
+      // For demo purposes, we're using memory storage
+      console.log('Data saved:', { articles, poems });
+    }
+
+    function loadData() {
+      // In a real application, this would load from a database
+      // For demo purposes, we're starting with empty arrays
+      console.log('Data loaded');
+    }
+
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        alert('👋 Goodbye! You have been logged out successfully.');
+        // In a real app, this would redirect to login page
+      }
+    }
+
+    // Add some nice entrance animations
+    setTimeout(() => {
+      document.querySelectorAll('.widget').forEach((widget, index) => {
+        setTimeout(() => {
+          widget.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s both`;
+        }, index * 100);
+      });
+    }, 300);
+  </script>
 </body>
 </html>
