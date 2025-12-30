@@ -117,10 +117,42 @@
       font-size: 1.4rem;
     }
 
-    .article-card p {
+    .article-preview {
       color: #666;
-      margin-bottom: 1rem;
       line-height: 1.7;
+    }
+
+    .article-preview p {
+      margin-bottom: 1rem;
+    }
+
+    .article-full {
+      display: none;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    .article-full.show {
+      display: block;
+    }
+
+    .article-full p {
+      margin-bottom: 1rem;
+    }
+
+    .article-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: #f0f2ff;
+      color: #667eea;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
     }
 
     .article-meta {
@@ -135,42 +167,32 @@
     }
 
     .read-more {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 0.5rem 1.5rem;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      color: #667eea;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: transparent;
+      border: 2px solid #667eea;
     }
 
     .read-more:hover {
+      color: white;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: transparent;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
     }
 
     .no-results {
+      display: none;
       text-align: center;
       color: #666;
+      font-size: 1.2rem;
+      padding: 2rem;
       font-style: italic;
-      margin: 3rem 0;
-      display: none;
-    }
-
-    .article-tags {
-      margin-top: 1rem;
-    }
-
-    .tag {
-      background: #f0f2ff;
-      color: #667eea;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      margin-right: 0.5rem;
-      display: inline-block;
     }
 
     @media (max-width: 768px) {
@@ -198,6 +220,14 @@
       .articles-grid {
         grid-template-columns: 1fr;
       }
+
+      .article-card {
+        padding: 1.5rem;
+      }
+
+      .article-card h3 {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -214,44 +244,71 @@
   </header>
 
   <main>
-    <h2 class="page-title">Spiritual Articles</h2>
+    <h2 class="page-title">Articles</h2>
     
     <div class="search-container">
-      <input type="text" id="searchBox" placeholder="Search articles..." onkeyup="filterArticles()" aria-label="Search articles" />
+      <input type="text" id="searchBox" placeholder="Search articles..." aria-label="Search articles" />
     </div>
 
     <div class="articles-grid" id="articlesContainer">
       <article class="article-card">
-        <h3>The Power of Forgiveness</h3>
-        <p>A deep spiritual reflection on the transformative nature of mercy and grace in our daily lives. Exploring how forgiveness heals both the giver and receiver.</p>
+        <h3>THE MULTIFACETED REALITY OF SUCCESS</h3>
+        <div class="article-preview">
+          <p>Today we are living in an era and a world or a society where the word "success" has become a household name. Every one of us desires to win, progress and succeed...</p>
+        </div>
+        <div class="article-full">
+          <p>Today we are living in an era and a world or a society where the word "success" has become a household name. Every one of us desires to win, progress and succeed. Sometimes even at any cost.</p>
+          <p>We see that many people are hungry for success today. Thus hunger sometimes leads to an increasing competition among people. There are also times when this kind of competition becomes very unhealthy. This usually happens because along the way, we sometimes lose the meaning and essence of success.</p>
+          <p>It would be of necessary importance for us to go back to the drawing board and remind ourselves of what success really entails. Combing through its etymological roots, the word success is derived from the Latin noun successus that comes from the Latin verb succedere which means "to come after". As such success can be said to be that which comes after. Success is usually a result of some hard work or effort. It is otherwise defined as the accomplishment of one's goals. It can be the attainment of wealth, position, honours and so forth.</p>
+          <p>In this sense, it is very obvious that success can be gauged and viewed differently by various people. For some, success can mean the attainment of happiness and peace of mind in their lives. Others consider success as completion of their academic endeavors. Some people also see success as outsmarting others. For some, success entails living a lavish life, having a lot of money, material goods, living a comfortable life, having freedom and independence while for some success lies in having profound self-knowledge. Most importantly, I feel that success should be a positive element in it.</p>
+          <p>Over and above all, we have seen that the surface area for success is too large to be covered by a single individual. As such no one should be pressurized in life to reach the heights of what others call success. We ought not to be intimidated by others people's success. Objectively, success should entail some progress in life no matter how small it might look.</p>
+          <p>We can all succeed even in different fields and uplift each other. We just need to keep pushing and doing the most with all the things before us and at our disposal. We will gradually get where we have so long desired to be.</p>
+        </div>
         <div class="article-tags">
-          <span class="tag">Forgiveness</span>
-          <span class="tag">Grace</span>
-          <span class="tag">Healing</span>
+          <span class="tag">Success</span>
+          <span class="tag">Personal Growth</span>
+          <span class="tag">Self-Discovery</span>
         </div>
         <div class="article-meta">
           <span>March 15, 2024</span>
-          <a href="#" class="read-more">Read More</a>
+          <a href="#" class="read-more" onclick="toggleArticle(event)">Read More</a>
         </div>
       </article>
 
       <article class="article-card">
-        <h3>Walking in Faith</h3>
-        <p>Meditations on trusting God during uncertain times. How faith becomes our compass when the path ahead seems unclear and challenging.</p>
+        <h3>Traps within Growth</h3>
+        <div class="article-preview">
+          <p>Have you ever imagined a life without worries, problems or fears? A life with all that one desires? Have you ever thought of a life in which wishes immediately come into existence?...</p>
+        </div>
+        <div class="article-full">
+          <p>Have you ever imagined a life without worries, problems or fears? A life with all that one desires? Have you ever thought of a life in which wishes immediately come into existence? The truth is such a life has never existed before, does not exist and will never exist. So we have two choices at our disposal, either to fight and embrace the life snags and live or die.</p>
+          <p>'Everyone looks happy until you talk to them'. This expression had been useless to me until time revealed the richness within it (the expression). As growth continues to dictate the rules of nature, I once heard one old man saying, 'Never grow old, it's a trap.' If I may be honest, I hated him because I felt threatened. By the way, pardon me, I was just young and my mind was not yet prepared to digest deeper truths.</p>
+          <p>As we grow, we are sometimes knocked down, tired, frustrated, devastated and sometimes bored with our own being. We encounter snags; insults, unfulfilled wishes, heartbreaks, betrays from friends and all sorts of hardships. If you have never met one, wait or thank God. Sometimes we wish we were someone, more handsome or more beautiful. We wish we had more than what we have now, more money, more friends, more everything. We wish we were just a different person. Unfortunately, many turn away from the truth and live a life hypocrisy, pretending everything is well. But nature brings us back to where we belong and remind us what we are.</p>
+          <p>Growth is a series of confusion, a war that only favours the strong. It is a tag of war between the self and society, a conflict between needs and wants, a combat between the present self and the future ideal self, a clash between the self and peers. It is a confusion because much as the above edify one's growth on one hand, they are potential obstacles on the other hand. The confusion is everyone's as far as he or she is developing.</p>
+          <p>Unfortunately, we find ourselves existing in this world of confusion, the world we never took part in designing yet we wish it to operate in accordance with our ambitions. So what do we do, do we give up and die or embrace it and live? We have to dance to some tunes, regret some, learn and move on. Nothing in nature blossoms all the year around. As far as we are part of nature, we cannot flourish all the time.</p>
+          <p>In the words of the German-American psychoanalyst, Erick Erickson, there comes a moment as we grow old when we either enjoy integrity or suffer despair. The former makes one proud of the life well lived. The latter haunts one for the life wasted. Unfortunately, when we grow old, there is no time to go back and change things. The nights of the chances missed never die. So, what doing currently, preparing for old days of anguish or integrity?</p>
+        </div>
         <div class="article-tags">
-          <span class="tag">Faith</span>
-          <span class="tag">Trust</span>
-          <span class="tag">Guidance</span>
+          <span class="tag">Growth</span>
+          <span class="tag">Life Challenges</span>
+          <span class="tag">Wisdom</span>
         </div>
         <div class="article-meta">
           <span>February 28, 2024</span>
-          <a href="#" class="read-more">Read More</a>
+          <a href="#" class="read-more" onclick="toggleArticle(event)">Read More</a>
         </div>
       </article>
 
       <article class="article-card">
         <h3>Living the Beatitudes</h3>
-        <p>An exploration of Jesus' profound message in the Beatitudes and how these ancient teachings can transform our modern daily lives.</p>
+        <div class="article-preview">
+          <p>An exploration of Jesus' profound message in the Beatitudes and how these ancient teachings can transform our modern daily lives.</p>
+        </div>
+        <div class="article-full">
+          <p>An exploration of Jesus' profound message in the Beatitudes and how these ancient teachings can transform our modern daily lives.</p>
+          <p>The Beatitudes represent one of the most revolutionary messages ever delivered. In the Sermon on the Mount, Jesus turns worldly values upside down, declaring blessed those whom the world often overlooks: the poor in spirit, the meek, those who mourn, and those who hunger for righteousness.</p>
+          <p>These teachings challenge us to reconsider what truly matters in life and invite us to find joy not in material success or social status, but in qualities of the heart and spirit that endure.</p>
+        </div>
         <div class="article-tags">
           <span class="tag">Beatitudes</span>
           <span class="tag">Gospel</span>
@@ -259,13 +316,20 @@
         </div>
         <div class="article-meta">
           <span>February 10, 2024</span>
-          <a href="#" class="read-more">Read More</a>
+          <a href="#" class="read-more" onclick="toggleArticle(event)">Read More</a>
         </div>
       </article>
 
       <article class="article-card">
         <h3>The Beauty of Silence</h3>
-        <p>Discovering God's presence in quiet moments. How silence can become a sacred space for prayer, reflection, and spiritual growth.</p>
+        <div class="article-preview">
+          <p>Discovering God's presence in quiet moments. How silence can become a sacred space for prayer, reflection, and spiritual growth.</p>
+        </div>
+        <div class="article-full">
+          <p>Discovering God's presence in quiet moments. How silence can become a sacred space for prayer, reflection, and spiritual growth.</p>
+          <p>In our noisy, fast-paced world, silence has become a rare commodity. Yet it is often in the quiet moments that we encounter God most profoundly. Silence creates space for us to listen—not just with our ears, but with our hearts.</p>
+          <p>The practice of contemplative silence has been valued by spiritual seekers throughout the ages. It allows us to step away from the constant chatter of our minds and the demands of daily life, creating room for genuine encounter with the divine.</p>
+        </div>
         <div class="article-tags">
           <span class="tag">Prayer</span>
           <span class="tag">Silence</span>
@@ -273,13 +337,20 @@
         </div>
         <div class="article-meta">
           <span>January 22, 2024</span>
-          <a href="#" class="read-more">Read More</a>
+          <a href="#" class="read-more" onclick="toggleArticle(event)">Read More</a>
         </div>
       </article>
 
       <article class="article-card">
         <h3>Reflections on the Psalms</h3>
-        <p>Finding comfort and wisdom in the ancient prayers of David. How the Psalms speak to our contemporary struggles and joys.</p>
+        <div class="article-preview">
+          <p>Finding comfort and wisdom in the ancient prayers of David. How the Psalms speak to our contemporary struggles and joys.</p>
+        </div>
+        <div class="article-full">
+          <p>Finding comfort and wisdom in the ancient prayers of David. How the Psalms speak to our contemporary struggles and joys.</p>
+          <p>The Book of Psalms contains some of the most beautiful and honest prayers ever written. These ancient songs express the full range of human emotion—from deep despair to ecstatic joy, from anger and confusion to profound peace and trust.</p>
+          <p>What makes the Psalms so powerful is their raw honesty. The psalmists don't hide their struggles or pretend everything is fine. They bring their whole selves before God, teaching us that we can do the same.</p>
+        </div>
         <div class="article-tags">
           <span class="tag">Psalms</span>
           <span class="tag">Scripture</span>
@@ -287,13 +358,20 @@
         </div>
         <div class="article-meta">
           <span>January 8, 2024</span>
-          <a href="#" class="read-more">Read More</a>
+          <a href="#" class="read-more" onclick="toggleArticle(event)">Read More</a>
         </div>
       </article>
 
       <article class="article-card">
         <h3>Faith and the Unknown</h3>
-        <p>Embracing mystery as part of our spiritual journey. How uncertainty can deepen rather than diminish our relationship with the divine.</p>
+        <div class="article-preview">
+          <p>Embracing mystery as part of our spiritual journey. How uncertainty can deepen rather than diminish our relationship with the divine.</p>
+        </div>
+        <div class="article-full">
+          <p>Embracing mystery as part of our spiritual journey. How uncertainty can deepen rather than diminish our relationship with the divine.</p>
+          <p>Many people struggle with the uncertainties inherent in faith. We want clear answers, definitive proof, and guaranteed outcomes. Yet faith, by its very nature, involves trust in what we cannot fully see or understand.</p>
+          <p>Rather than viewing mystery as a problem to be solved, we can embrace it as an invitation to deeper trust. The unknown spaces in our faith journey are not voids to be feared, but sacred spaces where God meets us in unexpected ways.</p>
+        </div>
         <div class="article-tags">
           <span class="tag">Mystery</span>
           <span class="tag">Uncertainty</span>
@@ -301,7 +379,7 @@
         </div>
         <div class="article-meta">
           <span>December 15, 2023</span>
-          <a href="#" class="read-more">Read More</a>
+          <a href="#" class="read-more" onclick="toggleArticle(event)">Read More</a>
         </div>
       </article>
     </div>
@@ -312,6 +390,25 @@
   </main>
 
   <script>
+    function toggleArticle(event) {
+      event.preventDefault();
+      const card = event.target.closest('.article-card');
+      const preview = card.querySelector('.article-preview');
+      const full = card.querySelector('.article-full');
+      const link = event.target;
+      
+      if (full.classList.contains('show')) {
+        full.classList.remove('show');
+        preview.style.display = 'block';
+        link.textContent = 'Read More';
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        full.classList.add('show');
+        preview.style.display = 'none';
+        link.textContent = 'Read Less';
+      }
+    }
+
     function filterArticles() {
       const searchTerm = document.getElementById('searchBox').value.toLowerCase();
       const articles = document.querySelectorAll('.article-card');
@@ -320,11 +417,13 @@
       
       articles.forEach(article => {
         const title = article.querySelector('h3').textContent.toLowerCase();
-        const content = article.querySelector('p').textContent.toLowerCase();
+        const preview = article.querySelector('.article-preview').textContent.toLowerCase();
+        const full = article.querySelector('.article-full').textContent.toLowerCase();
         const tags = Array.from(article.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
         
         const isVisible = title.includes(searchTerm) || 
-                         content.includes(searchTerm) || 
+                         preview.includes(searchTerm) || 
+                         full.includes(searchTerm) ||
                          tags.includes(searchTerm);
         
         if (isVisible) {
@@ -338,18 +437,15 @@
       noResults.style.display = visibleCount === 0 && searchTerm.length > 0 ? 'block' : 'none';
     }
 
-    // Add smooth scrolling and focus management
     document.addEventListener('DOMContentLoaded', function() {
       const searchBox = document.getElementById('searchBox');
       
-      // Enhanced search with debouncing
       let searchTimeout;
       searchBox.addEventListener('input', function() {
         clearTimeout(searchTimeout);
         searchTimeout = setTimeout(filterArticles, 300);
       });
       
-      // Clear search on Escape key
       searchBox.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           this.value = '';

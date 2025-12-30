@@ -216,15 +216,15 @@ header h1 {
 }
 
 .profile-photo {
-  width: 250px;
-  height: 250px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
-  border: 4px solid var(--primary-color);
+  width: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 5px solid var(--primary-color);
   box-shadow: var(--shadow-medium);
-  margin: 0 auto;
-  transition: var(--transition-slow);
+  background: #004080;
 }
+
 
 .profile-photo:hover {
   transform: scale(1.05);
