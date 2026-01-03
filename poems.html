@@ -145,6 +145,23 @@
       text-align: center;
     }
 
+    .poem-full {
+      display: none;
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+      border-left: 4px solid #d63384;
+      font-style: italic;
+      line-height: 1.8;
+      color: #555;
+      text-align: center;
+    }
+
+    .poem-full.show {
+      display: block;
+    }
+
     .poem-description {
       color: #666;
       margin-bottom: 1.5rem;
@@ -279,6 +296,14 @@
       .featured-poem {
         grid-column: 1;
       }
+
+      .poem-card {
+        padding: 1.5rem;
+      }
+
+      .poem-card h3 {
+        font-size: 1.3rem;
+      }
     }
 
     .quote-mark {
@@ -317,7 +342,7 @@
     <h2 class="page-title">Sacred Verses</h2>
     
     <div class="search-container">
-      <input type="text" id="searchBox" placeholder="Search poems..." onkeyup="filterPoems()" aria-label="Search poems" />
+      <input type="text" id="searchBox" placeholder="Search poems..." aria-label="Search poems" />
     </div>
 
     <div class="poems-grid" id="poemsContainer">
@@ -332,6 +357,29 @@
           That paints hope across the sky.
           <span class="quote-mark close">"</span>
         </div>
+        <div class="poem-full">
+          <span class="quote-mark open">"</span>
+          Dawn breaks with golden light divine,<br>
+          A blessing from the throne on high,<br>
+          Each ray a thread in God's design,<br>
+          That paints hope across the sky.<br><br>
+          
+          The morning dew upon the grass,<br>
+          Reflects the glory of His face,<br>
+          As shadows of the night now pass,<br>
+          We wake to witness boundless grace.<br><br>
+          
+          O Lord, who hung the stars in space,<br>
+          And set the sun to mark our days,<br>
+          We lift our hearts in grateful praise,<br>
+          For every dawn reveals Your ways.<br><br>
+          
+          In stillness now, before the rush,<br>
+          Of duties calling us to move,<br>
+          We hear Your whisper in the hush,<br>
+          A gentle word of endless love.
+          <span class="quote-mark close">"</span>
+        </div>
         <p class="poem-description">A heartfelt poem of gratitude that captures the sacred beauty of each new day, reminding us of God's constant presence in the simple miracle of sunrise.</p>
         <div class="poem-tags">
           <span class="tag">Gratitude</span>
@@ -343,7 +391,7 @@
             <span class="poem-type">Lyrical</span>
             <span style="margin-left: 1rem; color: #999;">March 20, 2024</span>
           </div>
-          <a href="#" class="read-poem">Read Full Poem</a>
+          <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
       </article>
 
@@ -353,6 +401,29 @@
           <span class="quote-mark open">"</span>
           In bread transformed, in wine made new,<br>
           The mystery of love unfolds...
+          <span class="quote-mark close">"</span>
+        </div>
+        <div class="poem-full">
+          <span class="quote-mark open">"</span>
+          In bread transformed, in wine made new,<br>
+          The mystery of love unfolds,<br>
+          Emmanuel, forever true,<br>
+          A gift more precious than all gold.<br><br>
+          
+          Upon the altar, white and pure,<br>
+          The sacrifice renewed each day,<br>
+          Your presence here, so real, so sure,<br>
+          In simple forms You choose to stay.<br><br>
+          
+          Not mere memorial of the past,<br>
+          But living presence, here and now,<br>
+          Through ages meant forever last,<br>
+          Before Your throne we humbly bow.<br><br>
+          
+          O Sacred Body, broken, shared,<br>
+          O Precious Blood, outpoured for all,<br>
+          By this great meal our souls are spared,<br>
+          You lift us each time that we fall.
           <span class="quote-mark close">"</span>
         </div>
         <p class="poem-description">Profound reflections on the sacred mystery of the Eucharist, exploring the transformation that occurs both in the elements and in our hearts.</p>
@@ -366,7 +437,7 @@
             <span class="poem-type">Ode</span>
             <span style="margin-left: 1rem; color: #999;">March 5, 2024</span>
           </div>
-          <a href="#" class="read-poem">Read Full Poem</a>
+          <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
       </article>
 
@@ -376,6 +447,29 @@
           <span class="quote-mark open">"</span>
           Each step upon this sacred ground,<br>
           Where pilgrims' prayers have worn the stone...
+          <span class="quote-mark close">"</span>
+        </div>
+        <div class="poem-full">
+          <span class="quote-mark open">"</span>
+          Each step upon this sacred ground,<br>
+          Where pilgrims' prayers have worn the stone,<br>
+          In silence deep, I hear the sound,<br>
+          Of grace that calls me to my own.<br><br>
+          
+          The path is long, the journey steep,<br>
+          With valleys dark and mountains high,<br>
+          Yet promises Your love will keep,<br>
+          Guide every tear and every sigh.<br><br>
+          
+          When weary feet can walk no more,<br>
+          Your strength becomes my staff and stay,<br>
+          You've walked this road of pain before,<br>
+          And know the cost of every way.<br><br>
+          
+          So onward still, by faith not sight,<br>
+          Through shadows deep and storms that rage,<br>
+          For at the end, eternal light,<br>
+          Awaits beyond this earthly stage.
           <span class="quote-mark close">"</span>
         </div>
         <p class="poem-description">A spiritual pilgrimage captured in verse, tracing the path of faith through life's challenges and celebrating the grace that guides us forward.</p>
@@ -389,7 +483,7 @@
             <span class="poem-type">Narrative</span>
             <span style="margin-left: 1rem; color: #999;">February 18, 2024</span>
           </div>
-          <a href="#" class="read-poem">Read Full Poem</a>
+          <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
       </article>
 
@@ -399,6 +493,29 @@
           <span class="quote-mark open">"</span>
           In silence deep, the soul finds rest,<br>
           Where God's own whisper can be heard...
+          <span class="quote-mark close">"</span>
+        </div>
+        <div class="poem-full">
+          <span class="quote-mark open">"</span>
+          In silence deep, the soul finds rest,<br>
+          Where God's own whisper can be heard,<br>
+          No human voice, no earthly test,<br>
+          Just tender love without a word.<br><br>
+          
+          The world outside with all its noise,<br>
+          Fades distant like a troubled dream,<br>
+          And in this peace, the heart finds poise,<br>
+          In waters of a quiet stream.<br><br>
+          
+          Here prayer is not with words arrayed,<br>
+          But simple presence, soul to soul,<br>
+          In contemplation we are made,<br>
+          To see beyond and grasp the whole.<br><br>
+          
+          O teach us, Lord, to still our hearts,<br>
+          To cease from striving, let You be,<br>
+          The silence where new life imparts,<br>
+          The gift of deeper mystery.
           <span class="quote-mark close">"</span>
         </div>
         <p class="poem-description">An exploration of the sacred nature of silence, where the divine voice speaks most clearly to the attentive heart in moments of quiet contemplation.</p>
@@ -412,7 +529,7 @@
             <span class="poem-type">Meditative</span>
             <span style="margin-left: 1rem; color: #999;">February 2, 2024</span>
           </div>
-          <a href="#" class="read-poem">Read Full Poem</a>
+          <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
       </article>
 
@@ -422,6 +539,29 @@
           <span class="quote-mark open">"</span>
           Ancient words that still ring true,<br>
           David's heart in verses penned...
+          <span class="quote-mark close">"</span>
+        </div>
+        <div class="poem-full">
+          <span class="quote-mark open">"</span>
+          Ancient words that still ring true,<br>
+          David's heart in verses penned,<br>
+          Speak comfort fresh as morning dew,<br>
+          A shepherd-king, our trusted friend.<br><br>
+          
+          He knew the heights of joyful praise,<br>
+          And depths where anguish tears the soul,<br>
+          Through all his dark and troubled days,<br>
+          His songs made wounded spirits whole.<br><br>
+          
+          "The Lord's my shepherd," still we sing,<br>
+          Through valleys shadowed, steep and long,<br>
+          These timeless words of hope we bring,<br>
+          The same eternal, ancient song.<br><br>
+          
+          O may we learn like David learned,<br>
+          To pour our hearts before the throne,<br>
+          And find, as he so deeply earned,<br>
+          We're never, ever left alone.
           <span class="quote-mark close">"</span>
         </div>
         <p class="poem-description">Finding comfort and wisdom in the timeless prayers of David, connecting our contemporary struggles with the eternal human search for divine comfort.</p>
@@ -435,7 +575,7 @@
             <span class="poem-type">Reflective</span>
             <span style="margin-left: 1rem; color: #999;">January 15, 2024</span>
           </div>
-          <a href="#" class="read-poem">Read Full Poem</a>
+          <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
       </article>
 
@@ -445,6 +585,29 @@
           <span class="quote-mark open">"</span>
           Beyond the veil of what we see,<br>
           Faith ventures forth on wings of trust...
+          <span class="quote-mark close">"</span>
+        </div>
+        <div class="poem-full">
+          <span class="quote-mark open">"</span>
+          Beyond the veil of what we see,<br>
+          Faith ventures forth on wings of trust,<br>
+          Into the vast uncertainty,<br>
+          Where doubt and hope both turn to dust.<br><br>
+          
+          We cannot prove with mind alone,<br>
+          The mysteries that faith reveals,<br>
+          Nor measure love on scales of stone,<br>
+          Nor quantify what spirit feels.<br><br>
+          
+          Yet in the darkness, still we find,<br>
+          A light that logic can't explain,<br>
+          A peace surpassing heart and mind,<br>
+          That turns our questioning to gain.<br><br>
+          
+          So let us walk the path unknown,<br>
+          With trembling hearts but steady feet,<br>
+          For faith grows strongest when we've grown,<br>
+          Through mystery to make complete.
           <span class="quote-mark close">"</span>
         </div>
         <p class="poem-description">Embracing mystery as an integral part of our spiritual journey, exploring how uncertainty can deepen rather than diminish our relationship with the divine.</p>
@@ -458,7 +621,7 @@
             <span class="poem-type">Contemplative</span>
             <span style="margin-left: 1rem; color: #999;">December 28, 2023</span>
           </div>
-          <a href="#" class="read-poem">Read Full Poem</a>
+          <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
       </article>
     </div>
@@ -469,10 +632,29 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Rev. Fr. Geraldo Bleza Malota | Sacred Verses for the Soul</p>
+    <p>&copy; 2026 Rev. Fr. Geraldo Bleza Malota | Sacred Verses for the Soul</p>
   </footer>
 
   <script>
+    function togglePoem(event) {
+      event.preventDefault();
+      const card = event.target.closest('.poem-card');
+      const excerpt = card.querySelector('.poem-excerpt');
+      const full = card.querySelector('.poem-full');
+      const button = event.target;
+      
+      if (full.classList.contains('show')) {
+        full.classList.remove('show');
+        excerpt.style.display = 'block';
+        button.textContent = 'Read Full Poem';
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        full.classList.add('show');
+        excerpt.style.display = 'none';
+        button.textContent = 'Show Less';
+      }
+    }
+
     function filterPoems() {
       const searchTerm = document.getElementById('searchBox').value.toLowerCase();
       const poems = document.querySelectorAll('.poem-card');
@@ -483,11 +665,13 @@
         const title = poem.querySelector('h3').textContent.toLowerCase();
         const description = poem.querySelector('.poem-description').textContent.toLowerCase();
         const excerpt = poem.querySelector('.poem-excerpt').textContent.toLowerCase();
+        const full = poem.querySelector('.poem-full').textContent.toLowerCase();
         const tags = Array.from(poem.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
         
         const isVisible = title.includes(searchTerm) || 
                          description.includes(searchTerm) || 
                          excerpt.includes(searchTerm) ||
+                         full.includes(searchTerm) ||
                          tags.includes(searchTerm);
         
         if (isVisible) {
@@ -501,18 +685,15 @@
       noResults.style.display = visibleCount === 0 && searchTerm.length > 0 ? 'block' : 'none';
     }
 
-    // Enhanced functionality
     document.addEventListener('DOMContentLoaded', function() {
       const searchBox = document.getElementById('searchBox');
       
-      // Debounced search
       let searchTimeout;
       searchBox.addEventListener('input', function() {
         clearTimeout(searchTimeout);
         searchTimeout = setTimeout(filterPoems, 300);
       });
       
-      // Clear search on Escape
       searchBox.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           this.value = '';

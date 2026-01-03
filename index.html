@@ -5,8 +5,599 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | Rev. Fr. Geraldo Bleza Malota</title>
   <meta name="description" content="Welcome to the official website of Rev. Fr. Geraldo Bleza Malota, Catholic priest from Dedza Diocese. Read inspiring articles, poems, and spiritual reflections." />
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --accent-color: #d63384;
+      --text-dark: #333;
+      --text-light: #666;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 1.5rem 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><path fill="%23ffffff" fill-opacity="0.1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-btn.primary {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    .hero-btn.secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Welcome Section */
+    .welcome-section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .welcome-container {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .profile-image-container {
+      position: relative;
+    }
+
+    .profile-photo {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      border: 5px solid var(--primary-color);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+    }
+
+    .welcome-content h2 {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .welcome-text {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 2rem;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Latest Posts Section */
+    .latest-posts-section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    .latest-posts-container h3 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .post-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+      border-top: 4px solid var(--primary-color);
+    }
+
+    .post-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .post-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .post-card h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .post-link {
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .post-link:hover {
+      color: var(--primary-color);
+    }
+
+    .post-type {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .view-all-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .view-all-btn {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .view-all-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Quote Section */
+    .quote-section {
+      background: var(--bg-light);
+      padding: 4rem 2rem;
+      margin: 3rem 0;
+    }
+
+    .quote-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .inspirational-quote {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--accent-color);
+      position: relative;
+    }
+
+    .quote-icon {
+      font-size: 3rem;
+      color: var(--accent-color);
+      opacity: 0.3;
+      position: absolute;
+      top: 1rem;
+      left: 2rem;
+    }
+
+    .inspirational-quote p {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--text-dark);
+      margin: 2rem 0 1rem 0;
+      line-height: 1.8;
+    }
+
+    .inspirational-quote cite {
+      display: block;
+      text-align: right;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+      background: linear-gradient(135deg, var(--accent-color), #f8b500);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .newsletter-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter-container h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .newsletter-container p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 1rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .newsletter-btn {
+      padding: 1rem 2rem;
+      background: white;
+      color: var(--accent-color);
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-content p {
+      margin: 0.5rem 0;
+    }
+
+    .copyright {
+      font-weight: 600;
+    }
+
+    .diocese-info {
+      opacity: 0.9;
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: white;
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 1.3rem;
+      }
+
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .welcome-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .profile-photo {
+        margin: 0 auto;
+      }
+
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -28,6 +619,25 @@
   </header>
 
   <main class="homepage">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h2>Sharing Faith, Hope, and Love</h2>
+        <p>A journey through spiritual reflections, inspiring articles, and sacred poetry</p>
+        <div class="hero-buttons">
+          <a href="articles.html" class="hero-btn primary">
+            <i class="fas fa-book-open"></i>
+            Read Articles
+          </a>
+          <a href="poems.html" class="hero-btn secondary">
+            <i class="fas fa-feather-alt"></i>
+            Explore Poems
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Welcome Section -->
     <section class="welcome-section" aria-labelledby="welcome-heading">
       <div class="welcome-container">
         <div class="profile-image-container">
@@ -36,8 +646,11 @@
         <div class="welcome-content">
           <h2 id="welcome-heading">Welcome</h2>
           <p class="welcome-text">
-            This platform is dedicated to sharing the thoughts, reflections, poems, and articles of Rev. Fr. Geraldo Bleza Malota  a Catholic priest from Dedza Diocese. 
+            This platform is dedicated to sharing the thoughts, reflections, poems, and articles of Rev. Fr. Geraldo Bleza Malota, a Catholic priest from Dedza Diocese. 
             Through these writings, I hope to inspire and uplift readers on their spiritual journey.
+          </p>
+          <p class="welcome-text">
+            Here you will find meditations on faith, life's challenges, and the beauty of God's presence in our daily experiences. Each piece is crafted with prayer and reflection, meant to nourish the soul and strengthen the spirit.
           </p>
           <p class="welcome-text">
             Thank you for visiting. May these writings inspire and uplift your heart and mind.
@@ -46,52 +659,90 @@
       </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stats-container">
+        <div class="stat-item">
+          <span class="stat-number" data-target="20">0</span>
+          <span class="stat-label">Articles Written</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="35">0</span>
+          <span class="stat-label">Poems Composed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="3">0</span>
+          <span class="stat-label">Years of Service</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="1000">0</span>
+          <span class="stat-label">Lives Touched</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Posts Section -->
     <section class="latest-posts-section" aria-labelledby="latest-heading">
       <div class="latest-posts-container">
         <h3 id="latest-heading">Latest Articles & Poems</h3>
         <div class="posts-grid">
           <article class="post-card">
             <div class="post-icon">
-              <i class="fas fa-cross" aria-hidden="true"></i>
+              <i class="fas fa-cross"></i>
             </div>
-            <h4><a href="articles.html#article1" class="post-link">The Light of Faith</a></h4>
-            <p class="post-type">Article</p>
+            <h4><a href="articles.html" class="post-link">The Multifaceted Reality of Success</a></h4>
+            <p class="post-type">Article • March 15, 2024</p>
           </article>
           <article class="post-card">
             <div class="post-icon">
-              <i class="fas fa-feather-alt" aria-hidden="true"></i>
+              <i class="fas fa-feather-alt"></i>
             </div>
-            <h4><a href="poems.html#poem1" class="post-link">Hope in the Storm</a></h4>
-            <p class="post-type">Poem</p>
+            <h4><a href="poems.html" class="post-link">The Morning Blessing</a></h4>
+            <p class="post-type">Poem • March 20, 2024</p>
           </article>
           <article class="post-card">
             <div class="post-icon">
-              <i class="fas fa-praying-hands" aria-hidden="true"></i>
+              <i class="fas fa-seedling"></i>
             </div>
-            <h4><a href="articles.html#article2" class="post-link">Reflections on Prayer</a></h4>
-            <p class="post-type">Article</p>
+            <h4><a href="articles.html" class="post-link">Traps within Growth</a></h4>
+            <p class="post-type">Article • February 28, 2024</p>
           </article>
         </div>
         <div class="view-all-links">
           <a href="articles.html" class="view-all-btn">
-            <i class="fas fa-book-open" aria-hidden="true"></i>
+            <i class="fas fa-book-open"></i>
             View All Articles
           </a>
           <a href="poems.html" class="view-all-btn">
-            <i class="fas fa-scroll" aria-hidden="true"></i>
+            <i class="fas fa-scroll"></i>
             View All Poems
           </a>
         </div>
       </div>
     </section>
 
+    <!-- Quote Section -->
     <section class="quote-section" aria-labelledby="quote-heading">
       <div class="quote-container">
         <blockquote class="inspirational-quote">
-          <i class="fas fa-quote-left quote-icon" aria-hidden="true"></i>
+          <i class="fas fa-quote-left quote-icon"></i>
           <p>"Faith is taking the first step even when you don't see the whole staircase."</p>
           <cite>— Rev. Fr. Geraldo Bleza Malota</cite>
         </blockquote>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="newsletter-container">
+        <h3>Stay Connected</h3>
+        <p>Subscribe to receive the latest articles and spiritual reflections directly to your inbox</p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" required />
+          <button type="submit" class="newsletter-btn">
+            <i class="fas fa-paper-plane"></i> Subscribe
+          </button>
+        </form>
       </div>
     </section>
   </main>
@@ -99,45 +750,47 @@
   <footer>
     <div class="footer-container">
       <div class="footer-content">
-        <p class="copyright">&copy; 2025 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
         <p class="diocese-info">Catholic Priest | Dedza Diocese</p>
       </div>
       <div class="social-links">
         <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook">
-          <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          <i class="fab fa-facebook-f"></i>
         </a>
         <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          <i class="fab fa-whatsapp"></i>
         </a>
         <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
-          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <i class="fab fa-twitter"></i>
         </a>
         <a href="mailto:your.email@example.com" aria-label="Send email">
-          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <i class="fas fa-envelope"></i>
         </a>
       </div>
     </div>
   </footer>
 
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Scroll to top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <script>
-    // Mobile menu toggle functionality
+    // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const navLinks = document.querySelector('.nav-links');
       
       menuToggle.addEventListener('click', function() {
         const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        
         menuToggle.setAttribute('aria-expanded', !isExpanded);
         navLinks.classList.toggle('active');
         
-        // Toggle hamburger to X animation
         const icon = menuToggle.querySelector('i');
         icon.classList.toggle('fa-bars');
         icon.classList.toggle('fa-times');
       });
       
-      // Close mobile menu when clicking on a link
       navLinks.addEventListener('click', function(e) {
         if (e.target.classList.contains('nav-link')) {
           navLinks.classList.remove('active');
@@ -148,7 +801,6 @@
         }
       });
       
-      // Close mobile menu when clicking outside
       document.addEventListener('click', function(e) {
         if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
           navLinks.classList.remove('active');
@@ -158,7 +810,69 @@
           icon.classList.remove('fa-times');
         }
       });
+
+      // Animate stats on scroll
+      animateStats();
+      
+      // Scroll to top button
+      window.addEventListener('scroll', toggleScrollButton);
     });
+
+    // Stats animation
+    function animateStats() {
+      const stats = document.querySelectorAll('.stat-number');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseInt(entry.target.getAttribute('data-target'));
+            animateValue(entry.target, 0, target, 2000);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      stats.forEach(stat => observer.observe(stat));
+    }
+
+    function animateValue(element, start, end, duration) {
+      const range = end - start;
+      const increment = end > start ? 1 : -1;
+      const stepTime = Math.abs(Math.floor(duration / range));
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        element.textContent = current + (end >= 1000 ? '+' : '');
+        if (current === end) {
+          clearInterval(timer);
+        }
+      }, stepTime);
+    }
+
+    // Scroll to top
+    function toggleScrollButton() {
+      const scrollBtn = document.querySelector('.scroll-to-top');
+      if (window.pageYOffset > 300) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Newsletter form
+    function handleNewsletter(event) {
+      event.preventDefault();
+      const email = event.target.querySelector('input').value;
+      alert(`Thank you for subscribing! We'll send updates to ${email}`);
+      event.target.reset();
+    }
   </script>
 </body>
 </html>

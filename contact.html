@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Rev. Fr. Geraldo Bleza Malota</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -11,27 +12,58 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --text-dark: #333;
+      --text-light: #666;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+      --border-color: #e9ecef;
+    }
+
     body {
       font-family: 'Georgia', serif;
       line-height: 1.6;
-      color: #333;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: var(--text-dark);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       min-height: 100vh;
     }
 
+    /* Header Styles */
     header {
       background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
       color: white;
-      padding: 2rem 0;
+      padding: 1.5rem 0;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     header h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       font-weight: 300;
       letter-spacing: 1px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
     }
 
     nav {
@@ -55,34 +87,28 @@
       transform: translateY(-2px);
     }
 
+    /* Main Content */
     main {
       max-width: 1200px;
       margin: 2rem auto;
       padding: 0 2rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 2rem;
       align-items: start;
     }
 
-    .contact-info {
-      background: white;
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-      height: fit-content;
-    }
-
+    .contact-info,
     .contact-form {
       background: white;
-      padding: 3rem;
+      padding: 2.5rem;
       border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     }
 
     .section-title {
       font-size: 2rem;
-      color: #667eea;
+      color: var(--primary-color);
       margin-bottom: 1.5rem;
       text-align: center;
       font-weight: 300;
@@ -90,35 +116,37 @@
 
     .contact-intro {
       text-align: center;
-      color: #666;
+      color: var(--text-light);
       margin-bottom: 2rem;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.7;
     }
 
+    /* Contact Methods */
     .contact-methods {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       padding: 1rem;
-      background: #f8f9fa;
-      border-radius: 15px;
+      background: var(--bg-light);
+      border-radius: 12px;
       transition: all 0.3s ease;
     }
 
     .contact-item:hover {
-      background: #e9ecef;
+      background: var(--border-color);
       transform: translateX(5px);
     }
 
     .contact-icon {
       width: 50px;
       height: 50px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-width: 50px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -126,45 +154,83 @@
       margin-right: 1rem;
       color: white;
       font-size: 1.2rem;
-      flex-shrink: 0;
     }
 
     .contact-details h4 {
-      color: #333;
+      color: var(--text-dark);
       margin-bottom: 0.3rem;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
     .contact-details p {
-      color: #666;
+      color: var(--text-light);
       margin: 0;
+      font-size: 0.95rem;
+      word-break: break-word;
     }
 
     .contact-details a {
-      color: #667eea;
+      color: var(--primary-color);
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .contact-details a:hover {
-      color: #764ba2;
+      color: var(--secondary-color);
     }
 
+    /* Office Hours */
+    .office-hours {
+      background: #f0f2ff;
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-top: 2rem;
+    }
+
+    .office-hours h4 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .hours-list {
+      list-style: none;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.95rem;
+    }
+
+    .hours-list li:last-child {
+      border-bottom: none;
+    }
+
+    .hours-list li span:first-child {
+      font-weight: 500;
+    }
+
+    /* Social Section */
     .social-section {
       border-top: 2px solid #f0f2ff;
       padding-top: 2rem;
+      margin-top: 2rem;
     }
 
     .social-title {
       text-align: center;
-      color: #667eea;
+      color: var(--primary-color);
       margin-bottom: 1.5rem;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
 
     .social-links {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
       gap: 1rem;
     }
 
@@ -172,18 +238,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1.5rem 1rem;
-      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-      border-radius: 15px;
+      padding: 1.2rem 0.8rem;
+      background: linear-gradient(135deg, var(--bg-light), var(--border-color));
+      border-radius: 12px;
       text-decoration: none;
-      color: #333;
+      color: var(--text-dark);
       transition: all 0.3s ease;
       border: 2px solid transparent;
+      text-align: center;
     }
 
     .social-link:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
 
     .social-link.facebook:hover {
@@ -223,26 +290,26 @@
     }
 
     .social-icon {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
     }
 
     .social-name {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
     }
 
     /* Form Styles */
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.3rem;
     }
 
     label {
       display: block;
       margin-bottom: 0.5rem;
-      color: #333;
+      color: var(--text-dark);
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     input[type="text"],
@@ -251,13 +318,13 @@
     select,
     textarea {
       width: 100%;
-      padding: 1rem;
-      border: 2px solid #e9ecef;
+      padding: 0.9rem;
+      border: 2px solid var(--border-color);
       border-radius: 10px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-family: inherit;
       transition: all 0.3s ease;
-      background: #f8f9fa;
+      background: var(--bg-light);
     }
 
     input[type="text"]:focus,
@@ -266,7 +333,7 @@
     select:focus,
     textarea:focus {
       outline: none;
-      border-color: #667eea;
+      border-color: var(--primary-color);
       background: white;
       box-shadow: 0 0 15px rgba(102, 126, 234, 0.1);
     }
@@ -283,17 +350,17 @@
     }
 
     .submit-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: white;
       padding: 1rem 2rem;
       border: none;
       border-radius: 25px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
       width: 100%;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
 
     .submit-btn:hover {
@@ -313,6 +380,7 @@
       border-radius: 10px;
       text-align: center;
       display: none;
+      font-size: 0.95rem;
     }
 
     .form-status.success {
@@ -327,11 +395,12 @@
       border: 1px solid #f5c6cb;
     }
 
+    /* Footer */
     footer {
       background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
       color: white;
       text-align: center;
-      padding: 2rem 0;
+      padding: 2rem 1rem;
       margin-top: 4rem;
     }
 
@@ -340,95 +409,245 @@
       font-size: 0.9rem;
     }
 
-    .office-hours {
-      background: #f0f2ff;
-      padding: 1.5rem;
-      border-radius: 15px;
-      margin-top: 2rem;
-    }
-
-    .office-hours h4 {
-      color: #667eea;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .hours-list {
-      list-style: none;
-    }
-
-    .hours-list li {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.3rem 0;
-      border-bottom: 1px solid #e9ecef;
-    }
-
-    .hours-list li:last-child {
-      border-bottom: none;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      
-      nav {
-        gap: 1rem;
-      }
-      
-      nav a {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
-      }
-      
+    /* Tablet Styles (768px - 1024px) */
+    @media (max-width: 1024px) {
       main {
-        grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 1rem;
       }
-      
+
       .contact-info,
       .contact-form {
         padding: 2rem;
       }
-      
+
       .section-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
-      
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-      
+
       .social-links {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
-    /* Icons using Unicode/Emoji */
-    .icon-email::before { content: "✉️"; }
-    .icon-phone::before { content: "📞"; }
-    .icon-location::before { content: "📍"; }
-    .icon-facebook::before { content: "📘"; }
-    .icon-twitter::before { content: "🐦"; }
-    .icon-instagram::before { content: "📷"; }
-    .icon-youtube::before { content: "📺"; }
-    .icon-linkedin::before { content: "💼"; }
-    .icon-whatsapp::before { content: "💬"; }
+    /* Mobile Styles (up to 768px) */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 1rem;
+      }
+
+      header h1 {
+        font-size: 1.3rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        flex-direction: column;
+        padding: 1rem 0;
+        gap: 0.5rem;
+        display: none;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        text-align: center;
+        padding: 0.8rem 1rem;
+        margin: 0 1rem;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+        margin: 1.5rem auto;
+      }
+
+      .contact-info,
+      .contact-form {
+        padding: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact-intro {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-item {
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .contact-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        font-size: 1.1rem;
+      }
+
+      .contact-details h4 {
+        font-size: 0.95rem;
+      }
+
+      .contact-details p {
+        font-size: 0.85rem;
+      }
+
+      .office-hours {
+        padding: 1.2rem;
+        margin-top: 1.5rem;
+      }
+
+      .office-hours h4 {
+        font-size: 1.1rem;
+      }
+
+      .hours-list li {
+        font-size: 0.85rem;
+        padding: 0.4rem 0;
+      }
+
+      .social-section {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .social-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+      }
+
+      .social-link {
+        padding: 1rem 0.5rem;
+      }
+
+      .social-icon {
+        font-size: 1.5rem;
+      }
+
+      .social-name {
+        font-size: 0.8rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        font-size: 0.9rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select,
+      textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      textarea {
+        min-height: 100px;
+      }
+
+      .submit-btn {
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
+      }
+
+      footer {
+        padding: 1.5rem 1rem;
+        margin-top: 3rem;
+      }
+
+      footer p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+    }
+
+    /* Small Mobile (up to 480px) */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.1rem;
+      }
+
+      .contact-info,
+      .contact-form {
+        padding: 1.2rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .social-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+
+      .social-link {
+        padding: 0.8rem 0.3rem;
+      }
+
+      .hours-list li {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.3rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="articles.html">Articles</a>
-      <a href="poems.html">Poems</a>
-      <a href="downloads.html">Downloads</a>
-      <a href="contact.html" class="active">Contact</a>
-    </nav>
+    <div class="header-container">
+      <h1>Rev. Fr. Geraldo Bleza Malota</h1>
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="articles.html">Articles</a>
+        <a href="poems.html">Poems</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -441,7 +660,9 @@
 
       <div class="contact-methods">
         <div class="contact-item">
-          <div class="contact-icon icon-email"></div>
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
           <div class="contact-details">
             <h4>Email</h4>
             <p><a href="mailto:geraldoblezamalota@gmail.com">geraldoblezamalota@gmail.com</a></p>
@@ -449,7 +670,9 @@
         </div>
 
         <div class="contact-item">
-          <div class="contact-icon icon-phone"></div>
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
           <div class="contact-details">
             <h4>Phone</h4>
             <p><a href="tel:+265998298005">+265 99 829 8005</a></p>
@@ -457,7 +680,9 @@
         </div>
 
         <div class="contact-item">
-          <div class="contact-icon icon-location"></div>
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
           <div class="contact-details">
             <h4>Parish Office</h4>
             <p>Chiphwanya Catholic Church<br>
@@ -481,32 +706,32 @@
         <h3 class="social-title">Connect on Social Media</h3>
         <div class="social-links">
           <a href="https://facebook.com/frgeraldo" class="social-link facebook" target="_blank" rel="noopener">
-            <div class="social-icon icon-facebook"></div>
+            <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
             <span class="social-name">Facebook</span>
           </a>
           
           <a href="https://twitter.com/frgeraldo" class="social-link twitter" target="_blank" rel="noopener">
-            <div class="social-icon icon-twitter"></div>
+            <div class="social-icon"><i class="fab fa-twitter"></i></div>
             <span class="social-name">Twitter</span>
           </a>
           
           <a href="https://instagram.com/frgeraldo" class="social-link instagram" target="_blank" rel="noopener">
-            <div class="social-icon icon-instagram"></div>
+            <div class="social-icon"><i class="fab fa-instagram"></i></div>
             <span class="social-name">Instagram</span>
           </a>
           
           <a href="https://youtube.com/@frgeraldo" class="social-link youtube" target="_blank" rel="noopener">
-            <div class="social-icon icon-youtube"></div>
+            <div class="social-icon"><i class="fab fa-youtube"></i></div>
             <span class="social-name">YouTube</span>
           </a>
           
           <a href="https://linkedin.com/in/frgeraldo" class="social-link linkedin" target="_blank" rel="noopener">
-            <div class="social-icon icon-linkedin"></div>
+            <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
             <span class="social-name">LinkedIn</span>
           </a>
           
           <a href="https://wa.me/265998298005" class="social-link whatsapp" target="_blank" rel="noopener">
-            <div class="social-icon icon-whatsapp"></div>
+            <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
             <span class="social-name">WhatsApp</span>
           </a>
         </div>
@@ -561,7 +786,7 @@
         </div>
 
         <button type="submit" class="submit-btn" id="submitBtn">
-          Send Message
+          <i class="fas fa-paper-plane"></i> Send Message
         </button>
 
         <div class="form-status" id="formStatus"></div>
@@ -574,7 +799,46 @@
   </footer>
 
   <script>
+    // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          nav.classList.toggle('active');
+          
+          const icon = menuToggle.querySelector('i');
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking nav link
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          }
+        });
+      }
+
+      // Form handling
       const form = document.getElementById('contactForm');
       const submitBtn = document.getElementById('submitBtn');
       const formStatus = document.getElementById('formStatus');
@@ -582,9 +846,8 @@
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Disable submit button and show loading state
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         formStatus.style.display = 'none';
 
         try {
@@ -599,7 +862,7 @@
 
           if (response.ok) {
             formStatus.className = 'form-status success';
-            formStatus.textContent = 'Thank you for your message! I will respond as soon as possible.';
+            formStatus.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your message! I will respond as soon as possible.';
             formStatus.style.display = 'block';
             form.reset();
           } else {
@@ -607,58 +870,26 @@
           }
         } catch (error) {
           formStatus.className = 'form-status error';
-          formStatus.textContent = 'Sorry, there was an error sending your message. Please try again or contact me directly.';
+          formStatus.innerHTML = '<i class="fas fa-exclamation-circle"></i> Sorry, there was an error. Please try again or contact me directly.';
           formStatus.style.display = 'block';
         } finally {
-          // Re-enable submit button
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
         }
       });
 
-      // Form validation enhancements
+      // Form validation
       const inputs = form.querySelectorAll('input, textarea, select');
       inputs.forEach(input => {
-        input.addEventListener('blur', validateField);
-        input.addEventListener('input', clearFieldError);
-      });
-
-      function validateField(e) {
-        const field = e.target;
-        const value = field.value.trim();
+        input.addEventListener('blur', function() {
+          if (this.hasAttribute('required') && !this.value.trim()) {
+            this.style.borderColor = '#dc3545';
+          }
+        });
         
-        // Remove existing error styles
-        field.style.borderColor = '';
-        
-        if (field.hasAttribute('required') && !value) {
-          field.style.borderColor = '#dc3545';
-        } else if (field.type === 'email' && value && !isValidEmail(value)) {
-          field.style.borderColor = '#dc3545';
-        }
-      }
-
-      function clearFieldError(e) {
-        const field = e.target;
-        if (field.style.borderColor === 'rgb(220, 53, 69)') {
-          field.style.borderColor = '';
-        }
-      }
-
-      function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-      }
-
-      // Smooth scroll for mobile navigation
-      const navLinks = document.querySelectorAll('nav a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          if (this.getAttribute('href').startsWith('#')) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-              target.scrollIntoView({ behavior: 'smooth' });
-            }
+        input.addEventListener('input', function() {
+          if (this.style.borderColor === 'rgb(220, 53, 69)') {
+            this.style.borderColor = '';
           }
         });
       });
