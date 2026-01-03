@@ -7,21 +7,17 @@
   <meta name="keywords" content="Catholic priest, Dedza Diocese, Malawi, theology, poetry, Christian reflection">
   <meta name="author" content="Rev. Fr. Geraldo Bleza Malota">
   
-  <!-- Open Graph meta tags for social sharing -->
   <meta property="og:title" content="About Rev. Fr. Geraldo Bleza Malota">
   <meta property="og:description" content="Diocesan Catholic priest from Dedza Diocese in Malawi, sharing insights on theology, poetry, and Christian reflection.">
   <meta property="og:type" content="website">
   
   <title>About | Rev. Fr. Geraldo Bleza Malota</title>
   
-  <!-- Preload critical resources -->
   <link rel="preload" href="images/fr-bleza.jpg" as="image" type="image/jpeg">
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
   <style>
-    /* Reset and base styles */
     * {
       margin: 0;
       padding: 0;
@@ -29,14 +25,15 @@
     }
 
     :root {
-      --primary-color: #2c3e50;
-      --secondary-color: #3498db;
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
       --accent-color: #e74c3c;
       --text-color: #333;
+      --text-light: #666;
       --light-bg: #f8f9fa;
       --white: #ffffff;
       --shadow: 0 2px 10px rgba(0,0,0,0.1);
-      --border-radius: 8px;
+      --border-radius: 12px;
       --transition: all 0.3s ease;
     }
 
@@ -44,83 +41,36 @@
       font-family: 'Georgia', 'Times New Roman', serif;
       line-height: 1.6;
       color: var(--text-color);
-      background-color: var(--light-bg);
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
     }
 
     /* Header styles */
     header {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: var(--white);
-      padding: 1rem 0;
+      padding: 1.5rem 0;
       box-shadow: var(--shadow);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
-    header .container {
+    .header-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
     }
 
-    h1 {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
+    header h1 {
+      font-size: 1.8rem;
       font-weight: 300;
       letter-spacing: 1px;
     }
 
-    /* Navigation styles */
-    nav {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      padding: 0.75rem 1.25rem;
-      border-radius: var(--border-radius);
-      transition: var(--transition);
-      font-weight: 500;
-      position: relative;
-      overflow: hidden;
-    }
-
-    nav a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.1);
-      transition: var(--transition);
-    }
-
-    nav a:hover::before,
-    nav a:focus::before {
-      left: 0;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    nav a.active {
-      background-color: var(--accent-color);
-      box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
-    }
-
-    /* Mobile menu button */
     .menu-toggle {
       display: none;
       background: none;
@@ -129,19 +79,46 @@
       font-size: 1.5rem;
       cursor: pointer;
       padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: var(--transition);
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    nav a.active {
+      background: rgba(255,255,255,0.3);
     }
 
     /* Main content styles */
     main {
       max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      margin: 3rem auto;
+      padding: 0 2rem;
     }
 
     .about-section {
       background: var(--white);
       border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       overflow: hidden;
       animation: fadeInUp 0.6s ease-out;
     }
@@ -149,7 +126,7 @@
     .section-header {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: var(--white);
-      padding: 2rem;
+      padding: 3rem 2rem;
       text-align: center;
     }
 
@@ -160,13 +137,13 @@
     }
 
     .section-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       opacity: 0.9;
       font-style: italic;
     }
 
     .about-content {
-      padding: 3rem 2rem;
+      padding: 3rem 2.5rem;
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 3rem;
@@ -175,35 +152,66 @@
 
     .profile-section {
       text-align: center;
+      position: sticky;
+      top: 100px;
     }
 
     .profile-photo {
       width: 100%;
-      max-width: 300px;
+      max-width: 280px;
       height: auto;
       border-radius: 50%;
-      border: 5px solid var(--secondary-color);
-      box-shadow: var(--shadow);
+      border: 5px solid var(--primary-color);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       transition: var(--transition);
       margin-bottom: 1.5rem;
     }
 
     .profile-photo:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
 
     .profile-title {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--primary-color);
       margin-bottom: 0.5rem;
       font-weight: 600;
     }
 
     .profile-location {
-      color: var(--secondary-color);
+      color: var(--text-light);
       font-style: italic;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--light-bg);
+      border-radius: 50%;
+      color: var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .social-icons a:hover {
+      background: var(--primary-color);
+      color: var(--white);
+      transform: translateY(-3px);
     }
 
     .content-section p {
@@ -211,69 +219,148 @@
       margin-bottom: 1.5rem;
       text-align: justify;
       line-height: 1.8;
+      color: var(--text-light);
     }
 
     .content-section p:first-of-type::first-letter {
-      font-size: 3rem;
+      font-size: 4rem;
       font-weight: bold;
       color: var(--accent-color);
       float: left;
-      line-height: 1;
+      line-height: 0.8;
       margin: 0.1rem 0.5rem 0 0;
+      font-family: Georgia, serif;
     }
 
     /* Highlights section */
     .highlights {
-      background: var(--light-bg);
-      padding: 2rem;
-      margin: 2rem 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 2.5rem;
+      margin: 2.5rem 0 0 0;
       border-radius: var(--border-radius);
-      border-left: 4px solid var(--secondary-color);
+      border-left: 5px solid var(--primary-color);
     }
 
     .highlights h3 {
       color: var(--primary-color);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      text-align: center;
+      font-weight: 300;
     }
 
     .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
     }
 
     .highlight-item {
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1.5rem;
       background: var(--white);
       border-radius: var(--border-radius);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
       transition: var(--transition);
+      border-top: 3px solid var(--primary-color);
     }
 
     .highlight-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
     }
 
     .highlight-icon {
-      font-size: 2rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .highlight-item h4 {
+      color: var(--text-color);
       margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .highlight-item p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Journey Timeline */
+    .journey-section {
+      padding: 2.5rem;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      margin-top: 2rem;
+    }
+
+    .journey-section h3 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: 300;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -0.55rem;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px var(--primary-color);
+    }
+
+    .timeline-item h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .timeline-item p {
+      color: var(--text-light);
+      line-height: 1.6;
     }
 
     /* Footer styles */
     footer {
-      background: var(--primary-color);
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
       color: var(--white);
       text-align: center;
       padding: 2rem 1rem;
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     footer p {
       font-size: 0.9rem;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     /* Animations */
@@ -288,22 +375,64 @@
       }
     }
 
-    /* Responsive design */
+    /* Tablet Styles (768px - 1024px) */
+    @media (max-width: 1024px) {
+      .about-content {
+        gap: 2rem;
+        padding: 2.5rem 2rem;
+      }
+
+      .section-header {
+        padding: 2.5rem 2rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.2rem;
+      }
+
+      .profile-section {
+        position: relative;
+        top: 0;
+      }
+
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .highlight-item:last-child {
+        grid-column: 1 / -1;
+        max-width: 400px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    /* Mobile Styles (up to 768px) */
     @media (max-width: 768px) {
+      .header-container {
+        padding: 0 1rem;
+      }
+
+      header h1 {
+        font-size: 1.3rem;
+      }
+
       .menu-toggle {
         display: block;
       }
 
       nav {
-        display: none;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--primary-color);
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         flex-direction: column;
-        padding: 1rem;
-        box-shadow: var(--shadow);
+        padding: 1rem 0;
+        gap: 0.5rem;
+        display: none;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
       }
 
       nav.active {
@@ -311,18 +440,118 @@
       }
 
       nav a {
-        padding: 1rem;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+        padding: 0.8rem 1rem;
+        margin: 0 1rem;
+      }
+
+      main {
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .about-section {
+        border-radius: 15px;
+      }
+
+      .section-header {
+        padding: 2rem 1.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
       }
 
       .about-content {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 2rem 1rem;
+        padding: 2rem 1.5rem;
       }
 
       .profile-section {
         order: -1;
+      }
+
+      .profile-photo {
+        max-width: 220px;
+      }
+
+      .profile-title {
+        font-size: 1.2rem;
+      }
+
+      .content-section p {
+        font-size: 1rem;
+        text-align: left;
+      }
+
+      .content-section p:first-of-type::first-letter {
+        font-size: 3rem;
+      }
+
+      .highlights {
+        padding: 2rem 1.5rem;
+        margin: 2rem 0 0 0;
+      }
+
+      .highlights h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .highlight-item:last-child {
+        grid-column: 1;
+        max-width: none;
+      }
+
+      .highlight-item {
+        padding: 1.5rem;
+      }
+
+      .highlight-icon {
+        font-size: 2.5rem;
+      }
+
+      .highlight-item h4 {
+        font-size: 1.1rem;
+      }
+
+      .journey-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .journey-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .timeline {
+        padding-left: 1.5rem;
+      }
+
+      .timeline-item {
+        padding-left: 1.5rem;
+      }
+
+      footer {
+        padding: 1.5rem 1rem;
+        margin-top: 3rem;
+      }
+    }
+
+    /* Small Mobile (up to 480px) */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.1rem;
       }
 
       .section-header {
@@ -330,27 +559,57 @@
       }
 
       .section-header h2 {
-        font-size: 2rem;
-      }
-
-      .highlights-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header .container {
-        flex-direction: column;
-        text-align: center;
+        font-size: 1.5rem;
       }
 
       .about-content {
         padding: 1.5rem 1rem;
       }
 
+      .profile-photo {
+        max-width: 180px;
+      }
+
+      .profile-title {
+        font-size: 1.1rem;
+      }
+
+      .social-icons a {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+      }
+
+      .content-section p {
+        font-size: 0.95rem;
+      }
+
       .highlights {
         padding: 1.5rem 1rem;
-        margin: 1.5rem 0;
+      }
+
+      .highlights h3 {
+        font-size: 1.3rem;
+      }
+
+      .highlight-item {
+        padding: 1.2rem;
+      }
+
+      .highlight-icon {
+        font-size: 2rem;
+      }
+
+      .journey-section {
+        padding: 1.5rem 1rem;
+      }
+
+      .timeline-item h4 {
+        font-size: 1.1rem;
+      }
+
+      .timeline-item p {
+        font-size: 0.9rem;
       }
     }
 
@@ -360,31 +619,16 @@
       outline: 2px solid var(--accent-color);
       outline-offset: 2px;
     }
-
-    /* Print styles */
-    @media print {
-      header,
-      footer {
-        background: transparent !important;
-        color: black !important;
-      }
-
-      .about-section {
-        box-shadow: none !important;
-      }
-
-      nav {
-        display: none;
-      }
-    }
   </style>
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="header-container">
       <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-      <button class="menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMenu()">☰</button>
-      <nav id="nav-menu" role="navigation" aria-label="Main navigation">
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav role="navigation" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="about.html" class="active" aria-current="page">About</a>
         <a href="articles.html">Articles</a>
@@ -406,17 +650,31 @@
           <img src="images/fr-bleza.jpg" 
                alt="Portrait of Rev. Fr. Geraldo Bleza Malota" 
                class="profile-photo"
-               loading="lazy"
-               width="300"
-               height="300" />
+               loading="lazy" />
           <h3 class="profile-title">Rev. Fr. Geraldo Bleza Malota</h3>
-          <p class="profile-location">Dedza Diocese, Malawi</p>
+          <p class="profile-location">
+            <i class="fas fa-map-marker-alt"></i>
+            Dedza Diocese, Malawi
+          </p>
+          <div class="social-icons">
+            <a href="https://facebook.com/frgeraldo" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/frgeraldo" target="_blank" rel="noopener" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="mailto:geraldoblezamalota@gmail.com" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
         </div>
         
         <div class="content-section">
           <p>I am Rev. Fr. Geraldo Bleza Malota, a diocesan Catholic priest from Dedza Diocese in Malawi. With a deep-rooted passion for theology, poetry, and Christian reflection, I dedicate this space to sharing my insights and literary works with the world.</p>
           
           <p>Through these writings, I hope to inspire, uplift, and engage readers in meaningful contemplation, spiritual growth, and personal transformation rooted in faith and humanity. My journey in priesthood has been one of continuous learning, service, and dedication to the spiritual well-being of all who seek guidance and inspiration.</p>
+          
+          <p>Faith is not merely a destination but a journey—one that requires courage, perseverance, and an open heart. Through my articles and poems, I seek to accompany you on this journey, offering reflections drawn from Scripture, tradition, and the lived experiences of our shared humanity.</p>
         </div>
       </div>
 
@@ -424,19 +682,41 @@
         <h3>Areas of Focus</h3>
         <div class="highlights-grid">
           <div class="highlight-item">
-            <div class="highlight-icon">✝️</div>
+            <div class="highlight-icon"><i class="fas fa-cross"></i></div>
             <h4>Theology</h4>
-            <p>Deep exploration of Catholic doctrine and spiritual teachings</p>
+            <p>Deep exploration of Catholic doctrine and spiritual teachings to illuminate the path of faith</p>
           </div>
           <div class="highlight-item">
-            <div class="highlight-icon">📖</div>
+            <div class="highlight-icon"><i class="fas fa-feather-alt"></i></div>
             <h4>Poetry</h4>
-            <p>Creative expression through verse and spiritual reflection</p>
+            <p>Creative expression through verse and spiritual reflection that touches the soul</p>
           </div>
           <div class="highlight-item">
-            <div class="highlight-icon">🕊️</div>
+            <div class="highlight-icon"><i class="fas fa-hands-praying"></i></div>
             <h4>Ministry</h4>
-            <p>Pastoral care and spiritual guidance for the faithful</p>
+            <p>Pastoral care and spiritual guidance for the faithful seeking God's presence</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-section">
+        <h3>My Journey</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Early Calling</h4>
+            <p>From a young age, I felt drawn to serve God and His people, inspired by the witness of faithful priests and the beauty of the Church's liturgy.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Seminary Formation</h4>
+            <p>Years of study and spiritual formation prepared me for the sacred ministry of priesthood, deepening my understanding of theology and pastoral care.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Priestly Ordination</h4>
+            <p>Ordained a priest for Dedza Diocese, I committed my life to serving God's people through the sacraments, preaching, and spiritual accompaniment.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Ongoing Ministry</h4>
+            <p>Today, I continue to serve through pastoral work, writing, and sharing reflections that inspire faith and hope in the hearts of believers.</p>
           </div>
         </div>
       </div>
@@ -444,70 +724,55 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
+    <p>&copy; 2025 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
   </footer>
 
   <script>
-    // Mobile menu toggle functionality
-    function toggleMenu() {
-      const nav = document.getElementById('nav-menu');
-      const menuToggle = document.querySelector('.menu-toggle');
-      
-      nav.classList.toggle('active');
-      
-      // Update aria-expanded attribute for accessibility
-      const isExpanded = nav.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', isExpanded);
-    }
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const nav = document.getElementById('nav-menu');
-      const menuToggle = document.querySelector('.menu-toggle');
-      
-      if (!nav.contains(event.target) && !menuToggle.contains(event.target)) {
-        nav.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Close mobile menu when pressing Escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        const nav = document.getElementById('nav-menu');
-        const menuToggle = document.querySelector('.menu-toggle');
-        
-        nav.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Smooth scrolling for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Add loading state for images
+    // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          nav.classList.toggle('active');
+          
+          const icon = menuToggle.querySelector('i');
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        });
+
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          });
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          }
+        });
+      }
+
+      // Image loading
       const profilePhoto = document.querySelector('.profile-photo');
-      
-      profilePhoto.addEventListener('load', function() {
-        this.style.opacity = '1';
-      });
-      
-      profilePhoto.addEventListener('error', function() {
-        this.alt = 'Photo not available';
-        this.style.backgroundColor = '#f0f0f0';
-      });
+      if (profilePhoto) {
+        profilePhoto.addEventListener('error', function() {
+          this.alt = 'Photo not available';
+          this.style.backgroundColor = '#f0f0f0';
+        });
+      }
     });
   </script>
 </body>
