@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
 
       // Dummy credentials
-      const validEmail = "admin@example.com";
+      const validEmail = "bless@gmail.com";
       const validPassword = "admin123";
 
       const email = document.getElementById("email").value;
