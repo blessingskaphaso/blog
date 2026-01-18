@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Articles | Rev. Fr. Geraldo Bleza Malota</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     * {
       margin: 0;
@@ -11,37 +12,78 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --primary-color: #667eea;
+      --secondary-color: #764ba2;
+      --accent-color: #d63384;
+      --text-dark: #333;
+      --text-light: #666;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+    }
+
     body {
       font-family: 'Georgia', serif;
       line-height: 1.6;
-      color: #333;
+      color: var(--text-dark);
       background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       min-height: 100vh;
     }
 
     header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: white;
-      padding: 2rem 0;
+      padding: 1.5rem 0;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
     }
 
     header h1 {
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       font-weight: 300;
       letter-spacing: 1px;
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+      transition: transform 0.3s ease;
     }
 
-    nav a {
+    .menu-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
       color: white;
       text-decoration: none;
       padding: 0.5rem 1rem;
@@ -50,7 +92,8 @@
       font-weight: 500;
     }
 
-    nav a:hover, nav a.active {
+    .nav-link:hover,
+    .nav-link.active {
       background: rgba(255,255,255,0.2);
       transform: translateY(-2px);
     }
@@ -65,7 +108,7 @@
       text-align: center;
       margin-bottom: 2rem;
       font-size: 2.5rem;
-      color: #667eea;
+      color: var(--primary-color);
       font-weight: 300;
     }
 
@@ -103,7 +146,7 @@
       padding: 2rem;
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
-      border-left: 4px solid #667eea;
+      border-left: 4px solid var(--primary-color);
     }
 
     .article-card:hover {
@@ -112,13 +155,13 @@
     }
 
     .article-card h3 {
-      color: #667eea;
+      color: var(--primary-color);
       margin-bottom: 1rem;
       font-size: 1.4rem;
     }
 
     .article-preview {
-      color: #666;
+      color: var(--text-light);
       line-height: 1.7;
     }
 
@@ -128,7 +171,7 @@
 
     .article-full {
       display: none;
-      color: #666;
+      color: var(--text-light);
       line-height: 1.7;
     }
 
@@ -149,7 +192,7 @@
 
     .tag {
       background: #f0f2ff;
-      color: #667eea;
+      color: var(--primary-color);
       padding: 0.3rem 0.8rem;
       border-radius: 15px;
       font-size: 0.8rem;
@@ -167,20 +210,20 @@
     }
 
     .read-more {
-      color: #667eea;
+      color: var(--primary-color);
       text-decoration: none;
       font-weight: 600;
       cursor: pointer;
-      transition: color 0.3s;
+      transition: all 0.3s;
       padding: 0.5rem 1rem;
       border-radius: 20px;
       background: transparent;
-      border: 2px solid #667eea;
+      border: 2px solid var(--primary-color);
     }
 
     .read-more:hover {
       color: white;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       border-color: transparent;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
@@ -189,24 +232,125 @@
     .no-results {
       display: none;
       text-align: center;
-      color: #666;
+      color: var(--text-light);
       font-size: 1.2rem;
       padding: 2rem;
       font-style: italic;
     }
 
+    footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-content p {
+      margin: 0.5rem 0;
+    }
+
+    .copyright {
+      font-weight: 600;
+    }
+
+    .diocese-info {
+      opacity: 0.9;
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: white;
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
     @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .header-container {
+        flex-wrap: nowrap;
+        padding: 0 1rem;
+      }
+
       header h1 {
-        font-size: 2rem;
+        font-size: 1.2rem;
       }
-      
+
       nav {
-        gap: 1rem;
+        position: fixed;
+        top: 73px;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        padding: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        z-index: 999;
       }
-      
-      nav a {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
+
+      nav.active {
+        max-height: 500px;
+        padding: 1rem 0;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav-links li {
+        text-align: center;
+        width: 100%;
+        list-style: none;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 1.2rem;
+        border-radius: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background: rgba(255,255,255,0.2);
+        transform: none;
       }
       
       main {
@@ -228,19 +372,84 @@
       .article-card h3 {
         font-size: 1.2rem;
       }
+
+      .article-meta {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      .read-more {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .footer-content {
+        order: 1;
+      }
+
+      .social-links {
+        order: 2;
+        justify-content: center;
+      }
+
+      footer {
+        padding: 2rem 1rem;
+      }
+
+      .footer-content p {
+        font-size: 0.9rem;
+        margin: 0.3rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1rem;
+      }
+
+      .page-title {
+        font-size: 1.6rem;
+      }
+
+      #searchBox {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+
+      .article-card {
+        padding: 1.2rem;
+      }
+
+      .article-card h3 {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="articles.html" class="active">Articles</a>
-      <a href="poems.html">Poems</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-container">
+      <h1>Rev. Fr. Geraldo Bleza Malota</h1>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="articles.html" class="nav-link active">Articles</a></li>
+          <li><a href="poems.html" class="nav-link">Poems</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -389,7 +598,86 @@
     </div>
   </main>
 
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <p class="copyright">&copy; 2026 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
+        <p class="diocese-info">Catholic Priest | Dedza Diocese</p>
+      </div>
+      <div class="social-links">
+        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:your.email@example.com" aria-label="Send email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          nav.classList.toggle('active');
+          
+          const icon = menuToggle.querySelector('i');
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        });
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+              nav.classList.remove('active');
+              menuToggle.setAttribute('aria-expanded', 'false');
+              const icon = menuToggle.querySelector('i');
+              icon.classList.add('fa-bars');
+              icon.classList.remove('fa-times');
+            }
+          });
+        });
+
+        document.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768) {
+            if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
+              nav.classList.remove('active');
+              menuToggle.setAttribute('aria-expanded', 'false');
+              const icon = menuToggle.querySelector('i');
+              icon.classList.add('fa-bars');
+              icon.classList.remove('fa-times');
+            }
+          }
+        });
+      }
+
+      const searchBox = document.getElementById('searchBox');
+      let searchTimeout;
+      searchBox.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(filterArticles, 300);
+      });
+      
+      searchBox.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          this.value = '';
+          filterArticles();
+        }
+      });
+    });
+
     function toggleArticle(event) {
       event.preventDefault();
       const card = event.target.closest('.article-card');
@@ -436,23 +724,6 @@
       
       noResults.style.display = visibleCount === 0 && searchTerm.length > 0 ? 'block' : 'none';
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const searchBox = document.getElementById('searchBox');
-      
-      let searchTimeout;
-      searchBox.addEventListener('input', function() {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(filterArticles, 300);
-      });
-      
-      searchBox.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          this.value = '';
-          filterArticles();
-        }
-      });
-    });
   </script>
 </body>
 </html>

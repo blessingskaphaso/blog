@@ -63,6 +63,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
 
     header h1 {
@@ -76,36 +77,42 @@
       background: none;
       border: none;
       color: var(--white);
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
       padding: 0.5rem;
       z-index: 1001;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.1);
     }
 
     nav {
       display: flex;
       gap: 2rem;
-      flex-wrap: wrap;
     }
 
-    nav a {
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
       color: var(--white);
       text-decoration: none;
       padding: 0.5rem 1rem;
       border-radius: 25px;
       transition: var(--transition);
       font-weight: 500;
-      position: relative;
     }
 
-    nav a:hover,
-    nav a:focus {
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link.active {
       background: rgba(255,255,255,0.2);
       transform: translateY(-2px);
-    }
-
-    nav a.active {
-      background: rgba(255,255,255,0.3);
     }
 
     /* Main content styles */
@@ -353,14 +360,55 @@
     footer {
       background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
       color: var(--white);
-      text-align: center;
-      padding: 2rem 1rem;
+      padding: 3rem 2rem;
       margin-top: 4rem;
     }
 
-    footer p {
-      font-size: 0.9rem;
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-content p {
+      margin: 0.5rem 0;
+    }
+
+    .copyright {
+      font-weight: 600;
+    }
+
+    .diocese-info {
       opacity: 0.9;
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: white;
+      color: var(--primary-color);
+      transform: translateY(-3px);
     }
 
     /* Animations */
@@ -412,10 +460,11 @@
     @media (max-width: 768px) {
       .header-container {
         padding: 0 1rem;
+        flex-wrap: nowrap;
       }
 
       header h1 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
 
       .menu-toggle {
@@ -423,26 +472,51 @@
       }
 
       nav {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 73px;
         left: 0;
         right: 0;
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        flex-direction: column;
-        padding: 1rem 0;
-        gap: 0.5rem;
-        display: none;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        padding: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        z-index: 999;
       }
 
       nav.active {
-        display: flex;
+        max-height: 500px;
+        padding: 1rem 0;
       }
 
-      nav a {
+      .nav-links {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav-links li {
         text-align: center;
-        padding: 0.8rem 1rem;
-        margin: 0 1rem;
+        width: 100%;
+        list-style: none;
+      }
+
+      .nav-link {
+        display: block;
+        padding: 1.2rem;
+        border-radius: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .nav-link:hover,
+      .nav-link:focus,
+      .nav-link.active {
+        background: rgba(255,255,255,0.2);
+        transform: none;
       }
 
       main {
@@ -542,16 +616,36 @@
         padding-left: 1.5rem;
       }
 
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .footer-content {
+        order: 1;
+      }
+
+      .social-links {
+        order: 2;
+        justify-content: center;
+      }
+
       footer {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1rem;
         margin-top: 3rem;
+      }
+
+      .footer-content p {
+        font-size: 0.9rem;
+        margin: 0.3rem 0;
       }
     }
 
     /* Small Mobile (up to 480px) */
     @media (max-width: 480px) {
       header h1 {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       .section-header {
@@ -623,14 +717,21 @@
 </head>
 <body>
   <header>
-    <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="articles.html">Articles</a>
-      <a href="poems.html">Poems</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-container">
+      <h1>Rev. Fr. Geraldo Bleza Malota</h1>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="poems.html" class="nav-link">Poems</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
@@ -719,11 +820,29 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-content">
+        <p class="copyright">&copy; 2026 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
+        <p class="diocese-info">Catholic Priest | Dedza Diocese</p>
+      </div>
+      <div class="social-links">
+        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:your.email@example.com" aria-label="Send email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('nav');
@@ -739,28 +858,33 @@
           icon.classList.toggle('fa-times');
         });
 
-        nav.querySelectorAll('a').forEach(link => {
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
           link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
+            if (window.innerWidth <= 768) {
+              nav.classList.remove('active');
+              menuToggle.setAttribute('aria-expanded', 'false');
+              const icon = menuToggle.querySelector('i');
+              icon.classList.add('fa-bars');
+              icon.classList.remove('fa-times');
+            }
           });
         });
 
         document.addEventListener('click', function(e) {
-          if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
-            nav.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
+          if (window.innerWidth <= 768) {
+            if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
+              nav.classList.remove('active');
+              menuToggle.setAttribute('aria-expanded', 'false');
+              const icon = menuToggle.querySelector('i');
+              icon.classList.add('fa-bars');
+              icon.classList.remove('fa-times');
+            }
           }
         });
       }
 
-      // Image loading
+      // Image loading error handling
       const profilePhoto = document.querySelector('.profile-photo');
       if (profilePhoto) {
         profilePhoto.addEventListener('error', function() {

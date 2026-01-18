@@ -31,7 +31,6 @@
       min-height: 100vh;
     }
 
-    /* Header Styles */
     header {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: white;
@@ -49,6 +48,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
 
     header h1 {
@@ -62,9 +62,20 @@
       background: none;
       border: none;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
       padding: 0.5rem;
+      z-index: 1001;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
     }
 
     .nav-links {
@@ -88,12 +99,8 @@
       transform: translateY(-2px);
     }
 
-    /* Hero Section */
     .hero-section {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
-                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><path fill="%23ffffff" fill-opacity="0.1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>');
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
       color: white;
       padding: 4rem 2rem;
       text-align: center;
@@ -152,7 +159,6 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* Welcome Section */
     .welcome-section {
       max-width: 1200px;
       margin: 3rem auto;
@@ -201,7 +207,6 @@
       font-size: 1.1rem;
     }
 
-    /* Stats Section */
     .stats-section {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
@@ -234,7 +239,6 @@
       opacity: 0.9;
     }
 
-    /* Latest Posts Section */
     .latest-posts-section {
       max-width: 1200px;
       margin: 3rem auto;
@@ -324,23 +328,6 @@
       box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    /* Quote Section */
     .quote-section {
       background: var(--bg-light);
       padding: 4rem 2rem;
@@ -387,7 +374,6 @@
       font-weight: 600;
     }
 
-    /* Newsletter Section */
     .newsletter-section {
       background: linear-gradient(135deg, var(--accent-color), #f8b500);
       color: white;
@@ -445,7 +431,6 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
-    /* Footer */
     footer {
       background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
       color: white;
@@ -500,7 +485,6 @@
       transform: translateY(-3px);
     }
 
-    /* Animations */
     @keyframes fadeInDown {
       from {
         opacity: 0;
@@ -523,7 +507,6 @@
       }
     }
 
-    /* Scroll to Top Button */
     .scroll-to-top {
       position: fixed;
       bottom: 2rem;
@@ -553,34 +536,65 @@
       box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
       }
 
-      .nav-links {
-        position: absolute;
-        top: 100%;
+      .header-container {
+        flex-wrap: nowrap;
+        padding: 0 1rem;
+      }
+
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      nav {
+        position: fixed;
+        top: 73px;
         left: 0;
         right: 0;
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        flex-direction: column;
-        padding: 1rem 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        display: none;
+        padding: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        z-index: 999;
       }
 
-      .nav-links.active {
-        display: flex;
+      nav.active {
+        max-height: 500px;
+        padding: 1rem 0;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        padding: 0;
+        margin: 0;
       }
 
       .nav-links li {
         text-align: center;
+        width: 100%;
+        list-style: none;
       }
 
-      header h1 {
-        font-size: 1.3rem;
+      .nav-link {
+        display: block;
+        padding: 1.2rem;
+        border-radius: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background: rgba(255,255,255,0.2);
+        transform: none;
       }
 
       .hero-content h2 {
@@ -591,16 +605,50 @@
         font-size: 1rem;
       }
 
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+
       .welcome-container {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 2rem;
+      }
+
+      .welcome-content h2 {
+        font-size: 2rem;
       }
 
       .profile-photo {
         margin: 0 auto;
+        max-width: 250px;
       }
 
       .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .stat-item {
+        padding: 1.5rem;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+
+      .latest-posts-container h3 {
+        font-size: 2rem;
+      }
+
+      .posts-grid {
         grid-template-columns: 1fr;
       }
 
@@ -608,27 +656,103 @@
         flex-direction: column;
       }
 
+      .newsletter-input {
+        min-width: 100%;
+      }
+
       .footer-container {
         flex-direction: column;
         text-align: center;
+        gap: 1.5rem;
+      }
+
+      .footer-content {
+        order: 1;
+      }
+
+      .social-links {
+        order: 2;
+        justify-content: center;
+      }
+
+      footer {
+        padding: 2rem 1rem;
+      }
+
+      .footer-content p {
+        font-size: 0.9rem;
+        margin: 0.3rem 0;
+      }
+
+      .scroll-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+      }
+
+      .inspirational-quote {
+        padding: 2rem 1.5rem;
+      }
+
+      .inspirational-quote p {
+        font-size: 1.2rem;
+      }
+
+      .quote-icon {
+        font-size: 2rem;
+        left: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1rem;
+      }
+
+      .hero-content h2 {
+        font-size: 1.6rem;
+      }
+
+      .hero-content p {
+        font-size: 0.95rem;
+      }
+
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+
+      .welcome-content h2 {
+        font-size: 1.8rem;
+      }
+
+      .newsletter-container h3 {
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="articles.html">Articles</a>
-      <a href="poems.html">Poems</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-container">
+      <h1>Rev. Fr. Geraldo Bleza Malota</h1>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="poems.html" class="nav-link">Poems</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main class="homepage">
-    <!-- Hero Section -->
+  <main>
     <section class="hero-section">
       <div class="hero-content">
         <h2>Sharing Faith, Hope, and Love</h2>
@@ -646,14 +770,13 @@
       </div>
     </section>
 
-    <!-- Welcome Section -->
-    <section class="welcome-section" aria-labelledby="welcome-heading">
+    <section class="welcome-section">
       <div class="welcome-container">
         <div class="profile-image-container">
           <img src="images/fr-bleza.jpg" alt="Rev. Fr. Geraldo Bleza Malota" class="profile-photo" loading="lazy" />
         </div>
         <div class="welcome-content">
-          <h2 id="welcome-heading">Welcome</h2>
+          <h2>Welcome</h2>
           <p class="welcome-text">
             This platform is dedicated to sharing the thoughts, reflections, poems, and articles of Rev. Fr. Geraldo Bleza Malota, a Catholic priest from Dedza Diocese. 
             Through these writings, I hope to inspire and uplift readers on their spiritual journey.
@@ -668,7 +791,6 @@
       </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats-section">
       <div class="stats-container">
         <div class="stat-item">
@@ -690,10 +812,9 @@
       </div>
     </section>
 
-    <!-- Latest Posts Section -->
-    <section class="latest-posts-section" aria-labelledby="latest-heading">
+    <section class="latest-posts-section">
       <div class="latest-posts-container">
-        <h3 id="latest-heading">Latest Articles & Poems</h3>
+        <h3>Latest Articles & Poems</h3>
         <div class="posts-grid">
           <article class="post-card">
             <div class="post-icon">
@@ -730,8 +851,7 @@
       </div>
     </section>
 
-    <!-- Quote Section -->
-    <section class="quote-section" aria-labelledby="quote-heading">
+    <section class="quote-section">
       <div class="quote-container">
         <blockquote class="inspirational-quote">
           <i class="fas fa-quote-left quote-icon"></i>
@@ -741,7 +861,6 @@
       </div>
     </section>
 
-    <!-- Newsletter Section -->
     <section class="newsletter-section">
       <div class="newsletter-container">
         <h3>Stay Connected</h3>
@@ -779,55 +898,56 @@
     </div>
   </footer>
 
-  <!-- Scroll to Top Button -->
   <button class="scroll-to-top" aria-label="Scroll to top" onclick="scrollToTop()">
     <i class="fas fa-arrow-up"></i>
   </button>
 
   <script>
-    // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
+      const nav = document.querySelector('nav');
       
-      menuToggle.addEventListener('click', function() {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-        navLinks.classList.toggle('active');
-        
-        const icon = menuToggle.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-      });
-      
-      navLinks.addEventListener('click', function(e) {
-        if (e.target.classList.contains('nav-link')) {
-          navLinks.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          nav.classList.toggle('active');
+          
           const icon = menuToggle.querySelector('i');
-          icon.classList.add('fa-bars');
-          icon.classList.remove('fa-times');
-        }
+          icon.classList.toggle('fa-bars');
+          icon.classList.toggle('fa-times');
+        });
+      }
+      
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 768) {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          }
+        });
       });
       
       document.addEventListener('click', function(e) {
-        if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
-          navLinks.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          const icon = menuToggle.querySelector('i');
-          icon.classList.add('fa-bars');
-          icon.classList.remove('fa-times');
+        if (window.innerWidth <= 768) {
+          if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+          }
         }
       });
 
-      // Animate stats on scroll
       animateStats();
-      
-      // Scroll to top button
       window.addEventListener('scroll', toggleScrollButton);
     });
 
-    // Stats animation
     function animateStats() {
       const stats = document.querySelectorAll('.stat-number');
       const observer = new IntersectionObserver((entries) => {
@@ -858,7 +978,6 @@
       }, stepTime);
     }
 
-    // Scroll to top
     function toggleScrollButton() {
       const scrollBtn = document.querySelector('.scroll-to-top');
       if (window.pageYOffset > 300) {
@@ -875,11 +994,10 @@
       });
     }
 
-    // Newsletter form
     function handleNewsletter(event) {
       event.preventDefault();
       const email = event.target.querySelector('input').value;
-      alert(`Thank you for subscribing! We'll send updates to ${email}`);
+      alert('Thank you for subscribing! We will send updates to ' + email);
       event.target.reset();
     }
   </script>
