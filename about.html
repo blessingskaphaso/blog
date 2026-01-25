@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
   <style>
-    * {
+        * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -52,7 +52,7 @@
       color: var(--slate-900);
     }
 
-    /* NAVIGATION */
+    /* ========== NAVIGATION ========== */
     nav {
       position: fixed;
       width: 100%;
@@ -161,7 +161,7 @@
       color: var(--amber-600);
     }
 
-    /* PAGE HEADER */
+    /* ========== PAGE HEADER ========== */
     .page-header {
       background: var(--slate-900);
       color: white;
@@ -211,7 +211,7 @@
       color: var(--amber-400);
     }
 
-    /* MAIN CONTENT */
+    /* ========== MAIN CONTENT ========== */
     main {
       max-width: 1280px;
       margin: -3rem auto 4rem;
@@ -335,7 +335,7 @@
       font-family: Georgia, serif;
     }
 
-    /* HIGHLIGHTS */
+    /* ========== HIGHLIGHTS ========== */
     .highlights {
       background: linear-gradient(135deg, var(--slate-50) 0%, #e9ecef 100%);
       padding: 3rem;
@@ -390,9 +390,10 @@
       color: var(--slate-600);
       font-size: 1rem;
       line-height: 1.6;
+      margin-bottom: 0;
     }
 
-    /* JOURNEY TIMELINE */
+    /* ========== JOURNEY TIMELINE ========== */
     .journey-section {
       padding: 3rem;
       background: white;
@@ -454,9 +455,10 @@
       color: var(--slate-600);
       line-height: 1.7;
       font-size: 1.05rem;
+      margin-bottom: 0;
     }
 
-    /* FOOTER */
+    /* ========== FOOTER ========== */
     footer {
       background: var(--slate-900);
       color: white;
@@ -515,7 +517,7 @@
       box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
     }
 
-    /* ANIMATIONS */
+    /* ========== ANIMATIONS ========== */
     @keyframes slideDown {
       from {
         opacity: 0;
@@ -527,62 +529,16 @@
       }
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
+    /* ========================================
+      RESPONSIVE DESIGN - MOBILE OPTIMIZED
+    ======================================== */
 
-      .menu-toggle {
-        display: block;
-      }
-
-      .page-header {
-        padding: 6rem 1.5rem 4rem;
-      }
-
-      .about-container {
-        padding: 2.5rem 1.5rem;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .profile-section {
-        position: relative;
-        top: 0;
-      }
-
-      .profile-photo {
-        max-width: 220px;
-      }
-
-      .highlights {
-        padding: 2rem 1.5rem;
-      }
-
-      .highlights-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .timeline {
-        padding-left: 2rem;
-      }
-
-      .timeline-item {
-        padding-left: 2rem;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-
+    /* Large Tablets (1024px and below) */
     @media (max-width: 1024px) {
+      .about-grid {
+        gap: 3rem;
+      }
+
       .highlights-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -593,19 +549,401 @@
         margin: 0 auto;
         width: 100%;
       }
+
+      .profile-section {
+        position: relative;
+        top: 0;
+      }
     }
 
+    /* Tablets and Mobile (768px and below) */
+    @media (max-width: 768px) {
+      /* Navigation */
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .logo {
+        font-size: 1.25rem;
+      }
+
+      /* Page Header */
+      .page-header {
+        padding: 6rem 1.5rem 4rem;
+        margin-top: 65px;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+
+      .page-subtitle {
+        font-size: 1.1rem;
+      }
+
+      /* Main Content */
+      main {
+        margin: -2rem auto 3rem;
+      }
+
+      .about-container {
+        padding: 2.5rem 1.5rem;
+        border-radius: 1.25rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+      }
+
+      /* Profile Section */
+      .profile-section {
+        position: relative;
+        top: 0;
+      }
+
+      .profile-photo {
+        max-width: 220px;
+      }
+
+      .profile-title {
+        font-size: 1.3rem;
+      }
+
+      /* Content Section */
+      .content-section p {
+        font-size: 1.05rem;
+      }
+
+      .content-section p:first-of-type::first-letter {
+        font-size: 3.5rem;
+      }
+
+      /* Highlights */
+      .highlights {
+        padding: 2rem 1.5rem;
+        margin: 2.5rem 0;
+      }
+
+      .highlights h3 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+      }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .highlight-item:last-child {
+        grid-column: 1;
+        max-width: 100%;
+      }
+
+      .highlight-item {
+        padding: 1.75rem;
+      }
+
+      .highlight-icon {
+        font-size: 2.5rem;
+      }
+
+      .highlight-item h4 {
+        font-size: 1.2rem;
+      }
+
+      /* Journey Section */
+      .journey-section {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .journey-section h3 {
+        font-size: 1.75rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .timeline {
+        padding-left: 2rem;
+      }
+
+      .timeline-item {
+        padding-left: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .timeline-item h4 {
+        font-size: 1.2rem;
+      }
+
+      .timeline-item p {
+        font-size: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 3rem;
+        padding: 3rem 1.5rem 2rem;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+    }
+
+    /* Small Mobile Phones (480px and below) */
     @media (max-width: 480px) {
+      /* Navigation */
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .nav-container {
+        padding: 0 1rem;
+      }
+
+      /* Page Header */
+      .page-header {
+        padding: 5rem 1rem 3.5rem;
+      }
+
       .page-header h1 {
         font-size: 2rem;
       }
 
+      .page-subtitle {
+        font-size: 1rem;
+      }
+
+      /* Main Content */
+      main {
+        padding: 0 1rem;
+      }
+
       .about-container {
         padding: 2rem 1rem;
+        border-radius: 1rem;
+      }
+
+      .about-grid {
+        gap: 2rem;
+      }
+
+      /* Profile Section */
+      .profile-photo {
+        max-width: 200px;
+      }
+
+      .profile-title {
+        font-size: 1.2rem;
+      }
+
+      .profile-location {
+        font-size: 0.95rem;
+      }
+
+      .social-icons a {
+        width: 42px;
+        height: 42px;
+        font-size: 0.9rem;
+      }
+
+      /* Content Section */
+      .content-section p {
+        font-size: 1rem;
       }
 
       .content-section p:first-of-type::first-letter {
         font-size: 3rem;
+        margin: 0.05rem 0.5rem 0 0;
+      }
+
+      /* Highlights */
+      .highlights {
+        padding: 1.75rem 1rem;
+      }
+
+      .highlights h3 {
+        font-size: 1.5rem;
+      }
+
+      .highlight-item {
+        padding: 1.5rem;
+      }
+
+      .highlight-icon {
+        font-size: 2.25rem;
+      }
+
+      .highlight-item h4 {
+        font-size: 1.1rem;
+      }
+
+      .highlight-item p {
+        font-size: 0.95rem;
+      }
+
+      /* Journey Section */
+      .journey-section {
+        padding: 2rem 1rem;
+      }
+
+      .journey-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .timeline {
+        padding-left: 1.5rem;
+      }
+
+      .timeline::before {
+        width: 2px;
+      }
+
+      .timeline-item {
+        padding-left: 1.75rem;
+        margin-bottom: 2rem;
+      }
+
+      .timeline-item::before {
+        width: 14px;
+        height: 14px;
+        left: -0.6rem;
+      }
+
+      .timeline-item h4 {
+        font-size: 1.1rem;
+      }
+
+      .timeline-item p {
+        font-size: 0.95rem;
+      }
+
+      /* Footer */
+      footer {
+        padding: 2.5rem 1rem 1.75rem;
+      }
+
+      .copyright {
+        font-size: 0.95rem;
+      }
+
+      .diocese-info {
+        font-size: 0.875rem;
+      }
+
+      .social-link {
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    /* Extra Small Mobile Phones (360px and below) */
+    @media (max-width: 360px) {
+      .logo {
+        font-size: 1rem;
+      }
+
+      .page-header h1 {
+        font-size: 1.75rem;
+      }
+
+      .page-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .about-container {
+        padding: 1.75rem 0.875rem;
+      }
+
+      .profile-photo {
+        max-width: 180px;
+      }
+
+      .profile-title {
+        font-size: 1.1rem;
+      }
+
+      .content-section p:first-of-type::first-letter {
+        font-size: 2.5rem;
+      }
+
+      .highlights h3,
+      .journey-section h3 {
+        font-size: 1.4rem;
+      }
+
+      .timeline-item h4 {
+        font-size: 1.05rem;
+      }
+
+      .social-link {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    /* Very Small Screens (320px and below) */
+    @media (max-width: 320px) {
+      .nav-container {
+        padding: 0 0.75rem;
+      }
+
+      .logo {
+        font-size: 0.95rem;
+      }
+
+      .page-header {
+        padding: 4.5rem 0.75rem 3rem;
+      }
+
+      .page-header h1 {
+        font-size: 1.6rem;
+      }
+
+      .about-container {
+        padding: 1.5rem 0.75rem;
+      }
+
+      .profile-photo {
+        max-width: 160px;
+      }
+
+      .highlights,
+      .journey-section {
+        padding: 1.5rem 0.75rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 0.875rem;
+      }
+    }
+
+    /* Landscape Mode for Tablets */
+    @media (max-width: 1024px) and (orientation: landscape) {
+      .page-header {
+        padding: 5rem 1.5rem 3.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr 1.5fr;
+      }
+
+      .profile-section {
+        position: relative;
+        top: 0;
       }
     }
   </style>
