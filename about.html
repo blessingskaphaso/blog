@@ -25,136 +25,215 @@
     }
 
     :root {
-      --primary-color: #667eea;
-      --secondary-color: #764ba2;
-      --accent-color: #e74c3c;
-      --text-color: #333;
-      --text-light: #666;
-      --light-bg: #f8f9fa;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
       --white: #ffffff;
-      --shadow: 0 2px 10px rgba(0,0,0,0.1);
-      --border-radius: 12px;
-      --transition: all 0.3s ease;
     }
 
     body {
-      font-family: 'Georgia', 'Times New Roman', serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       line-height: 1.6;
-      color: var(--text-color);
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
+      color: var(--slate-900);
+      background: var(--slate-50);
+      overflow-x: hidden;
     }
 
-    /* Header styles */
-    header {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: var(--white);
-      padding: 1.5rem 0;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 0;
+    ::selection {
+      background: #fef3c7;
+      color: var(--slate-900);
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      width: 100%;
       z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .header-container {
-      max-width: 1200px;
+    .nav-container {
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--slate-900);
+    }
+
+    .logo .highlight {
+      color: var(--amber-500);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--slate-600);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
       position: relative;
     }
 
-    header h1 {
-      font-size: 1.8rem;
-      font-weight: 300;
-      letter-spacing: 1px;
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--amber-500);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+      width: 80%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--amber-500);
     }
 
     .menu-toggle {
       display: none;
       background: none;
       border: none;
-      color: var(--white);
-      font-size: 1.8rem;
+      color: var(--slate-900);
+      font-size: 1.5rem;
       cursor: pointer;
       padding: 0.5rem;
-      z-index: 1001;
-      transition: transform 0.3s ease;
     }
 
-    .menu-toggle:hover {
-      transform: scale(1.1);
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    nav {
-      display: flex;
-      gap: 2rem;
+    .mobile-menu.active {
+      display: block;
+      animation: slideDown 0.3s ease;
     }
 
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    .nav-link {
-      color: var(--white);
+    .mobile-menu a {
+      display: block;
+      padding: 1.2rem 1.5rem;
+      color: var(--slate-900);
       text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      transition: var(--transition);
       font-weight: 500;
+      border-bottom: 1px solid var(--slate-100);
     }
 
-    .nav-link:hover,
-    .nav-link:focus,
-    .nav-link.active {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
+    .mobile-menu a:hover {
+      background: var(--slate-50);
+      color: var(--amber-600);
     }
 
-    /* Main content styles */
-    main {
-      max-width: 1200px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-
-    .about-section {
-      background: var(--white);
-      border-radius: var(--border-radius);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      overflow: hidden;
-      animation: fadeInUp 0.6s ease-out;
-    }
-
-    .section-header {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: var(--white);
-      padding: 3rem 2rem;
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--slate-900);
+      color: white;
+      padding: 8rem 1.5rem 5rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 69px;
     }
 
-    .section-header h2 {
-      font-size: 2.5rem;
-      font-weight: 300;
-      margin-bottom: 0.5rem;
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+      animation: pulse 8s ease-in-out infinite;
     }
 
-    .section-subtitle {
-      font-size: 1.2rem;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .page-header-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .page-subtitle {
+      font-size: 1.25rem;
       opacity: 0.9;
       font-style: italic;
+      color: var(--amber-400);
     }
 
-    .about-content {
-      padding: 3rem 2.5rem;
+    /* MAIN CONTENT */
+    main {
+      max-width: 1280px;
+      margin: -3rem auto 4rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .about-container {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 4rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .about-grid {
       display: grid;
       grid-template-columns: 1fr 2fr;
-      gap: 3rem;
+      gap: 4rem;
       align-items: start;
+      margin-bottom: 4rem;
     }
 
     .profile-section {
@@ -163,31 +242,48 @@
       top: 100px;
     }
 
+    .profile-image-wrapper {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .profile-image-bg {
+      position: absolute;
+      inset: -1rem;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: 50%;
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     .profile-photo {
+      position: relative;
       width: 100%;
       max-width: 280px;
-      height: auto;
       border-radius: 50%;
-      border: 5px solid var(--primary-color);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      transition: var(--transition);
-      margin-bottom: 1.5rem;
+      border: 6px solid white;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      z-index: 1;
+      transition: transform 0.5s ease;
     }
 
     .profile-photo:hover {
       transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
 
     .profile-title {
       font-size: 1.4rem;
-      color: var(--primary-color);
+      color: var(--slate-900);
       margin-bottom: 0.5rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .profile-location {
-      color: var(--text-light);
+      color: var(--slate-500);
       font-style: italic;
       margin-bottom: 1.5rem;
       display: flex;
@@ -200,60 +296,60 @@
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-top: 1.5rem;
     }
 
     .social-icons a {
+      width: 45px;
+      height: 45px;
+      border-radius: 0.75rem;
+      background: var(--slate-100);
+      color: var(--amber-600);
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: var(--light-bg);
-      border-radius: 50%;
-      color: var(--primary-color);
-      transition: var(--transition);
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
 
     .social-icons a:hover {
-      background: var(--primary-color);
-      color: var(--white);
+      background: var(--amber-500);
+      color: white;
       transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
     }
 
     .content-section p {
-      font-size: 1.1rem;
+      font-size: 1.125rem;
       margin-bottom: 1.5rem;
-      text-align: justify;
       line-height: 1.8;
-      color: var(--text-light);
+      color: var(--slate-600);
     }
 
     .content-section p:first-of-type::first-letter {
       font-size: 4rem;
-      font-weight: bold;
-      color: var(--accent-color);
+      font-weight: 700;
+      color: var(--amber-500);
       float: left;
       line-height: 0.8;
-      margin: 0.1rem 0.5rem 0 0;
+      margin: 0.1rem 0.6rem 0 0;
       font-family: Georgia, serif;
     }
 
-    /* Highlights section */
+    /* HIGHLIGHTS */
     .highlights {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 2.5rem;
-      margin: 2.5rem 0 0 0;
-      border-radius: var(--border-radius);
-      border-left: 5px solid var(--primary-color);
+      background: linear-gradient(135deg, var(--slate-50) 0%, #e9ecef 100%);
+      padding: 3rem;
+      margin: 3rem 0;
+      border-radius: 1.25rem;
+      border-left: 5px solid var(--amber-500);
     }
 
     .highlights h3 {
-      color: var(--primary-color);
-      margin-bottom: 2rem;
-      font-size: 1.8rem;
+      color: var(--slate-900);
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
       text-align: center;
-      font-weight: 300;
+      font-weight: 700;
     }
 
     .highlights-grid {
@@ -264,56 +360,57 @@
 
     .highlight-item {
       text-align: center;
-      padding: 2rem 1.5rem;
-      background: var(--white);
-      border-radius: var(--border-radius);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: var(--transition);
-      border-top: 3px solid var(--primary-color);
+      padding: 2rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border-top: 3px solid var(--amber-500);
     }
 
     .highlight-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
     }
 
     .highlight-icon {
       font-size: 3rem;
       margin-bottom: 1rem;
-      color: var(--primary-color);
+      color: var(--amber-500);
     }
 
     .highlight-item h4 {
-      color: var(--text-color);
-      margin-bottom: 0.5rem;
+      color: var(--slate-900);
+      margin-bottom: 0.75rem;
       font-size: 1.3rem;
+      font-weight: 700;
     }
 
     .highlight-item p {
-      color: var(--text-light);
-      font-size: 0.95rem;
+      color: var(--slate-600);
+      font-size: 1rem;
       line-height: 1.6;
     }
 
-    /* Journey Timeline */
+    /* JOURNEY TIMELINE */
     .journey-section {
-      padding: 2.5rem;
-      background: var(--white);
-      border-radius: var(--border-radius);
-      margin-top: 2rem;
+      padding: 3rem;
+      background: white;
+      border-radius: 1.25rem;
+      margin-top: 3rem;
     }
 
     .journey-section h3 {
-      color: var(--primary-color);
-      font-size: 1.8rem;
-      margin-bottom: 2rem;
+      color: var(--slate-900);
+      font-size: 2rem;
+      margin-bottom: 3rem;
       text-align: center;
-      font-weight: 300;
+      font-weight: 700;
     }
 
     .timeline {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 3rem;
     }
 
     .timeline::before {
@@ -322,50 +419,53 @@
       left: 0;
       top: 0;
       bottom: 0;
-      width: 2px;
-      background: var(--primary-color);
+      width: 3px;
+      background: linear-gradient(to bottom, var(--amber-500), var(--amber-600));
+      border-radius: 9999px;
     }
 
     .timeline-item {
       position: relative;
-      padding-left: 2rem;
-      margin-bottom: 2rem;
+      padding-left: 2.5rem;
+      margin-bottom: 3rem;
     }
 
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -0.55rem;
+      left: -0.7rem;
       top: 0;
-      width: 12px;
-      height: 12px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
-      background: var(--primary-color);
-      border: 3px solid var(--white);
-      box-shadow: 0 0 0 3px var(--primary-color);
+      background: var(--amber-500);
+      border: 4px solid white;
+      box-shadow: 0 0 0 3px var(--amber-500);
     }
 
     .timeline-item h4 {
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
+      color: var(--amber-600);
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+      font-weight: 700;
     }
 
     .timeline-item p {
-      color: var(--text-light);
-      line-height: 1.6;
+      color: var(--slate-600);
+      line-height: 1.7;
+      font-size: 1.05rem;
     }
 
-    /* Footer styles */
+    /* FOOTER */
     footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-      color: var(--white);
-      padding: 3rem 2rem;
-      margin-top: 4rem;
+      background: var(--slate-900);
+      color: white;
+      padding: 4rem 1.5rem 2.5rem;
+      margin-top: 5rem;
     }
 
     .footer-container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -376,15 +476,17 @@
 
     .footer-content p {
       margin: 0.5rem 0;
+      opacity: 0.8;
     }
 
     .copyright {
       font-weight: 600;
+      font-size: 1rem;
     }
 
     .diocese-info {
-      opacity: 0.9;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      font-weight: 300;
     }
 
     .social-links {
@@ -392,30 +494,32 @@
       gap: 1rem;
     }
 
-    .social-links a {
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 0.875rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 45px;
-      height: 45px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
       color: white;
       text-decoration: none;
       transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    .social-links a:hover {
-      background: white;
-      color: var(--primary-color);
-      transform: translateY(-3px);
+    .social-link:hover {
+      background: var(--amber-500);
+      border-color: var(--amber-500);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
+    /* ANIMATIONS */
+    @keyframes slideDown {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(-10px);
       }
       to {
         opacity: 1;
@@ -423,19 +527,27 @@
       }
     }
 
-    /* Tablet Styles (768px - 1024px) */
-    @media (max-width: 1024px) {
-      .about-content {
-        gap: 2rem;
-        padding: 2.5rem 2rem;
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
       }
 
-      .section-header {
-        padding: 2.5rem 2rem;
+      .menu-toggle {
+        display: block;
       }
 
-      .section-header h2 {
-        font-size: 2.2rem;
+      .page-header {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .about-container {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
       }
 
       .profile-section {
@@ -443,9 +555,36 @@
         top: 0;
       }
 
+      .profile-photo {
+        max-width: 220px;
+      }
+
+      .highlights {
+        padding: 2rem 1.5rem;
+      }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .timeline {
+        padding-left: 2rem;
+      }
+
+      .timeline-item {
+        padding-left: 2rem;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 1024px) {
       .highlights-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
       }
 
       .highlight-item:last-child {
@@ -456,297 +595,69 @@
       }
     }
 
-    /* Mobile Styles (up to 768px) */
-    @media (max-width: 768px) {
-      .header-container {
-        padding: 0 1rem;
-        flex-wrap: nowrap;
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 2rem;
       }
 
-      header h1 {
-        font-size: 1.2rem;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      nav {
-        position: fixed;
-        top: 73px;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        padding: 0;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-        z-index: 999;
-      }
-
-      nav.active {
-        max-height: 500px;
-        padding: 1rem 0;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-      }
-
-      .nav-links li {
-        text-align: center;
-        width: 100%;
-        list-style: none;
-      }
-
-      .nav-link {
-        display: block;
-        padding: 1.2rem;
-        border-radius: 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-      }
-
-      .nav-link:hover,
-      .nav-link:focus,
-      .nav-link.active {
-        background: rgba(255,255,255,0.2);
-        transform: none;
-      }
-
-      main {
-        margin: 2rem auto;
-        padding: 0 1rem;
-      }
-
-      .about-section {
-        border-radius: 15px;
-      }
-
-      .section-header {
-        padding: 2rem 1.5rem;
-      }
-
-      .section-header h2 {
-        font-size: 1.8rem;
-      }
-
-      .section-subtitle {
-        font-size: 1rem;
-      }
-
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 2rem 1.5rem;
-      }
-
-      .profile-section {
-        order: -1;
-      }
-
-      .profile-photo {
-        max-width: 220px;
-      }
-
-      .profile-title {
-        font-size: 1.2rem;
-      }
-
-      .content-section p {
-        font-size: 1rem;
-        text-align: left;
+      .about-container {
+        padding: 2rem 1rem;
       }
 
       .content-section p:first-of-type::first-letter {
         font-size: 3rem;
       }
-
-      .highlights {
-        padding: 2rem 1.5rem;
-        margin: 2rem 0 0 0;
-      }
-
-      .highlights h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .highlights-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .highlight-item:last-child {
-        grid-column: 1;
-        max-width: none;
-      }
-
-      .highlight-item {
-        padding: 1.5rem;
-      }
-
-      .highlight-icon {
-        font-size: 2.5rem;
-      }
-
-      .highlight-item h4 {
-        font-size: 1.1rem;
-      }
-
-      .journey-section {
-        padding: 2rem 1.5rem;
-      }
-
-      .journey-section h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .timeline {
-        padding-left: 1.5rem;
-      }
-
-      .timeline-item {
-        padding-left: 1.5rem;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-      }
-
-      .footer-content {
-        order: 1;
-      }
-
-      .social-links {
-        order: 2;
-        justify-content: center;
-      }
-
-      footer {
-        padding: 2rem 1rem;
-        margin-top: 3rem;
-      }
-
-      .footer-content p {
-        font-size: 0.9rem;
-        margin: 0.3rem 0;
-      }
-    }
-
-    /* Small Mobile (up to 480px) */
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1rem;
-      }
-
-      .section-header {
-        padding: 1.5rem 1rem;
-      }
-
-      .section-header h2 {
-        font-size: 1.5rem;
-      }
-
-      .about-content {
-        padding: 1.5rem 1rem;
-      }
-
-      .profile-photo {
-        max-width: 180px;
-      }
-
-      .profile-title {
-        font-size: 1.1rem;
-      }
-
-      .social-icons a {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
-      }
-
-      .content-section p {
-        font-size: 0.95rem;
-      }
-
-      .highlights {
-        padding: 1.5rem 1rem;
-      }
-
-      .highlights h3 {
-        font-size: 1.3rem;
-      }
-
-      .highlight-item {
-        padding: 1.2rem;
-      }
-
-      .highlight-icon {
-        font-size: 2rem;
-      }
-
-      .journey-section {
-        padding: 1.5rem 1rem;
-      }
-
-      .timeline-item h4 {
-        font-size: 1.1rem;
-      }
-
-      .timeline-item p {
-        font-size: 0.9rem;
-      }
-    }
-
-    /* Focus styles for accessibility */
-    a:focus,
-    button:focus {
-      outline: 2px solid var(--accent-color);
-      outline-offset: 2px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        Rev. Fr. Geraldo <span class="highlight">Bleza Malota</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="poems.html">Poems</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="about.html" class="nav-link active">About</a></li>
-          <li><a href="articles.html" class="nav-link">Articles</a></li>
-          <li><a href="poems.html" class="nav-link">Poems</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="poems.html">Poems</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-content">
+      <h1>About Me</h1>
+      <p class="page-subtitle">Servant of God, Shepherd of Souls</p>
     </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main>
-    <section class="about-section" role="main">
-      <header class="section-header">
-        <h2>About Me</h2>
-        <p class="section-subtitle">Servant of God, Shepherd of Souls</p>
-      </header>
-      
-      <div class="about-content">
+    <div class="about-container">
+      <div class="about-grid">
         <div class="profile-section">
-          <img src="images/fr-bleza.jpg" 
-               alt="Portrait of Rev. Fr. Geraldo Bleza Malota" 
-               class="profile-photo"
-               loading="lazy" />
+          <div class="profile-image-wrapper">
+            <div class="profile-image-bg"></div>
+            <img src="images/fr-bleza.jpg" 
+                 alt="Portrait of Rev. Fr. Geraldo Bleza Malota" 
+                 class="profile-photo"
+                 loading="lazy" />
+          </div>
           <h3 class="profile-title">Rev. Fr. Geraldo Bleza Malota</h3>
           <p class="profile-location">
             <i class="fas fa-map-marker-alt"></i>
@@ -816,9 +727,10 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-content">
@@ -826,16 +738,16 @@
         <p class="diocese-info">Catholic Priest | Dedza Diocese</p>
       </div>
       <div class="social-links">
-        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook">
+        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow on Facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
+        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Message on WhatsApp">
           <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="mailto:your.email@example.com" aria-label="Send email">
+        <a href="mailto:your.email@example.com" class="social-link" aria-label="Send email">
           <i class="fas fa-envelope"></i>
         </a>
       </div>
@@ -843,56 +755,54 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      
-      if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-          menuToggle.setAttribute('aria-expanded', !isExpanded);
-          nav.classList.toggle('active');
-          
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('active');
+        
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
           const icon = menuToggle.querySelector('i');
-          icon.classList.toggle('fa-bars');
-          icon.classList.toggle('fa-times');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
         });
+      });
 
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-              nav.classList.remove('active');
-              menuToggle.setAttribute('aria-expanded', 'false');
-              const icon = menuToggle.querySelector('i');
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-times');
-            }
-          });
-        });
-
-        document.addEventListener('click', function(e) {
-          if (window.innerWidth <= 768) {
-            if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
-              nav.classList.remove('active');
-              menuToggle.setAttribute('aria-expanded', 'false');
-              const icon = menuToggle.querySelector('i');
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-times');
-            }
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
           }
-        });
-      }
+        }
+      });
+    }
 
-      // Image loading error handling
-      const profilePhoto = document.querySelector('.profile-photo');
-      if (profilePhoto) {
-        profilePhoto.addEventListener('error', function() {
-          this.alt = 'Photo not available';
-          this.style.backgroundColor = '#f0f0f0';
-        });
-      }
-    });
+    // Image loading error handling
+    const profilePhoto = document.querySelector('.profile-photo');
+    if (profilePhoto) {
+      profilePhoto.addEventListener('error', function() {
+        this.alt = 'Photo not available';
+        this.style.backgroundColor = '#f0f0f0';
+      });
+    }
   </script>
 </body>
 </html>

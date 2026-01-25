@@ -13,126 +13,235 @@
     }
 
     :root {
-      --primary-color: #667eea;
-      --secondary-color: #764ba2;
-      --accent-color: #d63384;
-      --text-dark: #333;
-      --text-light: #666;
-      --bg-light: #f8f9fa;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --pink-400: #f472b6;
+      --pink-500: #ec4899;
+      --pink-600: #db2777;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
       --white: #ffffff;
     }
 
     body {
-      font-family: 'Georgia', serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       line-height: 1.6;
-      color: var(--text-dark);
+      color: var(--slate-900);
       background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
       min-height: 100vh;
     }
 
-    header {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      padding: 1.5rem 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    ::selection {
+      background: #fef3c7;
+      color: var(--slate-900);
     }
 
-    .header-container {
-      max-width: 1200px;
+    nav {
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-container {
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--slate-900);
+    }
+
+    .logo .highlight {
+      color: var(--amber-500);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--slate-600);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
       position: relative;
     }
 
-    header h1 {
-      font-size: 1.8rem;
-      font-weight: 300;
-      letter-spacing: 1px;
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--amber-500);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+      width: 80%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--amber-500);
     }
 
     .menu-toggle {
       display: none;
       background: none;
       border: none;
-      color: white;
-      font-size: 1.8rem;
+      color: var(--slate-900);
+      font-size: 1.5rem;
       cursor: pointer;
       padding: 0.5rem;
-      z-index: 1001;
-      transition: transform 0.3s ease;
     }
 
-    .menu-toggle:hover {
-      transform: scale(1.1);
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    nav {
-      display: flex;
-      gap: 2rem;
+    .mobile-menu.active {
+      display: block;
+      animation: slideDown 0.3s ease;
     }
 
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    .nav-link {
-      color: white;
+    .mobile-menu a {
+      display: block;
+      padding: 1.2rem 1.5rem;
+      color: var(--slate-900);
       text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
       font-weight: 500;
+      border-bottom: 1px solid var(--slate-100);
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
+    .mobile-menu a:hover {
+      background: var(--slate-50);
+      color: var(--amber-600);
     }
 
-    main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-    }
-
-    .page-title {
+    .page-header {
+      background: linear-gradient(135deg, var(--pink-500), var(--amber-500));
+      color: white;
+      padding: 8rem 1.5rem 5rem;
       text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2.5rem;
-      color: var(--accent-color);
-      font-weight: 300;
+      position: relative;
+      overflow: hidden;
+      margin-top: 69px;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .page-header-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .page-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.95;
       font-style: italic;
     }
 
+    .search-section {
+      max-width: 1280px;
+      margin: -3rem auto 3rem;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
     .search-container {
-      margin-bottom: 2rem;
-      text-align: center;
+      background: white;
+      border-radius: 9999px;
+      padding: 0.5rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .search-icon {
+      color: var(--slate-400);
+      font-size: 1.25rem;
+      margin-left: 1rem;
     }
 
     #searchBox {
-      width: 100%;
-      max-width: 400px;
-      padding: 1rem;
+      flex: 1;
       border: none;
-      border-radius: 25px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      font-size: 1rem;
       outline: none;
-      transition: all 0.3s ease;
+      font-size: 1rem;
+      color: var(--slate-900);
+      padding: 0.75rem;
     }
 
-    #searchBox:focus {
-      box-shadow: 0 6px 20px rgba(214, 51, 132, 0.3);
-      transform: translateY(-2px);
+    #searchBox::placeholder {
+      color: var(--slate-400);
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
     }
 
     .poems-grid {
@@ -143,14 +252,13 @@
 
     .poem-card {
       background: white;
-      border-radius: 20px;
+      border-radius: 1.5rem;
       padding: 2.5rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      border: 3px solid transparent;
-      background-clip: padding-box;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .poem-card::before {
@@ -160,202 +268,84 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #d63384, #f8b500, #20c997);
+      background: linear-gradient(90deg, var(--pink-500), var(--amber-500), #20c997);
     }
 
     .poem-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    }
-
-    .poem-card h3 {
-      color: var(--accent-color);
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
-      font-style: italic;
-      text-align: center;
-    }
-
-    .poem-excerpt {
-      background: var(--bg-light);
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin: 1.5rem 0;
-      border-left: 4px solid var(--accent-color);
-      font-style: italic;
-      line-height: 1.8;
-      color: #555;
-      text-align: center;
-    }
-
-    .poem-full {
-      display: none;
-      background: var(--bg-light);
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin: 1.5rem 0;
-      border-left: 4px solid var(--accent-color);
-      font-style: italic;
-      line-height: 1.8;
-      color: #555;
-      text-align: center;
-    }
-
-    .poem-full.show {
-      display: block;
-    }
-
-    .poem-description {
-      color: var(--text-light);
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
-      text-align: center;
-    }
-
-    .poem-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #eee;
-      font-size: 0.9rem;
-      color: #999;
-    }
-
-    .poem-type {
-      background: linear-gradient(135deg, var(--accent-color), #f8b500);
-      color: white;
-      padding: 0.3rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .read-poem {
-      background: linear-gradient(135deg, var(--accent-color) 0%, #f8b500 100%);
-      color: white;
-      padding: 0.7rem 1.8rem;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .read-poem:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(214, 51, 132, 0.4);
-    }
-
-    .poem-tags {
-      margin-top: 1rem;
-      text-align: center;
-    }
-
-    .tag {
-      background: #fff3cd;
-      color: #856404;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
-      font-size: 0.8rem;
-      margin: 0.2rem;
-      display: inline-block;
-    }
-
-    .no-results {
-      text-align: center;
-      color: var(--text-light);
-      font-style: italic;
-      margin: 3rem 0;
-      display: none;
-      font-size: 1.2rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     }
 
     .featured-poem {
       grid-column: 1 / -1;
-      background: linear-gradient(135deg, #fff 0%, var(--bg-light) 100%);
-      border: 2px solid var(--accent-color);
-    }
-
-    .featured-poem h3 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff 0%, #fef3c7 100%);
+      border: 2px solid var(--amber-500);
     }
 
     .featured-badge {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: var(--accent-color);
+      background: var(--pink-500);
       color: white;
       padding: 0.5rem 1rem;
-      border-radius: 20px;
+      border-radius: 9999px;
       font-size: 0.8rem;
-      font-weight: bold;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
     }
 
-    footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-      color: white;
-      padding: 3rem 2rem;
-      margin-top: 4rem;
+    .poem-card h3 {
+      color: var(--slate-900);
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.3;
     }
 
-    .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
+    .featured-poem h3 {
+      font-size: 2.25rem;
     }
 
-    .footer-content p {
-      margin: 0.5rem 0;
+    .poem-excerpt {
+      background: var(--slate-50);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--pink-500);
+      font-style: italic;
+      line-height: 1.9;
+      color: var(--slate-700);
+      text-align: center;
+      font-family: Georgia, serif;
     }
 
-    .copyright {
-      font-weight: 600;
+    .poem-full {
+      display: none;
+      background: var(--slate-50);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--pink-500);
+      font-style: italic;
+      line-height: 1.9;
+      color: var(--slate-700);
+      text-align: center;
+      font-family: Georgia, serif;
     }
 
-    .diocese-info {
-      opacity: 0.9;
-      font-size: 0.9rem;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 45px;
-      height: 45px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .social-links a:hover {
-      background: white;
-      color: var(--primary-color);
-      transform: translateY(-3px);
+    .poem-full.show {
+      display: block;
     }
 
     .quote-mark {
-      font-size: 3rem;
-      color: var(--accent-color);
+      font-size: 2.5rem;
+      color: var(--pink-500);
       opacity: 0.3;
       line-height: 1;
+      font-family: Georgia, serif;
     }
 
     .quote-mark.open {
@@ -370,81 +360,232 @@
       margin-bottom: -1rem;
     }
 
+    .poem-description {
+      color: var(--slate-600);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+
+    .poem-tags {
+      margin-top: 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .tag {
+      background: rgba(236, 72, 153, 0.1);
+      color: var(--pink-600);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .poem-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--slate-100);
+      font-size: 0.9rem;
+      gap: 1rem;
+    }
+
+    .poem-type {
+      background: linear-gradient(135deg, var(--pink-500), var(--amber-500));
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .poem-date {
+      color: var(--slate-400);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .read-poem {
+      background: linear-gradient(135deg, var(--pink-500), var(--amber-500));
+      color: white;
+      padding: 0.75rem 1.75rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .read-poem:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
+    }
+
+    .no-results {
+      text-align: center;
+      color: var(--slate-500);
+      font-size: 1.2rem;
+      padding: 4rem 2rem;
+      background: white;
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      display: none;
+    }
+
+    .no-results i {
+      font-size: 3rem;
+      color: var(--slate-300);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    footer {
+      background: var(--slate-900);
+      color: white;
+      padding: 4rem 1.5rem 2.5rem;
+      margin-top: 5rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-content p {
+      margin: 0.5rem 0;
+      opacity: 0.8;
+    }
+
+    .copyright {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .diocese-info {
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 0.875rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .social-link:hover {
+      background: var(--amber-500);
+      border-color: var(--amber-500);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
       .menu-toggle {
         display: block;
       }
 
-      .header-container {
-        flex-wrap: nowrap;
-        padding: 0 1rem;
+      .page-header {
+        padding: 6rem 1.5rem 4rem;
       }
 
-      header h1 {
-        font-size: 1.2rem;
+      .search-section {
+        margin: -2rem auto 2rem;
       }
 
-      nav {
-        position: fixed;
-        top: 73px;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        padding: 0;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-        z-index: 999;
-      }
-
-      nav.active {
-        max-height: 500px;
-        padding: 1rem 0;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-      }
-
-      .nav-links li {
-        text-align: center;
-        width: 100%;
-        list-style: none;
-      }
-
-      .nav-link {
-        display: block;
-        padding: 1.2rem;
-        border-radius: 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-      }
-
-      .nav-link:hover,
-      .nav-link.active {
-        background: rgba(255,255,255,0.2);
-        transform: none;
-      }
-      
-      main {
-        padding: 0 1rem;
-      }
-      
-      .page-title {
-        font-size: 2rem;
-      }
-      
       .poems-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .featured-poem {
         grid-column: 1;
+      }
+
+      .poem-card {
+        padding: 2rem;
+      }
+
+      .poem-card h3 {
+        font-size: 1.5rem;
+      }
+
+      .featured-poem h3 {
+        font-size: 1.75rem;
+      }
+
+      .featured-badge {
+        top: 15px;
+        right: 15px;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .poem-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .read-poem {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .quote-mark {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 2rem;
       }
 
       .poem-card {
@@ -459,113 +600,56 @@
         font-size: 1.5rem;
       }
 
-      .featured-badge {
-        top: 10px;
-        right: 10px;
-        font-size: 0.7rem;
-        padding: 0.4rem 0.8rem;
-      }
-
-      .poem-meta {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-      }
-
-      .read-poem {
-        width: 100%;
-        text-align: center;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-      }
-
-      .footer-content {
-        order: 1;
-      }
-
-      .social-links {
-        order: 2;
-        justify-content: center;
-      }
-
-      footer {
-        padding: 2rem 1rem;
-      }
-
-      .footer-content p {
-        font-size: 0.9rem;
-        margin: 0.3rem 0;
-      }
-
-      .quote-mark {
-        font-size: 2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1rem;
-      }
-
-      .page-title {
-        font-size: 1.6rem;
-      }
-
-      #searchBox {
-        font-size: 0.9rem;
-        padding: 0.8rem;
-      }
-
-      .poem-card {
-        padding: 1.2rem;
-      }
-
-      .poem-card h3 {
-        font-size: 1.2rem;
-      }
-
-      .featured-poem h3 {
-        font-size: 1.3rem;
-      }
-
       .poem-excerpt,
       .poem-full {
-        padding: 1rem;
+        padding: 1.25rem;
         font-size: 0.95rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        Rev. Fr. Geraldo <span class="highlight">Bleza Malota</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="poems.html" class="active">Poems</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="articles.html" class="nav-link">Articles</a></li>
-          <li><a href="poems.html" class="nav-link active">Poems</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="poems.html">Poems</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-header-content">
+      <h1>Sacred Verses</h1>
+      <p class="page-subtitle">Poetry of Faith, Hope, and Divine Love</p>
     </div>
   </header>
 
-  <main>
-    <h2 class="page-title">Sacred Verses</h2>
-    
+  <div class="search-section">
     <div class="search-container">
-      <input type="text" id="searchBox" placeholder="Search poems..." aria-label="Search poems" />
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="searchBox" placeholder="Search poems by title, content, or tags..." aria-label="Search poems" />
     </div>
+  </div>
 
+  <main>
     <div class="poems-grid" id="poemsContainer">
       <article class="poem-card featured-poem">
         <div class="featured-badge">Featured</div>
@@ -610,7 +694,7 @@
         <div class="poem-meta">
           <div>
             <span class="poem-type">Lyrical</span>
-            <span style="margin-left: 1rem; color: #999;">March 20, 2024</span>
+            <span class="poem-date"><i class="far fa-calendar"></i> March 20, 2024</span>
           </div>
           <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
@@ -656,7 +740,7 @@
         <div class="poem-meta">
           <div>
             <span class="poem-type">Ode</span>
-            <span style="margin-left: 1rem; color: #999;">March 5, 2024</span>
+            <span class="poem-date"><i class="far fa-calendar"></i> March 5, 2024</span>
           </div>
           <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
@@ -702,7 +786,7 @@
         <div class="poem-meta">
           <div>
             <span class="poem-type">Narrative</span>
-            <span style="margin-left: 1rem; color: #999;">February 18, 2024</span>
+            <span class="poem-date"><i class="far fa-calendar"></i> February 18, 2024</span>
           </div>
           <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
@@ -748,7 +832,7 @@
         <div class="poem-meta">
           <div>
             <span class="poem-type">Meditative</span>
-            <span style="margin-left: 1rem; color: #999;">February 2, 2024</span>
+            <span class="poem-date"><i class="far fa-calendar"></i> February 2, 2024</span>
           </div>
           <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
@@ -794,7 +878,7 @@
         <div class="poem-meta">
           <div>
             <span class="poem-type">Reflective</span>
-            <span style="margin-left: 1rem; color: #999;">January 15, 2024</span>
+            <span class="poem-date"><i class="far fa-calendar"></i> January 15, 2024</span>
           </div>
           <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
@@ -840,7 +924,7 @@
         <div class="poem-meta">
           <div>
             <span class="poem-type">Contemplative</span>
-            <span style="margin-left: 1rem; color: #999;">December 28, 2023</span>
+            <span class="poem-date"><i class="far fa-calendar"></i> December 28, 2023</span>
           </div>
           <a href="#" class="read-poem" onclick="togglePoem(event)">Read Full Poem</a>
         </div>
@@ -848,6 +932,7 @@
     </div>
 
     <div class="no-results" id="noResults">
+      <i class="fas fa-search"></i>
       <p>No poems found matching your search.</p>
     </div>
   </main>
@@ -859,16 +944,16 @@
         <p class="diocese-info">Catholic Priest | Dedza Diocese</p>
       </div>
       <div class="social-links">
-        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook">
+        <a href="https://web.facebook.com/geraldobleza.malota" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow on Facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
+        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Message on WhatsApp">
           <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="mailto:your.email@example.com" aria-label="Send email">
+        <a href="mailto:your.email@example.com" class="social-link" aria-label="Send email">
           <i class="fas fa-envelope"></i>
         </a>
       </div>
@@ -877,42 +962,38 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
       
-      if (menuToggle) {
+      if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', function() {
           const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
           menuToggle.setAttribute('aria-expanded', !isExpanded);
-          nav.classList.toggle('active');
+          mobileMenu.classList.toggle('active');
           
           const icon = menuToggle.querySelector('i');
           icon.classList.toggle('fa-bars');
           icon.classList.toggle('fa-times');
         });
 
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
           link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-              nav.classList.remove('active');
-              menuToggle.setAttribute('aria-expanded', 'false');
-              const icon = menuToggle.querySelector('i');
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-times');
-            }
+            mobileMenu.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
           });
         });
 
         document.addEventListener('click', function(e) {
-          if (window.innerWidth <= 768) {
-            if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
-              nav.classList.remove('active');
-              menuToggle.setAttribute('aria-expanded', 'false');
-              const icon = menuToggle.querySelector('i');
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-times');
-            }
+          if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
           }
         });
       }
@@ -931,7 +1012,6 @@
         }
       });
 
-      // Add subtle animation on load
       const cards = document.querySelectorAll('.poem-card');
       cards.forEach((card, index) => {
         card.style.opacity = '0';

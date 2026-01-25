@@ -14,115 +14,224 @@
     }
 
     :root {
-      --primary-color: #667eea;
-      --secondary-color: #764ba2;
-      --accent-color: #d63384;
-      --text-dark: #333;
-      --text-light: #666;
-      --bg-light: #f8f9fa;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
       --white: #ffffff;
     }
 
     body {
-      font-family: 'Georgia', serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       line-height: 1.6;
-      color: var(--text-dark);
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      min-height: 100vh;
+      color: var(--slate-900);
+      background: var(--slate-50);
+      overflow-x: hidden;
     }
 
-    header {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      padding: 1.5rem 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
+    ::selection {
+      background: #fef3c7;
+      color: var(--slate-900);
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      width: 100%;
       z-index: 1000;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 1.5rem 0;
     }
 
-    .header-container {
-      max-width: 1200px;
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-container {
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--white);
+      transition: color 0.3s ease;
+    }
+
+    nav.scrolled .logo {
+      color: var(--slate-900);
+    }
+
+    .logo .highlight {
+      color: var(--amber-500);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
       position: relative;
     }
 
-    header h1 {
-      font-size: 1.8rem;
-      font-weight: 300;
-      letter-spacing: 1px;
+    nav.scrolled .nav-links a {
+      color: var(--slate-600);
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--amber-500);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+      width: 80%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--amber-500);
     }
 
     .menu-toggle {
       display: none;
       background: none;
       border: none;
-      color: white;
-      font-size: 1.8rem;
+      color: var(--white);
+      font-size: 1.5rem;
       cursor: pointer;
       padding: 0.5rem;
-      z-index: 1001;
-      transition: transform 0.3s ease;
+      transition: color 0.3s ease;
     }
 
-    .menu-toggle:hover {
-      transform: scale(1.1);
+    nav.scrolled .menu-toggle {
+      color: var(--slate-900);
     }
 
-    nav {
-      display: flex;
-      gap: 2rem;
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
+    .mobile-menu.active {
+      display: block;
+      animation: slideDown 0.3s ease;
     }
 
-    .nav-link {
-      color: white;
+    .mobile-menu a {
+      display: block;
+      padding: 1.2rem 1.5rem;
+      color: var(--slate-900);
       text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
       font-weight: 500;
+      border-bottom: 1px solid var(--slate-100);
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
+    .mobile-menu a:hover {
+      background: var(--slate-50);
+      color: var(--amber-600);
     }
 
-    .hero-section {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      z-index: 1;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
     }
 
     .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 1.5rem;
     }
 
-    .hero-content h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 300;
-      animation: fadeInDown 1s ease;
+    .hero-subtitle {
+      color: var(--amber-400);
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.7s ease;
     }
 
-    .hero-content p {
-      font-size: 1.3rem;
-      margin-bottom: 2rem;
-      opacity: 0.95;
-      animation: fadeInUp 1s ease;
+    .hero-title {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1s ease 0.1s both;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 1s ease 0.2s both;
     }
 
     .hero-buttons {
@@ -130,63 +239,113 @@
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
+      animation: fadeInUp 1s ease 0.3s both;
     }
 
-    .hero-btn {
+    .btn {
       padding: 1rem 2rem;
-      border-radius: 30px;
+      border-radius: 9999px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s ease;
+      font-size: 1.05rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
+      cursor: pointer;
     }
 
-    .hero-btn.primary {
-      background: white;
-      color: var(--primary-color);
+    .btn-primary {
+      background: var(--amber-500);
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
     }
 
-    .hero-btn.secondary {
-      background: transparent;
-      color: white;
-      border: 2px solid white;
-    }
-
-    .hero-btn:hover {
+    .btn-primary:hover {
+      background: var(--amber-600);
       transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 40px rgba(245, 158, 11, 0.4);
     }
 
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--white);
+      transform: translateY(-3px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 3rem;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
+      animation: bounce 2s infinite;
+    }
+
+    /* WELCOME SECTION */
     .welcome-section {
-      max-width: 1200px;
-      margin: 3rem auto;
-      padding: 0 2rem;
+      padding: 6rem 1.5rem;
+      background: var(--white);
     }
 
     .welcome-container {
+      max-width: 1280px;
+      margin: -4rem auto 0;
       background: white;
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 1.5rem;
+      padding: 4rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
       display: grid;
       grid-template-columns: 1fr 2fr;
-      gap: 3rem;
+      gap: 4rem;
       align-items: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 10;
     }
 
-    .profile-image-container {
+    .profile-image-wrapper {
       position: relative;
     }
 
-    .profile-photo {
-      width: 100%;
-      max-width: 300px;
+    .profile-image-bg {
+      position: absolute;
+      inset: -1rem;
+      background: rgba(245, 158, 11, 0.1);
       border-radius: 50%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      border: 5px solid var(--primary-color);
-      transition: transform 0.3s ease;
+      transform: rotate(3deg) scale(0.95);
+      transition: transform 0.5s ease;
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .profile-image-wrapper:hover .profile-image-bg {
+      transform: rotate(1deg);
+    }
+
+    .profile-photo {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      border-radius: 50%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      border: 6px solid white;
+      z-index: 1;
+      transition: transform 0.5s ease;
     }
 
     .profile-photo:hover {
@@ -194,208 +353,364 @@
     }
 
     .welcome-content h2 {
-      color: var(--primary-color);
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 2rem;
+    }
+
+    .divider {
+      width: 5rem;
+      height: 0.25rem;
+      background: var(--amber-500);
+      border-radius: 9999px;
+      margin-bottom: 2rem;
     }
 
     .welcome-text {
-      margin-bottom: 1rem;
+      font-size: 1.125rem;
+      color: var(--slate-600);
       line-height: 1.8;
-      color: var(--text-light);
-      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
     }
 
+    /* STATS SECTION */
     .stats-section {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      padding: 3rem 2rem;
-      margin: 3rem 0;
+      padding: 5rem 1.5rem;
+      background: var(--slate-900);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      margin: 5rem 0;
+    }
+
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .stats-container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem;
-      text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .stat-item {
+      text-align: center;
       padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-icon {
+      display: inline-flex;
+      padding: 0.75rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--amber-400);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover .stat-icon {
+      background: var(--amber-500);
+      color: var(--white);
     }
 
     .stat-number {
-      font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+      font-size: 3.5rem;
+      font-weight: 800;
       display: block;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #fff, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .stat-label {
-      font-size: 1.1rem;
-      opacity: 0.9;
+      font-size: 0.875rem;
+      opacity: 0.8;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
+    /* LATEST POSTS SECTION */
     .latest-posts-section {
-      max-width: 1200px;
-      margin: 3rem auto;
-      padding: 0 2rem;
+      padding: 6rem 1.5rem;
+      background: var(--slate-50);
+    }
+
+    .latest-posts-container {
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
     .latest-posts-container h3 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--slate-900);
       text-align: center;
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      margin-bottom: 2rem;
-      font-weight: 300;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .section-description {
+      color: var(--slate-500);
+      font-size: 1.125rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 4rem;
     }
 
     .posts-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
     }
 
     .post-card {
-      background: white;
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      text-align: center;
-      border-top: 4px solid var(--primary-color);
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .post-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     }
 
-    .post-icon {
-      font-size: 3rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
+    .post-image-wrapper {
+      position: relative;
+      aspect-ratio: 16/10;
+      overflow: hidden;
     }
 
-    .post-card h4 {
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
+    .post-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .post-card:hover .post-image {
+      transform: scale(1.1);
+    }
+
+    .post-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--amber-500);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 9999px;
+    }
+
+    .post-content {
+      padding: 1.5rem;
+    }
+
+    .post-date {
+      color: var(--slate-400);
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .post-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .post-card:hover .post-title {
+      color: var(--amber-600);
     }
 
     .post-link {
-      color: var(--text-dark);
+      color: inherit;
       text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .post-link:hover {
-      color: var(--primary-color);
     }
 
     .post-type {
-      color: var(--text-light);
-      font-size: 0.9rem;
-      font-style: italic;
+      color: var(--slate-600);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .view-all-links {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     .view-all-btn {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(135deg, var(--amber-500), var(--amber-600));
       color: white;
-      padding: 1rem 2rem;
-      border-radius: 30px;
+      padding: 1.2rem 2.5rem;
+      border-radius: 9999px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .view-all-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(245, 158, 11, 0.4);
     }
 
+    /* QUOTE SECTION */
     .quote-section {
-      background: var(--bg-light);
-      padding: 4rem 2rem;
-      margin: 3rem 0;
+      padding: 6rem 1.5rem;
+      background: var(--white);
+      border-top: 1px solid var(--slate-100);
+      border-bottom: 1px solid var(--slate-100);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '"';
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 12rem;
+      color: rgba(0, 0, 0, 0.02);
+      font-family: Georgia, serif;
+      pointer-events: none;
     }
 
     .quote-container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .inspirational-quote {
       background: white;
       padding: 3rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      border-left: 5px solid var(--accent-color);
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-left: 6px solid var(--amber-500);
       position: relative;
     }
 
     .quote-icon {
+      color: var(--amber-500);
       font-size: 3rem;
-      color: var(--accent-color);
-      opacity: 0.3;
+      opacity: 0.2;
       position: absolute;
-      top: 1rem;
+      top: 2rem;
       left: 2rem;
     }
 
     .inspirational-quote p {
-      font-size: 1.5rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-family: Georgia, serif;
       font-style: italic;
-      color: var(--text-dark);
-      margin: 2rem 0 1rem 0;
-      line-height: 1.8;
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--slate-800);
+      margin: 0 0 1.5rem 0;
+      position: relative;
+      z-index: 1;
     }
 
     .inspirational-quote cite {
       display: block;
       text-align: right;
-      color: var(--primary-color);
-      font-size: 1.1rem;
+      color: var(--slate-900);
+      font-size: 1.125rem;
       font-style: normal;
-      font-weight: 600;
+      font-weight: 700;
     }
 
+    /* NEWSLETTER SECTION */
     .newsletter-section {
-      background: linear-gradient(135deg, var(--accent-color), #f8b500);
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
+      padding: 6rem 1.5rem;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
     }
 
     .newsletter-container {
       max-width: 600px;
       margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .newsletter-container h3 {
-      font-size: 2rem;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
       margin-bottom: 1rem;
-      font-weight: 300;
     }
 
     .newsletter-container p {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
+      font-size: 1.125rem;
+      margin-bottom: 2.5rem;
       opacity: 0.95;
+      font-weight: 300;
     }
 
     .newsletter-form {
@@ -408,38 +723,55 @@
     .newsletter-input {
       flex: 1;
       min-width: 250px;
-      padding: 1rem;
-      border: none;
-      border-radius: 30px;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-radius: 9999px;
       font-size: 1rem;
       outline: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .newsletter-input:focus {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, 0.15);
     }
 
     .newsletter-btn {
-      padding: 1rem 2rem;
+      padding: 1.2rem 2.5rem;
       background: white;
-      color: var(--accent-color);
+      color: #f5576c;
       border: none;
-      border-radius: 30px;
-      font-weight: 600;
+      border-radius: 9999px;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .newsletter-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
 
+    /* FOOTER */
     footer {
-      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-      color: white;
-      padding: 3rem 2rem;
-      margin-top: 4rem;
+      background: var(--slate-900);
+      color: var(--white);
+      padding: 4rem 1.5rem 2.5rem;
     }
 
     .footer-container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -450,15 +782,17 @@
 
     .footer-content p {
       margin: 0.5rem 0;
+      opacity: 0.8;
     }
 
     .copyright {
       font-weight: 600;
+      font-size: 1rem;
     }
 
     .diocese-info {
-      opacity: 0.9;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      font-weight: 300;
     }
 
     .social-links {
@@ -466,36 +800,61 @@
       gap: 1rem;
     }
 
-    .social-links a {
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 0.875rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 45px;
-      height: 45px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      color: white;
+      color: var(--white);
       text-decoration: none;
       transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    .social-links a:hover {
-      background: white;
-      color: var(--primary-color);
-      transform: translateY(-3px);
+    .social-link:hover {
+      background: var(--amber-500);
+      border-color: var(--amber-500);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* SCROLL TO TOP */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      background: var(--amber-500);
+      color: var(--white);
+      border: none;
+      border-radius: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
     }
 
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      background: var(--amber-600);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(245, 158, 11, 0.4);
+    }
+
+    /* ANIMATIONS */
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -507,145 +866,49 @@
       }
     }
 
-    .scroll-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 999;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
     }
 
-    .scroll-to-top.visible {
-      opacity: 1;
-      visibility: visible;
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .scroll-to-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-    }
-
+    /* RESPONSIVE */
     @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
       .menu-toggle {
         display: block;
-      }
-
-      .header-container {
-        flex-wrap: nowrap;
-        padding: 0 1rem;
-      }
-
-      header h1 {
-        font-size: 1.2rem;
-      }
-
-      nav {
-        position: fixed;
-        top: 73px;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        padding: 0;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-        z-index: 999;
-      }
-
-      nav.active {
-        max-height: 500px;
-        padding: 1rem 0;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-      }
-
-      .nav-links li {
-        text-align: center;
-        width: 100%;
-        list-style: none;
-      }
-
-      .nav-link {
-        display: block;
-        padding: 1.2rem;
-        border-radius: 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-      }
-
-      .nav-link:hover,
-      .nav-link.active {
-        background: rgba(255,255,255,0.2);
-        transform: none;
-      }
-
-      .hero-content h2 {
-        font-size: 2rem;
-      }
-
-      .hero-content p {
-        font-size: 1rem;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .hero-btn {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
       }
 
       .welcome-container {
         grid-template-columns: 1fr;
         text-align: center;
-        padding: 2rem;
-      }
-
-      .welcome-content h2 {
-        font-size: 2rem;
+        padding: 2.5rem;
+        margin-top: 2rem;
       }
 
       .profile-photo {
         margin: 0 auto;
-        max-width: 250px;
       }
 
       .stats-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-
-      .stat-item {
-        padding: 1.5rem;
-      }
-
-      .stat-number {
-        font-size: 2.5rem;
-      }
-
-      .latest-posts-container h3 {
-        font-size: 2rem;
       }
 
       .posts-grid {
@@ -663,218 +926,225 @@
       .footer-container {
         flex-direction: column;
         text-align: center;
-        gap: 1.5rem;
-      }
-
-      .footer-content {
-        order: 1;
-      }
-
-      .social-links {
-        order: 2;
-        justify-content: center;
-      }
-
-      footer {
-        padding: 2rem 1rem;
-      }
-
-      .footer-content p {
-        font-size: 0.9rem;
-        margin: 0.3rem 0;
-      }
-
-      .scroll-to-top {
-        bottom: 1rem;
-        right: 1rem;
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-      }
-
-      .inspirational-quote {
-        padding: 2rem 1.5rem;
-      }
-
-      .inspirational-quote p {
-        font-size: 1.2rem;
-      }
-
-      .quote-icon {
-        font-size: 2rem;
-        left: 1rem;
       }
     }
 
     @media (max-width: 480px) {
-      header h1 {
-        font-size: 1rem;
-      }
-
-      .hero-content h2 {
-        font-size: 1.6rem;
-      }
-
-      .hero-content p {
-        font-size: 0.95rem;
-      }
-
       .stats-container {
         grid-template-columns: 1fr;
-      }
-
-      .welcome-content h2 {
-        font-size: 1.8rem;
-      }
-
-      .newsletter-container h3 {
-        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <h1>Rev. Fr. Geraldo Bleza Malota</h1>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        Rev. Fr. Geraldo <span class="highlight">Bleza Malota</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="poems.html">Poems</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="articles.html" class="nav-link">Articles</a></li>
-          <li><a href="poems.html" class="nav-link">Poems</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
     </div>
-  </header>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="articles.html">Articles</a>
+      <a href="poems.html">Poems</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
 
-  <main>
-    <section class="hero-section">
-      <div class="hero-content">
-        <h2>Sharing Faith, Hope, and Love</h2>
-        <p>A journey through spiritual reflections, inspiring articles, and sacred poetry</p>
-        <div class="hero-buttons">
-          <a href="articles.html" class="hero-btn primary">
-            <i class="fas fa-book-open"></i>
-            Read Articles
-          </a>
-          <a href="poems.html" class="hero-btn secondary">
-            <i class="fas fa-feather-alt"></i>
-            Explore Poems
-          </a>
-        </div>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <img src="images/cathedral-bg.jpg" 
+           alt="Cathedral background" 
+           class="hero-image" />
+    </div>
+    <div class="hero-content">
+      <p class="hero-subtitle">A Voice of Faith & Poetry</p>
+      <h2 class="hero-title">Sharing Faith, Hope, and Love</h2>
+      <p class="hero-description">
+        A journey through spiritual reflections, inspiring articles, and sacred poetry
+      </p>
+      <div class="hero-buttons">
+        <a href="articles.html" class="btn btn-primary">
+          <i class="fas fa-book-open"></i>
+          Read Articles
+        </a>
+        <a href="poems.html" class="btn btn-secondary">
+          <i class="fas fa-feather-alt"></i>
+          Explore Poems
+        </a>
       </div>
-    </section>
+    </div>
+    <div class="scroll-indicator"></div>
+  </section>
 
-    <section class="welcome-section">
-      <div class="welcome-container">
-        <div class="profile-image-container">
-          <img src="images/fr-bleza.jpg" alt="Rev. Fr. Geraldo Bleza Malota" class="profile-photo" loading="lazy" />
-        </div>
-        <div class="welcome-content">
-          <h2>Welcome</h2>
-          <p class="welcome-text">
-            This platform is dedicated to sharing the thoughts, reflections, poems, and articles of Rev. Fr. Geraldo Bleza Malota, a Catholic priest from Dedza Diocese. 
-            Through these writings, I hope to inspire and uplift readers on their spiritual journey.
-          </p>
-          <p class="welcome-text">
-            Here you will find meditations on faith, life's challenges, and the beauty of God's presence in our daily experiences. Each piece is crafted with prayer and reflection, meant to nourish the soul and strengthen the spirit.
-          </p>
-          <p class="welcome-text">
-            Thank you for visiting. May these writings inspire and uplift your heart and mind.
-          </p>
-        </div>
+  <!-- WELCOME SECTION -->
+  <section class="welcome-section">
+    <div class="welcome-container">
+      <div class="profile-image-wrapper">
+        <div class="profile-image-bg"></div>
+        <img src="images/fr-bleza.jpg" alt="Rev. Fr. Geraldo Bleza Malota" class="profile-photo" loading="lazy" />
       </div>
-    </section>
-
-    <section class="stats-section">
-      <div class="stats-container">
-        <div class="stat-item">
-          <span class="stat-number" data-target="20">5+</span>
-          <span class="stat-label">Articles Written</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="35">10+</span>
-          <span class="stat-label">Poems Composed</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="3">2+</span>
-          <span class="stat-label">Years of Service</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="1000">100+</span>
-          <span class="stat-label">Lives Touched</span>
-        </div>
+      <div class="welcome-content">
+        <h2>Welcome</h2>
+        <div class="divider"></div>
+        <p class="welcome-text">
+          This platform is dedicated to sharing the thoughts, reflections, poems, and articles of Rev. Fr. Geraldo Bleza Malota, a Catholic priest from Dedza Diocese. 
+          Through these writings, I hope to inspire and uplift readers on their spiritual journey.
+        </p>
+        <p class="welcome-text">
+          Here you will find meditations on faith, life's challenges, and the beauty of God's presence in our daily experiences. Each piece is crafted with prayer and reflection, meant to nourish the soul and strengthen the spirit.
+        </p>
+        <p class="welcome-text">
+          Thank you for visiting. May these writings inspire and uplift your heart and mind.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="latest-posts-section">
-      <div class="latest-posts-container">
-        <h3>Latest Articles & Poems</h3>
-        <div class="posts-grid">
-          <article class="post-card">
-            <div class="post-icon">
-              <i class="fas fa-cross"></i>
-            </div>
-            <h4><a href="articles.html" class="post-link">The Multifaceted Reality of Success</a></h4>
-            <p class="post-type">Article • March 15, 2024</p>
-          </article>
-          <article class="post-card">
-            <div class="post-icon">
-              <i class="fas fa-feather-alt"></i>
-            </div>
-            <h4><a href="poems.html" class="post-link">The Morning Blessing</a></h4>
-            <p class="post-type">Poem • March 20, 2024</p>
-          </article>
-          <article class="post-card">
-            <div class="post-icon">
-              <i class="fas fa-seedling"></i>
-            </div>
-            <h4><a href="articles.html" class="post-link">Traps within Growth</a></h4>
-            <p class="post-type">Article • February 28, 2024</p>
-          </article>
+  <!-- STATS SECTION -->
+  <section class="stats-section">
+    <div class="stats-container" id="statsContainer">
+      <div class="stat-item">
+        <div class="stat-icon">
+          <i class="fas fa-book-open"></i>
         </div>
-        <div class="view-all-links">
-          <a href="articles.html" class="view-all-btn">
-            <i class="fas fa-book-open"></i>
-            View All Articles
-          </a>
-          <a href="poems.html" class="view-all-btn">
-            <i class="fas fa-scroll"></i>
-            View All Poems
-          </a>
+        <span class="stat-number" data-target="20">5+</span>
+        <div class="stat-label">Articles Written</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">
+          <i class="fas fa-feather-alt"></i>
         </div>
+        <span class="stat-number" data-target="35">10+</span>
+        <div class="stat-label">Poems Composed</div>
       </div>
-    </section>
-
-    <section class="quote-section">
-      <div class="quote-container">
-        <blockquote class="inspirational-quote">
-          <i class="fas fa-quote-left quote-icon"></i>
-          <p>"Faith is taking the first step even when you don't see the whole staircase."</p>
-          <cite>— Rev. Fr. Geraldo Bleza Malota</cite>
-        </blockquote>
+      <div class="stat-item">
+        <div class="stat-icon">
+          <i class="fas fa-calendar-alt"></i>
+        </div>
+        <span class="stat-number" data-target="3">2+</span>
+        <div class="stat-label">Years of Service</div>
       </div>
-    </section>
-
-    <section class="newsletter-section">
-      <div class="newsletter-container">
-        <h3>Stay Connected</h3>
-        <p>Subscribe to receive the latest articles and spiritual reflections directly to your inbox</p>
-        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-          <input type="email" class="newsletter-input" placeholder="Enter your email address" required />
-          <button type="submit" class="newsletter-btn">
-            <i class="fas fa-paper-plane"></i> Subscribe
-          </button>
-        </form>
+      <div class="stat-item">
+        <div class="stat-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <span class="stat-number" data-target="1000">100+</span>
+        <div class="stat-label">Lives Touched</div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- LATEST POSTS SECTION -->
+  <section class="latest-posts-section">
+    <div class="latest-posts-container">
+      <h3>Latest Articles & Poems</h3>
+      <p class="section-description">Explore our curated collection of spiritual articles, heartfelt poems, and weekly reflections.</p>
+      
+      <div class="posts-grid">
+        <article class="post-card">
+          <div class="post-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=600" 
+                 alt="The Multifaceted Reality of Success" 
+                 class="post-image" />
+            <span class="post-category">Article</span>
+          </div>
+          <div class="post-content">
+            <p class="post-date">March 15, 2024</p>
+            <h4 class="post-title">
+              <a href="articles.html" class="post-link">The Multifaceted Reality of Success</a>
+            </h4>
+            <p class="post-type">Discovering light in the darkest of seasons through persistent prayer and hope.</p>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1516410529446-2c777cb7366d?auto=format&fit=crop&q=80&w=600" 
+                 alt="The Morning Blessing" 
+                 class="post-image" />
+            <span class="post-category">Poem</span>
+          </div>
+          <div class="post-content">
+            <p class="post-date">March 20, 2024</p>
+            <h4 class="post-title">
+              <a href="poems.html" class="post-link">The Morning Blessing</a>
+            </h4>
+            <p class="post-type">A lyrical exploration of the quiet moments where the divine speaks most clearly.</p>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1470252649358-96957c053e9a?auto=format&fit=crop&q=80&w=600" 
+                 alt="Traps within Growth" 
+                 class="post-image" />
+            <span class="post-category">Article</span>
+          </div>
+          <div class="post-content">
+            <p class="post-date">February 28, 2024</p>
+            <h4 class="post-title">
+              <a href="articles.html" class="post-link">Traps within Growth</a>
+            </h4>
+            <p class="post-type">Waking up to the renewed mercies offered to us at the dawn of every new day.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="view-all-links">
+        <a href="articles.html" class="view-all-btn">
+          <i class="fas fa-book-open"></i>
+          View All Articles
+        </a>
+        <a href="poems.html" class="view-all-btn">
+          <i class="fas fa-scroll"></i>
+          View All Poems
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE SECTION -->
+  <section class="quote-section">
+    <div class="quote-container">
+      <blockquote class="inspirational-quote">
+        <i class="fas fa-quote-left quote-icon"></i>
+        <p>"Faith is taking the first step even when you don't see the whole staircase."</p>
+        <cite>— Rev. Fr. Geraldo Bleza Malota</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER SECTION -->
+  <section class="newsletter-section">
+    <div class="newsletter-container">
+      <h3>Stay Connected</h3>
+      <p>Subscribe to receive the latest articles and spiritual reflections directly to your inbox</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" class="newsletter-input" placeholder="Enter your email address" required />
+        <button type="submit" class="newsletter-btn">
+          <i class="fas fa-paper-plane"></i> Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="footer-container">
       <div class="footer-content">
@@ -882,124 +1152,152 @@
         <p class="diocese-info">Catholic Priest | Dedza Diocese</p>
       </div>
       <div class="social-links">
-        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" aria-label="Follow on Facebook">
+        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow on Facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp">
+        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Message on WhatsApp">
           <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" aria-label="Follow on Twitter">
+        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
-        <a href="mailto:your.email@example.com" aria-label="Send email">
+        <a href="mailto:your.email@example.com" class="social-link" aria-label="Send email">
           <i class="fas fa-envelope"></i>
         </a>
       </div>
     </div>
   </footer>
 
-  <button class="scroll-to-top" aria-label="Scroll to top" onclick="scrollToTop()">
-    <i class="fas fa-arrow-up"></i>
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
   </button>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      
-      if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-          menuToggle.setAttribute('aria-expanded', !isExpanded);
-          nav.classList.toggle('active');
-          
-          const icon = menuToggle.querySelector('i');
-          icon.classList.toggle('fa-bars');
-          icon.classList.toggle('fa-times');
-        });
-      }
-      
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          if (window.innerWidth <= 768) {
-            nav.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
-          }
-        });
-      });
-      
-      document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-          if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
-            nav.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.add('fa-bars');
-            icon.classList.remove('fa-times');
-          }
-        }
-      });
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const navbar = document.getElementById('navbar');
 
-      animateStats();
-      window.addEventListener('scroll', toggleScrollButton);
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('active');
+      
+      const icon = menuToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
     });
 
-    function animateStats() {
-      const stats = document.querySelectorAll('.stat-number');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const target = parseInt(entry.target.getAttribute('data-target'));
-            animateValue(entry.target, 0, target, 2000);
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      stats.forEach(stat => observer.observe(stat));
-    }
-
-    function animateValue(element, start, end, duration) {
-      const range = end - start;
-      const increment = end > start ? 1 : -1;
-      const stepTime = Math.abs(Math.floor(duration / range));
-      let current = start;
-      
-      const timer = setInterval(() => {
-        current += increment;
-        element.textContent = current + (end >= 1000 ? '+' : '');
-        if (current === end) {
-          clearInterval(timer);
-        }
-      }, stepTime);
-    }
-
-    function toggleScrollButton() {
-      const scrollBtn = document.querySelector('.scroll-to-top');
-      if (window.pageYOffset > 300) {
-        scrollBtn.classList.add('visible');
-      } else {
-        scrollBtn.classList.remove('visible');
-      }
-    }
-
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
       });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          const icon = menuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      }
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Scroll to top button
+      const scrollTop = document.getElementById('scrollTop');
+      if (window.scrollY > 300) {
+        scrollTop.classList.add('visible');
+      } else {
+        scrollTop.classList.remove('visible');
+      }
+    });
+
+    // Scroll to top functionality
+    document.getElementById('scrollTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Stats animation
+    let hasAnimated = false;
+    const statsContainer = document.getElementById('statsContainer');
+
+    function animateStats() {
+      if (hasAnimated) return;
+
+      const stats = document.querySelectorAll('.stat-number');
+      const duration = 2000;
+      const frameRate = 1000 / 60;
+      const totalFrames = duration / frameRate;
+
+      stats.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        let frame = 0;
+        
+        const timer = setInterval(() => {
+          frame++;
+          const progress = frame / totalFrames;
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(target * easeOut);
+          
+          stat.textContent = current + (target >= 1000 ? '+' : '+');
+          
+          if (frame === totalFrames) {
+            clearInterval(timer);
+            stat.textContent = target + '+';
+          }
+        }, frameRate);
+      });
+
+      hasAnimated = true;
     }
 
+    // Trigger stats animation when in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
+          animateStats();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsContainer);
+
+    // Newsletter form handler
     function handleNewsletter(event) {
       event.preventDefault();
       const email = event.target.querySelector('input').value;
       alert('Thank you for subscribing! We will send updates to ' + email);
       event.target.reset();
     }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   </script>
 </body>
 </html>
