@@ -1235,39 +1235,40 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Stats animation
-    let hasAnimated = false;
-    const statsContainer = document.getElementById('statsContainer');
+          // Stats animation
+      let hasAnimated = false;
+      const statsContainer = document.getElementById('statsContainer');
 
-    function animateStats() {
-      if (hasAnimated) return;
+      function animateStats() {
+        if (hasAnimated) return;
 
-      const stats = document.querySelectorAll('.stat-number');
-      const duration = 2000;
-      const frameRate = 1000 / 60;
-      const totalFrames = duration / frameRate;
+        const stats = document.querySelectorAll('.stat-number');
+        const duration = 2000;
+        const frameRate = 1000 / 60;
+        const totalFrames = Math.ceil(duration / frameRate); // ✅ FIX
 
-      stats.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        let frame = 0;
-        
-        const timer = setInterval(() => {
-          frame++;
-          const progress = frame / totalFrames;
-          const easeOut = 1 - Math.pow(1 - progress, 3);
-          const current = Math.floor(target * easeOut);
-          
-          stat.textContent = current + (target >= 1000 ? '+' : '+');
-          
-          if (frame === totalFrames) {
-            clearInterval(timer);
-            stat.textContent = target + '+';
-          }
-        }, frameRate);
-      });
+        stats.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'), 10);
+          let frame = 0;
 
-      hasAnimated = true;
-    }
+          const timer = setInterval(() => {
+            frame++;
+
+            const progress = frame / totalFrames;
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(target * easeOut);
+
+            stat.textContent = current + '+';
+
+            if (frame >= totalFrames) { // ✅ FIX
+              clearInterval(timer);
+              stat.textContent = target + '+';
+            }
+          }, frameRate);
+        });
+
+        hasAnimated = true;
+      }
 
     // Trigger stats animation when in view
     const observer = new IntersectionObserver((entries) => {
