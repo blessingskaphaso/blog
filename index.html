@@ -4,1390 +4,1495 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | Rev. Fr. Geraldo Bleza Malota</title>
-  <meta name="description" content="Welcome to the official website of Rev. Fr. Geraldo Bleza Malota, Catholic priest from Dedza Diocese. Read inspiring articles, poems, and spiritual reflections." />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta
+    name="description"
+    content="Welcome to the official website of Rev. Fr. Geraldo Bleza Malota, Catholic priest from Dedza Diocese. Read inspiring articles, poems, and spiritual reflections."
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
   <style>
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --amber-400: #fbbf24;
-  --amber-500: #f59e0b;
-  --amber-600: #d97706;
-  --slate-50: #f8fafc;
-  --slate-100: #f1f5f9;
-  --slate-200: #e2e8f0;
-  --slate-400: #94a3b8;
-  --slate-500: #64748b;
-  --slate-600: #475569;
-  --slate-800: #1e293b;
-  --slate-900: #0f172a;
-  --white: #ffffff;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  line-height: 1.6;
-  color: var(--slate-900);
-  background: var(--slate-50);
-  overflow-x: hidden;
-}
-
-::selection {
-  background: #fef3c7;
-  color: var(--slate-900);
-}
-
-/* ========== NAVIGATION ========== */
-nav {
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.nav-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  color: var(--slate-900);
-  transition: color 0.3s ease;
-}
-
-.logo .highlight {
-  color: var(--amber-500);
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--slate-600);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  font-size: 0.95rem;
-  position: relative;
-}
-
-.nav-links a::before {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--amber-500);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-.nav-links a:hover::before,
-.nav-links a.active::before {
-  width: 80%;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--amber-500);
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--slate-900);
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.mobile-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.mobile-menu.active {
-  display: block;
-  animation: slideDown 0.3s ease;
-}
-
-.mobile-menu a {
-  display: block;
-  padding: 1.2rem 1.5rem;
-  color: var(--slate-900);
-  text-decoration: none;
-  font-weight: 500;
-  border-bottom: 1px solid var(--slate-100);
-}
-
-.mobile-menu a:hover {
-  background: var(--slate-50);
-  color: var(--amber-600);
-}
-
-/* ========== HERO SECTION ========== */
-.hero {
-  position: relative;
-  height: 75vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.6);
-  z-index: 1;
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.05);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 900px;
-  padding: 0 1.5rem;
-}
-
-.hero-subtitle {
-  color: var(--amber-400);
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
-  animation: fadeInUp 0.7s ease;
-}
-
-.hero-title {
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
-  font-weight: 800;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  animation: fadeInUp 1s ease 0.1s both;
-}
-
-.hero-description {
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-  animation: fadeInUp 1s ease 0.2s both;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeInUp 1s ease 0.3s both;
-}
-
-.btn {
-  padding: 1rem 2rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.05rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid transparent;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--amber-500);
-  color: var(--white);
-  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
-}
-
-.btn-primary:hover {
-  background: var(--amber-600);
-  transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(245, 158, 11, 0.4);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: var(--white);
-  transform: translateY(-3px);
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 3rem;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
-  animation: bounce 2s infinite;
-}
-
-/* ========== WELCOME SECTION ========== */
-.welcome-section {
-  padding: 6rem 1.5rem;
-  background: var(--white);
-}
-
-.welcome-container {
-  max-width: 1280px;
-  margin: -4rem auto 0;
-  background: white;
-  border-radius: 1.5rem;
-  padding: 4rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 4rem;
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 10;
-}
-
-.profile-image-wrapper {
-  position: relative;
-}
-
-.profile-image-bg {
-  position: absolute;
-  inset: -1rem;
-  background: rgba(245, 158, 11, 0.1);
-  border-radius: 50%;
-  transform: rotate(3deg) scale(0.95);
-  transition: transform 0.5s ease;
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.profile-image-wrapper:hover .profile-image-bg {
-  transform: rotate(1deg);
-}
-
-.profile-photo {
-  position: relative;
-  width: 100%;
-  max-width: 320px;
-  border-radius: 50%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-  border: 6px solid white;
-  z-index: 1;
-  transition: transform 0.5s ease;
-}
-
-.profile-photo:hover {
-  transform: scale(1.05);
-}
-
-.welcome-content h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
-  color: var(--slate-900);
-  line-height: 1.2;
-  letter-spacing: -1px;
-  margin-bottom: 2rem;
-}
-
-.divider {
-  width: 5rem;
-  height: 0.25rem;
-  background: var(--amber-500);
-  border-radius: 9999px;
-  margin-bottom: 2rem;
-}
-
-.welcome-text {
-  font-size: 1.125rem;
-  color: var(--slate-600);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-}
-
-/* ========== STATS SECTION ========== */
-.stats-section {
-  padding: 5rem 1.5rem;
-  background: var(--slate-900);
-  color: var(--white);
-  position: relative;
-  overflow: hidden;
-  margin: 5rem 0;
-}
-
-.stats-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.stats-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.stat-item {
-  text-align: center;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.stat-item:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.stat-icon {
-  display: inline-flex;
-  padding: 0.75rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--amber-400);
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-  transition: all 0.3s ease;
-}
-
-.stat-item:hover .stat-icon {
-  background: var(--amber-500);
-  color: var(--white);
-}
-
-.stat-number {
-  font-size: 3.5rem;
-  font-weight: 800;
-  display: block;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #fff, #a5b4fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.stat-label {
-  font-size: 0.875rem;
-  opacity: 0.8;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-/* ========== LATEST POSTS SECTION ========== */
-.latest-posts-section {
-  padding: 6rem 1.5rem;
-  background: var(--slate-50);
-}
-
-.latest-posts-container {
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.latest-posts-container h3 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
-  color: var(--slate-900);
-  text-align: center;
-  margin-bottom: 1rem;
-  letter-spacing: -1px;
-}
-
-.section-description {
-  color: var(--slate-500);
-  font-size: 1.125rem;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto 4rem;
-}
-
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-.post-card {
-  background: var(--white);
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.post-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-}
-
-.post-image-wrapper {
-  position: relative;
-  aspect-ratio: 16/10;
-  overflow: hidden;
-}
-
-.post-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.post-card:hover .post-image {
-  transform: scale(1.1);
-}
-
-.post-category {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  padding: 0.5rem 1rem;
-  background: var(--amber-500);
-  color: var(--white);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border-radius: 9999px;
-}
-
-.post-content {
-  padding: 1.5rem;
-}
-
-.post-date {
-  color: var(--slate-400);
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
-}
-
-.post-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--slate-900);
-  margin-bottom: 0.75rem;
-  line-height: 1.3;
-}
-
-.post-card:hover .post-title {
-  color: var(--amber-600);
-}
-
-.post-link {
-  color: inherit;
-  text-decoration: none;
-}
-
-.post-type {
-  color: var(--slate-600);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.view-all-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 4rem;
-}
-
-.view-all-btn {
-  background: linear-gradient(135deg, var(--amber-500), var(--amber-600));
-  color: white;
-  padding: 1.2rem 2.5rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.view-all-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(245, 158, 11, 0.4);
-}
-
-/* ========== QUOTE SECTION ========== */
-.quote-section {
-  padding: 6rem 1.5rem;
-  background: var(--white);
-  border-top: 1px solid var(--slate-100);
-  border-bottom: 1px solid var(--slate-100);
-  position: relative;
-  overflow: hidden;
-}
-
-.quote-section::before {
-  content: '"';
-  position: absolute;
-  top: 2.5rem;
-  right: 2.5rem;
-  font-size: 12rem;
-  color: rgba(0, 0, 0, 0.02);
-  font-family: Georgia, serif;
-  pointer-events: none;
-}
-
-.quote-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.inspirational-quote {
-  background: white;
-  padding: 3rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border-left: 6px solid var(--amber-500);
-  position: relative;
-}
-
-.quote-icon {
-  color: var(--amber-500);
-  font-size: 3rem;
-  opacity: 0.2;
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-}
-
-.inspirational-quote p {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.6;
-  color: var(--slate-800);
-  margin: 0 0 1.5rem 0;
-  position: relative;
-  z-index: 1;
-}
-
-.inspirational-quote cite {
-  display: block;
-  text-align: right;
-  color: var(--slate-900);
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 700;
-}
-
-/* ========== NEWSLETTER SECTION ========== */
-.newsletter-section {
-  padding: 6rem 1.5rem;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: var(--white);
-  position: relative;
-  overflow: hidden;
-}
-
-.newsletter-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-}
-
-.newsletter-container {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.newsletter-container h3 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.newsletter-container p {
-  font-size: 1.125rem;
-  margin-bottom: 2.5rem;
-  opacity: 0.95;
-  font-weight: 300;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.newsletter-input {
-  flex: 1;
-  min-width: 250px;
-  padding: 1.2rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-  border-radius: 9999px;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.newsletter-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.newsletter-input:focus {
-  border-color: var(--white);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.newsletter-btn {
-  padding: 1.2rem 2.5rem;
-  background: white;
-  color: #f5576c;
-  border: none;
-  border-radius: 9999px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.newsletter-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-/* ========== FOOTER ========== */
-footer {
-  background: var(--slate-900);
-  color: var(--white);
-  padding: 4rem 1.5rem 2.5rem;
-}
-
-.footer-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.footer-content p {
-  margin: 0.5rem 0;
-  opacity: 0.8;
-}
-
-.copyright {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.diocese-info {
-  font-size: 0.95rem;
-  font-weight: 300;
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-link {
-  width: 50px;
-  height: 50px;
-  border-radius: 0.875rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.social-link:hover {
-  background: var(--amber-500);
-  border-color: var(--amber-500);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-}
-
-/* ========== SCROLL TO TOP ========== */
-.scroll-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  background: var(--amber-500);
-  color: var(--white);
-  border: none;
-  border-radius: 0.875rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 999;
-}
-
-.scroll-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.scroll-top:hover {
-  background: var(--amber-600);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(245, 158, 11, 0.4);
-}
-
-/* ========== ANIMATIONS ========== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ========================================
-   RESPONSIVE DESIGN - MOBILE OPTIMIZED
-======================================== */
-
-/* Large Tablets and Small Desktops (1024px and below) */
-@media (max-width: 1024px) {
-  .welcome-container {
-    gap: 3rem;
-    padding: 3rem;
-  }
-
-  .stats-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .posts-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Tablets (768px and below) */
-@media (max-width: 768px) {
-  /* Navigation */
-  .nav-links {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .logo {
-    font-size: 1.25rem;
-  }
-
-  /* Hero Section */
-  .hero {
-    height: 60vh;
-    min-height: 500px;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-description {
-    font-size: 1.1rem;
-  }
-
-  .hero-buttons {
-    gap: 0.75rem;
-  }
-
-  .btn {
-    padding: 0.875rem 1.75rem;
-    font-size: 1rem;
-  }
-
-  .scroll-indicator {
-    display: none;
-  }
-
-  /* Welcome Section */
-  .welcome-section {
-    padding: 4rem 1.5rem;
-  }
-
-  .welcome-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 2rem 1.5rem;
-    margin-top: 0;
-    gap: 2rem;
-  }
-
-  .profile-photo {
-    margin: 0 auto;
-    max-width: 250px;
-  }
-
-  .welcome-content h2 {
-    font-size: 2rem;
-  }
-
-  .divider {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Stats Section */
-  .stats-section {
-    padding: 4rem 1.5rem;
-    margin: 3rem 0;
-  }
-
-  .stats-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .stat-item {
-    padding: 1.5rem;
-  }
-
-  .stat-number {
-    font-size: 2.5rem;
-  }
-
-  /* Latest Posts */
-  .latest-posts-section {
-    padding: 4rem 1.5rem;
-  }
-
-  .section-description {
-    font-size: 1rem;
-  }
-
-  .posts-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  /* Quote Section */
-  .quote-section {
-    padding: 4rem 1.5rem;
-  }
-
-  .inspirational-quote {
-    padding: 2rem 1.5rem;
-  }
-
-  .inspirational-quote p {
-    font-size: 1.5rem;
-  }
-
-  /* Newsletter */
-  .newsletter-section {
-    padding: 4rem 1.5rem;
-  }
-
-  .newsletter-form {
-    flex-direction: column;
-  }
-
-  .newsletter-input {
-    min-width: 100%;
-  }
-
-  .newsletter-btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Footer */
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  /* Scroll to Top */
-  .scroll-top {
-    bottom: 1.5rem;
-    right: 1.5rem;
-    width: 3rem;
-    height: 3rem;
-  }
-
-  /* View All Links */
-  .view-all-links {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .view-all-btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* Small Mobile Phones (480px and below) */
-@media (max-width: 480px) {
-  /* Navigation */
-  .logo {
-    font-size: 1.1rem;
-  }
-
-  .nav-container {
-    padding: 0 1rem;
-  }
-
-  /* Hero Section */
-  .hero {
-    height: 55vh;
-    min-height: 450px;
-  }
-
-  .hero-content {
-    padding: 0 1rem;
-  }
-
-  .hero-subtitle {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.75rem;
-  }
-
-  .btn {
-    width: 100%;
-    justify-content: center;
-    padding: 0.875rem 1.5rem;
-  }
-
-  /* Welcome Section */
-  .welcome-section {
-    padding: 3rem 1rem;
-  }
-
-  .welcome-container {
-    padding: 1.5rem 1rem;
-    border-radius: 1rem;
-  }
-
-  .profile-photo {
-    max-width: 200px;
-  }
-
-  .welcome-content h2 {
-    font-size: 1.75rem;
-  }
-
-  .welcome-text {
-    font-size: 1rem;
-  }
-
-  /* Stats Section */
-  .stats-section {
-    padding: 3rem 1rem;
-    margin: 2rem 0;
-  }
-
-  .stats-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .stat-item {
-    padding: 1.25rem;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-  }
-
-  /* Latest Posts Section */
-  .latest-posts-section {
-    padding: 3rem 1rem;
-  }
-
-  .latest-posts-container h3 {
-    font-size: 1.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .section-description {
-    font-size: 0.95rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .posts-grid {
-    gap: 1.25rem;
-  }
-
-  .post-content {
-    padding: 1.25rem;
-  }
-
-  .post-title {
-    font-size: 1.1rem;
-  }
-
-  .post-date {
-    font-size: 0.8rem;
-  }
-
-  .post-type {
-    font-size: 0.9rem;
-  }
-
-  .view-all-links {
-    margin-top: 2.5rem;
-  }
-
-  .view-all-btn {
-    padding: 1rem 2rem;
-    font-size: 0.95rem;
-  }
-
-  /* Quote Section */
-  .quote-section {
-    padding: 3rem 1rem;
-  }
-
-  .quote-section::before {
-    font-size: 8rem;
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .inspirational-quote {
-    padding: 1.5rem 1rem;
-    border-left-width: 4px;
-  }
-
-  .inspirational-quote p {
-    font-size: 1.25rem;
-    line-height: 1.5;
-  }
-
-  .quote-icon {
-    font-size: 2rem;
-    top: 1rem;
-    left: 1rem;
-  }
-
-  .inspirational-quote cite {
-    font-size: 1rem;
-  }
-
-  /* Newsletter Section */
-  .newsletter-section {
-    padding: 3rem 1rem;
-  }
-
-  .newsletter-container h3 {
-    font-size: 1.75rem;
-  }
-
-  .newsletter-container p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .newsletter-input {
-    padding: 1rem 1.25rem;
-    font-size: 0.95rem;
-  }
-
-  .newsletter-btn {
-    padding: 1rem 2rem;
-    font-size: 0.95rem;
-  }
-
-  /* Footer */
-  footer {
-    padding: 3rem 1rem 2rem;
-  }
-
-  .footer-container {
-    gap: 1.5rem;
-  }
-
-  .copyright {
-    font-size: 0.95rem;
-  }
-
-  .diocese-info {
-    font-size: 0.875rem;
-  }
-
-  .social-link {
-    width: 45px;
-    height: 45px;
-    font-size: 0.9rem;
-  }
-
-  /* Scroll to Top */
-  .scroll-top {
-    bottom: 1rem;
-    right: 1rem;
-    width: 2.75rem;
-    height: 2.75rem;
-  }
-}
-
-/* Extra Small Mobile Phones (360px and below) */
-@media (max-width: 360px) {
-  .hero-title {
-    font-size: 1.75rem;
-  }
-
-  .hero-description {
-    font-size: 0.95rem;
-  }
-
-  .welcome-content h2 {
-    font-size: 1.5rem;
-  }
-
-  .welcome-text {
-    font-size: 0.95rem;
-  }
-
-  .stat-number {
-    font-size: 1.75rem;
-  }
-
-  .latest-posts-container h3 {
-    font-size: 1.5rem;
-  }
-
-  .post-content {
-    padding: 1rem;
-  }
-
-  .post-title {
-    font-size: 1rem;
-  }
-
-  .inspirational-quote p {
-    font-size: 1.1rem;
-  }
-
-  .newsletter-container h3 {
-    font-size: 1.5rem;
-  }
-
-  .social-link {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-/* Landscape Mode Adjustments for Mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-  .hero {
-    height: 90vh;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-  }
-
-  .stats-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .stat-item {
-    padding: 1rem;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-}
-
-/* Fix for very small screens */
-@media (max-width: 320px) {
-  .nav-container {
-    padding: 0 0.75rem;
-  }
-
-  .logo {
-    font-size: 1rem;
-  }
-
-  .hero-title {
-    font-size: 1.5rem;
-  }
-
-  .btn {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.9rem;
-  }
-
-  .welcome-container {
-    padding: 1.25rem 0.75rem;
-  }
-
-  .profile-photo {
-    max-width: 180px;
-  }
-
-  .stat-number {
-    font-size: 1.5rem;
-  }
-
-  .view-all-btn {
-    padding: 0.875rem 1.5rem;
-    font-size: 0.875rem;
-  }
-}
+    /* ========== GLOBAL RESET & BASE ========== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --amber-600: #d97706;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        system-ui, sans-serif;
+      line-height: 1.6;
+      color: var(--slate-900);
+      background: var(--slate-50);
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #fef3c7;
+      color: var(--slate-900);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      padding-block: 0.75rem;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding-block: 0.5rem;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--slate-900);
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    .logo .highlight {
+      color: var(--amber-500);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--slate-600);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding-block: 0.25rem;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 50%;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: var(--amber-500);
+      transform: translateX(-50%);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+      width: 80%;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--amber-500);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--slate-900);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 9999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .menu-toggle:focus-visible {
+      outline: 2px solid var(--amber-500);
+      outline-offset: 2px;
+    }
+
+    .menu-toggle:hover {
+      background: var(--slate-100);
+      color: var(--amber-600);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      background: var(--white);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .mobile-menu.active {
+      display: block;
+      animation: slideDown 0.25s ease;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 1.1rem 1.5rem;
+      color: var(--slate-800);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid var(--slate-100);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mobile-menu a:hover {
+      background: var(--slate-50);
+      color: var(--amber-600);
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      position: relative;
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-inline: 1.5rem;
+      padding-top: 5rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+          circle at top left,
+          rgba(251, 191, 36, 0.35),
+          transparent 55%
+        ),
+        rgba(15, 23, 42, 0.82);
+      z-index: 1;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      filter: grayscale(0.1);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      margin-inline: auto;
+      color: var(--white);
+    }
+
+    .hero-subtitle {
+      color: var(--amber-400);
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.7s ease both;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      text-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
+      animation: fadeInUp 0.9s ease 0.1s both;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      max-width: 640px;
+      margin-inline: auto;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      margin-bottom: 2.3rem;
+      animation: fadeInUp 0.9s ease 0.2s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      animation: fadeInUp 0.9s ease 0.3s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      border: 2px solid transparent;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.02rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
+        background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn i {
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--amber-500), var(--amber-600));
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--amber-600), #b45309);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px rgba(245, 158, 11, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.35);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 0.55);
+      border-color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.6);
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--amber-400);
+      outline-offset: 3px;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      width: 1px;
+      height: 3rem;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.5)
+      );
+      animation: bounce 2s infinite;
+    }
+
+    /* ========== WELCOME SECTION ========== */
+    .welcome-section {
+      padding: 6rem 1.5rem;
+      background: var(--white);
+    }
+
+    .welcome-container {
+      max-width: 1280px;
+      margin: -4rem auto 0;
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 4rem;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      gap: 4rem;
+      align-items: center;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      position: relative;
+      z-index: 10;
+    }
+
+    .profile-image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-image-bg {
+      position: absolute;
+      inset: -1.2rem;
+      background: conic-gradient(
+        from 200deg,
+        rgba(245, 158, 11, 0.2),
+        rgba(248, 250, 252, 0.3),
+        rgba(245, 158, 11, 0.2)
+      );
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: rotate 18s linear infinite;
+    }
+
+    .profile-photo {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      border-radius: 50%;
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+      border: 6px solid var(--white);
+      z-index: 1;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .profile-photo:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 26px 70px rgba(15, 23, 42, 0.3);
+    }
+
+    .welcome-content h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider {
+      width: 4.5rem;
+      height: 0.25rem;
+      background: var(--amber-500);
+      border-radius: 9999px;
+      margin-bottom: 2rem;
+    }
+
+    .welcome-text {
+      font-size: 1.06rem;
+      color: var(--slate-600);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ========== STATS SECTION ========== */
+    .stats-section {
+      padding: 5rem 1.5rem;
+      margin-block: 5rem;
+      background: radial-gradient(
+          circle at top left,
+          rgba(251, 191, 36, 0.2),
+          transparent 55%
+        ),
+        var(--slate-900);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+          circle at 30% 50%,
+          rgba(96, 165, 250, 0.12),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 70% 80%,
+          rgba(129, 140, 248, 0.14),
+          transparent 55%
+        );
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .stats-container {
+      max-width: 1280px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.9),
+        rgba(30, 64, 175, 0.45)
+      );
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      backdrop-filter: blur(14px);
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-10px);
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.9),
+        rgba(28, 100, 242, 0.65)
+      );
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.5);
+      border-color: rgba(251, 191, 36, 0.85);
+    }
+
+    .stat-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem;
+      border-radius: 9999px;
+      background: rgba(15, 23, 42, 0.75);
+      color: var(--amber-400);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .stat-item:hover .stat-icon {
+      background: var(--amber-500);
+      color: var(--white);
+      transform: scale(1.05);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #ffffff, #a5b4fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    /* ========== LATEST POSTS SECTION ========== */
+    .latest-posts-section {
+      padding: 6rem 1.5rem;
+      background: var(--slate-50);
+    }
+
+    .latest-posts-container {
+      max-width: 1280px;
+      margin-inline: auto;
+    }
+
+    .latest-posts-container h3 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      color: var(--slate-900);
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .section-description {
+      color: var(--slate-500);
+      font-size: 1.05rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .post-card {
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      transition: transform 0.3s ease, box-shadow 0.3s ease,
+        border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .post-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.14);
+      border-color: rgba(251, 191, 36, 0.8);
+    }
+
+    .post-image-wrapper {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+
+    .post-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .post-card:hover .post-image {
+      transform: scale(1.08);
+    }
+
+    .post-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.45rem 1rem;
+      background: var(--amber-500);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      letter-spacing: 0.08em;
+    }
+
+    .post-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .post-date {
+      color: var(--slate-400);
+      font-size: 0.86rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 0.6rem;
+      line-height: 1.35;
+    }
+
+    .post-card:hover .post-title {
+      color: var(--amber-600);
+    }
+
+    .post-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .post-type {
+      color: var(--slate-600);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-size: 0.98rem;
+    }
+
+    .view-all-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .view-all-btn {
+      background: linear-gradient(135deg, var(--amber-500), var(--amber-600));
+      color: var(--white);
+      padding: 1.1rem 2.4rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .view-all-btn i {
+      font-size: 0.95rem;
+    }
+
+    .view-all-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(245, 158, 11, 0.4);
+    }
+
+    /* ========== QUOTE SECTION ========== */
+    .quote-section {
+      padding: 6rem 1.5rem;
+      background: var(--white);
+      border-block: 1px solid var(--slate-100);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '“';
+      position: absolute;
+      top: 1.5rem;
+      right: 2.5rem;
+      font-size: 11rem;
+      color: rgba(15, 23, 42, 0.04);
+      font-family: Georgia, 'Times New Roman', serif;
+      pointer-events: none;
+    }
+
+    .quote-container {
+      max-width: 1000px;
+      margin-inline: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .inspirational-quote {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      border-left: 6px solid var(--amber-500);
+      position: relative;
+    }
+
+    .quote-icon {
+      color: var(--amber-500);
+      font-size: 2.5rem;
+      opacity: 0.25;
+      position: absolute;
+      top: 1.8rem;
+      left: 1.8rem;
+    }
+
+    .inspirational-quote p {
+      font-size: clamp(1.5rem, 3.6vw, 2rem);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--slate-800);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .inspirational-quote cite {
+      display: block;
+      text-align: right;
+      color: var(--slate-900);
+      font-size: 1.08rem;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    /* ========== NEWSLETTER SECTION ========== */
+    .newsletter-section {
+      padding: 6rem 1.5rem;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+          circle at 20% 50%,
+          rgba(255, 255, 255, 0.1),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(255, 255, 255, 0.1),
+          transparent 55%
+        );
+    }
+
+    .newsletter-container {
+      max-width: 600px;
+      margin-inline: auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .newsletter-container h3 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-container p {
+      font-size: 1.06rem;
+      margin-bottom: 2.3rem;
+      opacity: 0.96;
+      font-weight: 300;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 1.1rem 1.5rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.16);
+      color: var(--white);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.25s ease, background 0.25s ease,
+        box-shadow 0.25s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .newsletter-input:focus-visible {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+    }
+
+    .newsletter-btn {
+      padding: 1.1rem 2.4rem;
+      background: var(--white);
+      color: #f5576c;
+      border: none;
+      border-radius: 9999px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.98rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
+        background 0.25s ease, color 0.25s ease;
+    }
+
+    .newsletter-btn i {
+      font-size: 0.95rem;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.28);
+      background: #fdf2f8;
+    }
+
+    .newsletter-btn:focus-visible {
+      outline: 2px solid var(--white);
+      outline-offset: 3px;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--slate-900);
+      color: var(--white);
+      padding: 4rem 1.5rem 2.5rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin-inline: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-content p {
+      margin-block: 0.3rem;
+      opacity: 0.8;
+    }
+
+    .copyright {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .diocese-info {
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 0.875rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      background: rgba(15, 23, 42, 0.8);
+      transition: transform 0.25s ease, background 0.25s ease,
+        border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .social-link:hover {
+      background: var(--amber-500);
+      border-color: var(--amber-500);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(245, 158, 11, 0.4);
+    }
+
+    .social-link:focus-visible {
+      outline: 2px solid var(--amber-400);
+      outline-offset: 3px;
+    }
+
+    /* ========== SCROLL TO TOP ========== */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3.2rem;
+      height: 3.2rem;
+      background: var(--amber-500);
+      color: var(--white);
+      border: none;
+      border-radius: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, visibility 0.25s ease,
+        transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      z-index: 999;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      background: var(--amber-600);
+      box-shadow: 0 18px 45px rgba(245, 158, 11, 0.45);
+      transform: translateY(-3px);
+    }
+
+    .scroll-top:focus-visible {
+      outline: 2px solid var(--amber-400);
+      outline-offset: 3px;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ========== RESPONSIVE DESIGN ========== */
+
+    /* Large Tablets and Small Desktops (1024px and below) */
+    @media (max-width: 1024px) {
+      .welcome-container {
+        gap: 3rem;
+        padding: 3rem;
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .posts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Tablets (768px and below) */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .logo {
+        font-size: 1.25rem;
+      }
+
+      .hero {
+        min-height: 60vh;
+        padding-top: 5.5rem;
+      }
+
+      .hero-title {
+        font-size: 2.4rem;
+      }
+
+      .hero-description {
+        font-size: 1.05rem;
+      }
+
+      .hero-buttons {
+        gap: 0.75rem;
+      }
+
+      .btn {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.98rem;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+
+      .welcome-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .welcome-container {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: center;
+        padding: 2.3rem 1.5rem;
+        margin-top: 0;
+        gap: 2rem;
+      }
+
+      .profile-photo {
+        margin-inline: auto;
+        max-width: 250px;
+      }
+
+      .welcome-content h2 {
+        font-size: 2.1rem;
+      }
+
+      .divider {
+        margin-inline: auto;
+      }
+
+      .stats-section {
+        padding: 4rem 1.5rem;
+        margin-block: 3rem;
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .stat-item {
+        padding: 1.5rem;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+
+      .latest-posts-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .section-description {
+        font-size: 1rem;
+      }
+
+      .posts-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+      }
+
+      .quote-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .inspirational-quote {
+        padding: 2rem 1.7rem;
+      }
+
+      .inspirational-quote p {
+        font-size: 1.5rem;
+      }
+
+      .newsletter-section {
+        padding: 4rem 1.5rem;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-input {
+        min-width: 100%;
+      }
+
+      .newsletter-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      .scroll-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 3rem;
+        height: 3rem;
+      }
+
+      .view-all-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .view-all-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Small Mobile Phones (480px and below) */
+    @media (max-width: 480px) {
+      .nav-container {
+        padding-inline: 1rem;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        min-height: 55vh;
+        padding-top: 5rem;
+      }
+
+      .hero-content {
+        padding-inline: 0.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-description {
+        font-size: 0.98rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .welcome-section {
+        padding: 3rem 1rem;
+      }
+
+      .welcome-container {
+        padding: 1.6rem 1rem;
+        border-radius: 1rem;
+      }
+
+      .profile-photo {
+        max-width: 200px;
+      }
+
+      .welcome-content h2 {
+        font-size: 1.8rem;
+      }
+
+      .welcome-text {
+        font-size: 0.98rem;
+      }
+
+      .stats-section {
+        padding: 3rem 1rem;
+        margin-block: 2rem;
+      }
+
+      .stats-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+      }
+
+      .stat-item {
+        padding: 1.3rem;
+      }
+
+      .stat-number {
+        font-size: 2.1rem;
+      }
+
+      .latest-posts-section {
+        padding: 3rem 1rem;
+      }
+
+      .latest-posts-container h3 {
+        font-size: 1.9rem;
+      }
+
+      .section-description {
+        font-size: 0.96rem;
+        margin-bottom: 2.3rem;
+      }
+
+      .post-content {
+        padding: 1.25rem;
+      }
+
+      .post-title {
+        font-size: 1.08rem;
+      }
+
+      .post-date {
+        font-size: 0.8rem;
+      }
+
+      .post-type {
+        font-size: 0.9rem;
+      }
+
+      .view-all-links {
+        margin-top: 2.3rem;
+      }
+
+      .view-all-btn {
+        padding: 1rem 2rem;
+        font-size: 0.95rem;
+      }
+
+      .quote-section {
+        padding: 3rem 1rem;
+      }
+
+      .quote-section::before {
+        font-size: 7rem;
+        top: 0.8rem;
+        right: 1rem;
+      }
+
+      .inspirational-quote {
+        padding: 1.7rem 1.2rem;
+        border-left-width: 4px;
+      }
+
+      .quote-icon {
+        font-size: 2rem;
+        top: 1.2rem;
+        left: 1.2rem;
+      }
+
+      .inspirational-quote p {
+        font-size: 1.25rem;
+      }
+
+      .newsletter-section {
+        padding: 3rem 1rem;
+      }
+
+      .newsletter-container h3 {
+        font-size: 1.8rem;
+      }
+
+      .newsletter-container p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .newsletter-input {
+        padding: 1rem 1.2rem;
+        font-size: 0.96rem;
+      }
+
+      .newsletter-btn {
+        padding: 1rem 2rem;
+        font-size: 0.95rem;
+      }
+
+      footer {
+        padding: 3rem 1rem 2rem;
+      }
+
+      .footer-container {
+        gap: 1.6rem;
+      }
+
+      .copyright {
+        font-size: 0.94rem;
+      }
+
+      .diocese-info {
+        font-size: 0.87rem;
+      }
+
+      .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 0.9rem;
+      }
+
+      .scroll-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 2.8rem;
+        height: 2.8rem;
+      }
+    }
+
+    /* Extra Small Mobile Phones (360px and below) */
+    @media (max-width: 360px) {
+      .hero-title {
+        font-size: 1.7rem;
+      }
+
+      .hero-description {
+        font-size: 0.94rem;
+      }
+
+      .welcome-content h2 {
+        font-size: 1.6rem;
+      }
+
+      .welcome-text {
+        font-size: 0.95rem;
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+      }
+
+      .latest-posts-container h3 {
+        font-size: 1.7rem;
+      }
+
+      .post-content {
+        padding: 1rem;
+      }
+
+      .post-title {
+        font-size: 1rem;
+      }
+
+      .inspirational-quote p {
+        font-size: 1.12rem;
+      }
+
+      .newsletter-container h3 {
+        font-size: 1.6rem;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    /* Landscape Mode Adjustments for Mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero {
+        min-height: 85vh;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .stat-item {
+        padding: 1rem;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+
+    /* Very Small Screens (320px and below) */
+    @media (max-width: 320px) {
+      .nav-container {
+        padding-inline: 0.75rem;
+      }
+
+      .logo {
+        font-size: 1rem;
+      }
+
+      .hero-title {
+        font-size: 1.5rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.3rem;
+        font-size: 0.9rem;
+      }
+
+      .welcome-container {
+        padding: 1.3rem 0.8rem;
+      }
+
+      .profile-photo {
+        max-width: 180px;
+      }
+
+      .stat-number {
+        font-size: 1.6rem;
+      }
+
+      .view-all-btn {
+        padding: 0.9rem 1.6rem;
+        font-size: 0.88rem;
+      }
+    }
   </style>
 </head>
 <body>
-
   <!-- NAVIGATION -->
   <nav id="navbar">
     <div class="nav-container">
@@ -1401,8 +1506,13 @@ footer {
         <li><a href="poems.html">Poems</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
-        <i class="fas fa-bars"></i>
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
     </div>
     <div class="mobile-menu" id="mobileMenu">
@@ -1415,83 +1525,100 @@ footer {
   </nav>
 
   <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-bg">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-bg" aria-hidden="true">
       <div class="hero-overlay"></div>
-      <img src="images/cathedral-bg.jpg" 
-           alt="Cathedral background" 
-           class="hero-image" />
+      <img
+        src="images/cathedral-bg.jpg"
+        alt="Interior of a cathedral as the background"
+        class="hero-image"
+      />
     </div>
     <div class="hero-content">
-      <p class="hero-subtitle">A Voice of Faith & Poetry</p>
-      <h2 class="hero-title">Sharing Faith, Hope, and Love</h2>
+      <p class="hero-subtitle">A Voice of Faith &amp; Poetry</p>
+      <h1 class="hero-title" id="hero-title">Sharing Faith, Hope, and Love</h1>
       <p class="hero-description">
-        A journey through spiritual reflections, inspiring articles, and sacred poetry
+        A journey through spiritual reflections, inspiring articles, and sacred
+        poetry.
       </p>
       <div class="hero-buttons">
         <a href="articles.html" class="btn btn-primary">
-          <i class="fas fa-book-open"></i>
-          Read Articles
+          <i class="fas fa-book-open" aria-hidden="true"></i>
+          <span>Read Articles</span>
         </a>
         <a href="poems.html" class="btn btn-secondary">
-          <i class="fas fa-feather-alt"></i>
-          Explore Poems
+          <i class="fas fa-feather-alt" aria-hidden="true"></i>
+          <span>Explore Poems</span>
         </a>
       </div>
     </div>
-    <div class="scroll-indicator"></div>
+    <div class="scroll-indicator" aria-hidden="true"></div>
   </section>
 
   <!-- WELCOME SECTION -->
-  <section class="welcome-section">
+  <section class="welcome-section" aria-labelledby="welcome-heading">
     <div class="welcome-container">
       <div class="profile-image-wrapper">
-        <div class="profile-image-bg"></div>
-        <img src="images/fr-bleza.jpg" alt="Rev. Fr. Geraldo Bleza Malota" class="profile-photo" loading="lazy" />
+        <div class="profile-image-bg" aria-hidden="true"></div>
+        <img
+          src="images/fr-bleza.jpg"
+          alt="Portrait of Rev. Fr. Geraldo Bleza Malota"
+          class="profile-photo"
+          loading="lazy"
+        />
       </div>
       <div class="welcome-content">
-        <h2>Welcome</h2>
-        <div class="divider"></div>
+        <h2 id="welcome-heading">Welcome</h2>
+        <div class="divider" aria-hidden="true"></div>
         <p class="welcome-text">
-          This platform is dedicated to sharing the thoughts, reflections, poems, and articles of Rev. Fr. Geraldo Bleza Malota, a Catholic priest from Dedza Diocese. 
-          Through these writings, I hope to inspire and uplift readers on their spiritual journey.
+          This platform is dedicated to sharing the thoughts, reflections,
+          poems, and articles of Rev. Fr. Geraldo Bleza Malota, a Catholic
+          priest from Dedza Diocese. Through these writings, I hope to inspire
+          and uplift readers on their spiritual journey.
         </p>
         <p class="welcome-text">
-          Here you will find meditations on faith, life's challenges, and the beauty of God's presence in our daily experiences. Each piece is crafted with prayer and reflection, meant to nourish the soul and strengthen the spirit.
+          Here you will find meditations on faith, life's challenges, and the
+          beauty of God's presence in our daily experiences. Each piece is
+          crafted with prayer and reflection, meant to nourish the soul and
+          strengthen the spirit.
         </p>
         <p class="welcome-text">
-          Thank you for visiting. May these writings inspire and uplift your heart and mind.
+          Thank you for visiting. May these writings inspire and uplift your
+          heart and mind.
         </p>
       </div>
     </div>
   </section>
 
   <!-- STATS SECTION -->
-  <section class="stats-section">
+  <section
+    class="stats-section"
+    aria-label="Website statistics"
+  >
     <div class="stats-container" id="statsContainer">
       <div class="stat-item">
-        <div class="stat-icon">
+        <div class="stat-icon" aria-hidden="true">
           <i class="fas fa-book-open"></i>
         </div>
         <span class="stat-number" data-target="20">5+</span>
         <div class="stat-label">Articles Written</div>
       </div>
       <div class="stat-item">
-        <div class="stat-icon">
+        <div class="stat-icon" aria-hidden="true">
           <i class="fas fa-feather-alt"></i>
         </div>
         <span class="stat-number" data-target="35">10+</span>
         <div class="stat-label">Poems Composed</div>
       </div>
       <div class="stat-item">
-        <div class="stat-icon">
+        <div class="stat-icon" aria-hidden="true">
           <i class="fas fa-calendar-alt"></i>
         </div>
         <span class="stat-number" data-target="3">2+</span>
         <div class="stat-label">Years of Service</div>
       </div>
       <div class="stat-item">
-        <div class="stat-icon">
+        <div class="stat-icon" aria-hidden="true">
           <i class="fas fa-heart"></i>
         </div>
         <span class="stat-number" data-target="1000">100+</span>
@@ -1501,94 +1628,145 @@ footer {
   </section>
 
   <!-- LATEST POSTS SECTION -->
-  <section class="latest-posts-section">
+  <section
+    class="latest-posts-section"
+    aria-labelledby="latest-posts-heading"
+  >
     <div class="latest-posts-container">
-      <h3>Latest Articles & Poems</h3>
-      <p class="section-description">Explore our curated collection of spiritual articles, heartfelt poems, and weekly reflections.</p>
-      
+      <h3 id="latest-posts-heading">Latest Articles &amp; Poems</h3>
+      <p class="section-description">
+        Explore our curated collection of spiritual articles, heartfelt poems,
+        and weekly reflections.
+      </p>
+
       <div class="posts-grid">
         <article class="post-card">
           <div class="post-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=600" 
-                 alt="The Multifaceted Reality of Success" 
-                 class="post-image" />
+            <img
+              src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=600"
+              alt="Books and a cross symbolizing the theme of success in faith"
+              class="post-image"
+              loading="lazy"
+            />
             <span class="post-category">Article</span>
           </div>
           <div class="post-content">
             <p class="post-date">March 15, 2024</p>
             <h4 class="post-title">
-              <a href="articles.html" class="post-link">The Multifaceted Reality of Success</a>
+              <a href="articles.html" class="post-link">
+                The Multifaceted Reality of Success
+              </a>
             </h4>
-            <p class="post-type">Discovering light in the darkest of seasons through persistent prayer and hope.</p>
+            <p class="post-type">
+              Discovering light in the darkest of seasons through persistent
+              prayer and hope.
+            </p>
           </div>
         </article>
 
         <article class="post-card">
           <div class="post-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1516410529446-2c777cb7366d?auto=format&fit=crop&q=80&w=600" 
-                 alt="The Morning Blessing" 
-                 class="post-image" />
+            <img
+              src="https://images.unsplash.com/photo-1516410529446-2c777cb7366d?auto=format&fit=crop&q=80&w=600"
+              alt="Sunrise over a quiet landscape reflecting a morning blessing"
+              class="post-image"
+              loading="lazy"
+            />
             <span class="post-category">Poem</span>
           </div>
           <div class="post-content">
             <p class="post-date">March 20, 2024</p>
             <h4 class="post-title">
-              <a href="poems.html" class="post-link">The Morning Blessing</a>
+              <a href="poems.html" class="post-link">
+                The Morning Blessing
+              </a>
             </h4>
-            <p class="post-type">A lyrical exploration of the quiet moments where the divine speaks most clearly.</p>
+            <p class="post-type">
+              A lyrical exploration of the quiet moments where the divine
+              speaks most clearly.
+            </p>
           </div>
         </article>
 
         <article class="post-card">
           <div class="post-image-wrapper">
-            <img src="images/Traps.webp"
-                 alt="Traps within Growth" 
-                 class="post-image" />
+            <img
+              src="images/Traps.webp"
+              alt="An image representing obstacles and traps within personal growth"
+              class="post-image"
+              loading="lazy"
+            />
             <span class="post-category">Article</span>
           </div>
           <div class="post-content">
             <p class="post-date">February 28, 2024</p>
             <h4 class="post-title">
-              <a href="articles.html" class="post-link">Traps within Growth</a>
+              <a href="articles.html" class="post-link">
+                Traps within Growth
+              </a>
             </h4>
-            <p class="post-type">Waking up to the renewed mercies offered to us at the dawn of every new day.</p>
+            <p class="post-type">
+              Waking up to the renewed mercies offered to us at the dawn of
+              every new day.
+            </p>
           </div>
         </article>
       </div>
 
       <div class="view-all-links">
         <a href="articles.html" class="view-all-btn">
-          <i class="fas fa-book-open"></i>
-          View All Articles
+          <i class="fas fa-book-open" aria-hidden="true"></i>
+          <span>View All Articles</span>
         </a>
         <a href="poems.html" class="view-all-btn">
-          <i class="fas fa-scroll"></i>
-          View All Poems
+          <i class="fas fa-scroll" aria-hidden="true"></i>
+          <span>View All Poems</span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- QUOTE SECTION -->
-  <section class="quote-section">
+  <section class="quote-section" aria-labelledby="quote-heading">
     <div class="quote-container">
       <blockquote class="inspirational-quote">
-        <i class="fas fa-quote-left quote-icon"></i>
-        <p>"Faith is taking the first step even when you don't see the whole staircase."</p>
+        <i class="fas fa-quote-left quote-icon" aria-hidden="true"></i>
+        <p id="quote-heading">
+          "Faith is taking the first step even when you don't see the whole
+          staircase."
+        </p>
         <cite>— Rev. Fr. Geraldo Bleza Malota</cite>
       </blockquote>
     </div>
   </section>
 
   <!-- NEWSLETTER SECTION -->
-  <section class="newsletter-section">
+  <section
+    class="newsletter-section"
+    aria-labelledby="newsletter-heading"
+  >
     <div class="newsletter-container">
-      <h3>Stay Connected</h3>
-      <p>Subscribe to receive the latest articles and spiritual reflections directly to your inbox</p>
-      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-        <input type="email" class="newsletter-input" placeholder="Enter your email address" required />
+      <h3 id="newsletter-heading">Stay Connected</h3>
+      <p>
+        Subscribe to receive the latest articles and spiritual reflections
+        directly to your inbox.
+      </p>
+      <form
+        class="newsletter-form"
+        onsubmit="handleNewsletter(event)"
+        novalidate
+      >
+        <label class="sr-only" for="newsletter-email">Email address</label>
+        <input
+          type="email"
+          id="newsletter-email"
+          class="newsletter-input"
+          placeholder="Enter your email address"
+          required
+        />
         <button type="submit" class="newsletter-btn">
-          <i class="fas fa-paper-plane"></i> Subscribe
+          <i class="fas fa-paper-plane" aria-hidden="true"></i>
+          <span>Subscribe</span>
         </button>
       </form>
     </div>
@@ -1598,29 +1776,58 @@ footer {
   <footer>
     <div class="footer-container">
       <div class="footer-content">
-        <p class="copyright">&copy; 2026 Rev. Fr. Geraldo Bleza Malota. All rights reserved.</p>
+        <p class="copyright">
+          &copy; 2026 Rev. Fr. Geraldo Bleza Malota. All rights reserved.
+        </p>
         <p class="diocese-info">Catholic Priest | Dedza Diocese</p>
       </div>
       <div class="social-links">
-        <a href="https://facebook.com/YourFacebookPage" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow on Facebook">
-          <i class="fab fa-facebook-f"></i>
+        <a
+          href="https://facebook.com/YourFacebookPage"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Follow on Facebook"
+        >
+          <i class="fab fa-facebook-f" aria-hidden="true"></i>
         </a>
-        <a href="https://wa.me/YourWhatsAppNumber" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Message on WhatsApp">
-          <i class="fab fa-whatsapp"></i>
+        <a
+          href="https://wa.me/YourWhatsAppNumber"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Message on WhatsApp"
+        >
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
         </a>
-        <a href="https://twitter.com/YourTwitterHandle" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow on Twitter">
-          <i class="fab fa-twitter"></i>
+        <a
+          href="https://twitter.com/YourTwitterHandle"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+          aria-label="Follow on Twitter"
+        >
+          <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
-        <a href="mailto:your.email@example.com" class="social-link" aria-label="Send email">
-          <i class="fas fa-envelope"></i>
+        <a
+          href="mailto:your.email@example.com"
+          class="social-link"
+          aria-label="Send email"
+        >
+          <i class="fas fa-envelope" aria-hidden="true"></i>
         </a>
       </div>
     </div>
   </footer>
 
   <!-- SCROLL TO TOP -->
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
+  <button
+    class="scroll-top"
+    id="scrollTop"
+    aria-label="Scroll to top"
+    type="button"
+  >
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
   </button>
 
   <script>
@@ -1631,16 +1838,16 @@ footer {
 
     menuToggle.addEventListener('click', () => {
       const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      menuToggle.setAttribute('aria-expanded', String(!isExpanded));
       mobileMenu.classList.toggle('active');
-      
+
       const icon = menuToggle.querySelector('i');
       icon.classList.toggle('fa-bars');
       icon.classList.toggle('fa-times');
     });
 
     // Close mobile menu when clicking a link
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
+    document.querySelectorAll('.mobile-menu a').forEach((link) => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
@@ -1653,7 +1860,10 @@ footer {
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
-        if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+        if (
+          !menuToggle.contains(e.target) &&
+          !mobileMenu.contains(e.target)
+        ) {
           mobileMenu.classList.remove('active');
           menuToggle.setAttribute('aria-expanded', 'false');
           const icon = menuToggle.querySelector('i');
@@ -1663,7 +1873,9 @@ footer {
       }
     });
 
-    // Navbar scroll effect
+    // Navbar scroll effect + Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
@@ -1671,84 +1883,96 @@ footer {
         navbar.classList.remove('scrolled');
       }
 
-      // Scroll to top button
-      const scrollTop = document.getElementById('scrollTop');
       if (window.scrollY > 300) {
-        scrollTop.classList.add('visible');
+        scrollTopBtn.classList.add('visible');
       } else {
-        scrollTop.classList.remove('visible');
+        scrollTopBtn.classList.remove('visible');
       }
     });
 
     // Scroll to top functionality
-    document.getElementById('scrollTop').addEventListener('click', () => {
+    scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-          // Stats animation
-      let hasAnimated = false;
-      const statsContainer = document.getElementById('statsContainer');
+    // Stats animation
+    let hasAnimated = false;
+    const statsContainer = document.getElementById('statsContainer');
 
-      function animateStats() {
-        if (hasAnimated) return;
+    function animateStats() {
+      if (hasAnimated) return;
 
-        const stats = document.querySelectorAll('.stat-number');
-        const duration = 2000;
-        const frameRate = 1000 / 60;
-        const totalFrames = Math.ceil(duration / frameRate); // ✅ FIX
+      const stats = document.querySelectorAll('.stat-number');
+      const duration = 2000;
+      const frameRate = 1000 / 60;
+      const totalFrames = Math.ceil(duration / frameRate);
 
-        stats.forEach(stat => {
-          const target = parseInt(stat.getAttribute('data-target'), 10);
-          let frame = 0;
+      stats.forEach((stat) => {
+        const target = parseInt(stat.getAttribute('data-target'), 10);
+        let frame = 0;
 
-          const timer = setInterval(() => {
-            frame++;
+        const timer = setInterval(() => {
+          frame += 1;
+          const progress = frame / totalFrames;
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(target * easeOut);
 
-            const progress = frame / totalFrames;
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-            const current = Math.floor(target * easeOut);
+          stat.textContent = current + '+';
 
-            stat.textContent = current + '+';
-
-            if (frame >= totalFrames) { // ✅ FIX
-              clearInterval(timer);
-              stat.textContent = target + '+';
-            }
-          }, frameRate);
-        });
-
-        hasAnimated = true;
-      }
-
-    // Trigger stats animation when in view
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !hasAnimated) {
-          animateStats();
-        }
+          if (frame >= totalFrames) {
+            clearInterval(timer);
+            stat.textContent = target + '+';
+          }
+        }, frameRate);
       });
-    }, { threshold: 0.5 });
 
-    observer.observe(statsContainer);
+      hasAnimated = true;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            animateStats();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statsContainer) {
+      observer.observe(statsContainer);
+    }
 
     // Newsletter form handler
     function handleNewsletter(event) {
       event.preventDefault();
-      const email = event.target.querySelector('input').value;
-      alert('Thank you for subscribing! We will send updates to ' + email);
+      const emailInput = event.target.querySelector('input[type="email"]');
+      const email = emailInput ? emailInput.value.trim() : '';
+      if (!email) return;
+      alert(
+        'Thank you for subscribing! We will send updates to ' + email + '.'
+      );
       event.target.reset();
     }
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    // Smooth scroll for on-page anchor links (if you add any in nav)
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          const targetSelector = this.getAttribute('href');
+          if (!targetSelector || targetSelector === '#') return;
+          const target = document.querySelector(targetSelector);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        });
       });
-    });
   </script>
 </body>
 </html>
