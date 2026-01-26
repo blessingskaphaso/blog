@@ -46,16 +46,12 @@ nav {
   position: fixed;
   width: 100%;
   z-index: 1000;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 1.5rem 0;
-}
-
-nav.scrolled {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   padding: 0.75rem 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -71,12 +67,8 @@ nav.scrolled {
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  color: var(--white);
-  transition: color 0.3s ease;
-}
-
-nav.scrolled .logo {
   color: var(--slate-900);
+  transition: color 0.3s ease;
 }
 
 .logo .highlight {
@@ -90,16 +82,12 @@ nav.scrolled .logo {
 }
 
 .nav-links a {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--slate-600);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
   font-size: 0.95rem;
   position: relative;
-}
-
-nav.scrolled .nav-links a {
-  color: var(--slate-600);
 }
 
 .nav-links a::before {
@@ -128,15 +116,11 @@ nav.scrolled .nav-links a {
   display: none;
   background: none;
   border: none;
-  color: var(--white);
+  color: var(--slate-900);
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
   transition: color 0.3s ease;
-}
-
-nav.scrolled .menu-toggle {
-  color: var(--slate-900);
 }
 
 .mobile-menu {
